@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('title', 'Admin Panel') - Saadani Kasa Bay</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+                    },
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Admin Styles -->
+    <style>
+        .sidebar-link.active {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .sidebar-link:hover {
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        .sidebar-link.active:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+        }
+
+        .notification {
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-lg">
+            <div class="flex flex-col h-full">
+                <!-- Logo -->
+                <div class="flex items-center justify-center h-16 px-4 bg-emerald-600">
+                    <h1 class="text-white text-xl font-bold">Saadani Admin</h1>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="flex-1 px-4 py-6 space-y-2">
+                    <a href="{{ route('admin.dashboard') }}" 
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                        <i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>
+                        Dashboard
+                    </a>
+
+                    <a href="{{ route('admin.settings.index') }}" 
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
+                        <i class="fas fa-cog w-5 h-5 mr-3"></i>
+                        Website Settings
+                    </a>
+
+                    <a href="{{ route('admin.activities.index') }}" 
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.activities.*') ? 'active' : '' }}">
+                        <i class="fas fa-hiking w-5 h-5 mr-3"></i>
+                        Activities
+                    </a>
+
+                    <a href="{{ route('admin.amenities.index') }}" 
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.amenities.*') ? 'active' : '' }}">
+                        <i class="fas fa-concierge-bell w-5 h-5 mr-3"></i>
+                        Amenities
+                    </a>
+
+                    <a href="{{ route('admin.commitments.index') }}" 
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.commitments.*') ? 'active' : '' }}">
+                        <i class="fas fa-leaf w-5 h-5 mr-3"></i>
+                        Commitments
+                    </a>
+
+                    <a href="{{ route('admin.gallery.index') }}" 
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}">
+                        <i class="fas fa-images w-5 h-5 mr-3"></i>
+                        Gallery
+                    </a>
+                </nav>
+
+                <!-- User Menu -->
+                <div class="px-4 py-4 border-t border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <a href="{{ route('admin.profile.show') }}" class="flex items-center hover:bg-gray-50 rounded-lg p-2 transition-colors duration-200 flex-1">
+                            <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-white text-sm"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-700">{{ Auth::guard('admin')->user()->name }}</p>
+                                <p class="text-xs text-gray-500">{{ ucfirst(str_replace('_', ' ', Auth::guard('admin')->user()->role)) }}</p>
+                            </div>
+                        </a>
+                        <form method="POST" action="{{ route('admin.logout') }}">
+                            @csrf
+                            <button type="submit" class="text-gray-400 hover:text-red-600 transition-colors duration-200 p-2">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-sm border-b border-gray-200">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">@yield('page-title', 'Dashboard')</h2>
+                        @hasSection('breadcrumbs')
+                            <nav class="text-sm text-gray-600 mt-1">
+                                @yield('breadcrumbs')
+                            </nav>
+                        @endif
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <a href="{{ route('saadani.index') }}" 
+                           target="_blank"
+                           class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Website
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="flex-1 overflow-y-auto p-6">
+                @if(session('success'))
+                    <div class="notification bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            {{ session('success') }}
+                        </div>
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="notification bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            {{ session('error') }}
+                        </div>
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="notification bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            <strong>Please fix the following errors:</strong>
+                        </div>
+                        <ul class="list-disc list-inside space-y-1">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <div class="fade-in">
+                    @yield('content')
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Auto-hide notifications after 5 seconds
+        setTimeout(() => {
+            const notifications = document.querySelectorAll('.notification');
+            notifications.forEach(notification => {
+                notification.style.transition = 'opacity 0.3s ease-out';
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            });
+        }, 5000);
+
+        // CSRF token for AJAX requests
+        window.Laravel = {
+            csrfToken: '{{ csrf_token() }}'
+        };
+    </script>
+
+    @stack('scripts')
+</body>
+</html>
