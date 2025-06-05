@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\CommitmentController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AccommodationSectionController;
+use App\Http\Controllers\Admin\RoomTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,4 +125,16 @@ Route::middleware(['admin.auth'])->group(function () {
         'destroy' => 'admin.accommodation-sections.destroy',
     ]);
     Route::post('accommodation-sections/update-order', [AccommodationSectionController::class, 'updateOrder'])->name('admin.accommodation-sections.update-order');
+
+    // Room Types Management
+    Route::resource('room-types', RoomTypeController::class)->names([
+        'index' => 'admin.room-types.index',
+        'create' => 'admin.room-types.create',
+        'store' => 'admin.room-types.store',
+        'show' => 'admin.room-types.show',
+        'edit' => 'admin.room-types.edit',
+        'update' => 'admin.room-types.update',
+        'destroy' => 'admin.room-types.destroy',
+    ]);
+    Route::post('room-types/update-order', [RoomTypeController::class, 'updateOrder'])->name('admin.room-types.update-order');
 });

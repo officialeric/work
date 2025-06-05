@@ -19,7 +19,7 @@
     </div>
 
     <!-- Statistics Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
         <!-- Activities -->
         <div class="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
             <div class="flex items-center justify-between">
@@ -95,6 +95,25 @@
                 </a>
             </div>
         </div>
+
+        <!-- Room Types -->
+        <div class="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Room Types</p>
+                    <p class="text-2xl sm:text-3xl font-bold text-gray-900">{{ $stats['room_types'] }}</p>
+                </div>
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-door-open text-amber-600 text-lg sm:text-xl"></i>
+                </div>
+            </div>
+            <div class="mt-3 sm:mt-4">
+                <a href="{{ route('admin.room-types.index') }}"
+                   class="text-sm text-amber-600 hover:text-amber-800 font-medium">
+                    Manage Room Types →
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Quick Actions & Recent Activity -->
@@ -117,6 +136,14 @@
                         <i class="fas fa-upload text-white text-sm"></i>
                     </div>
                     <span class="text-gray-700 font-medium text-sm sm:text-base">+ Add Gallery Images</span>
+                </a>
+
+                <a href="{{ route('admin.room-types.create') }}"
+                   class="flex items-center p-3 bg-amber-50 hover:bg-amber-100 rounded-lg transition-colors duration-200">
+                    <div class="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-plus text-white text-sm"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm sm:text-base">+ Add New Room Type</span>
                 </a>
 
                 <a href="{{ route('admin.settings.index') }}"

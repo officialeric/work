@@ -8,6 +8,7 @@ use App\Models\Amenity;
 use App\Models\Commitment;
 use App\Models\GalleryImage;
 use App\Models\AdminActivityLog;
+use App\Models\RoomType;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -22,6 +23,7 @@ class DashboardController extends Controller
             'amenities' => Amenity::count(),
             'commitments' => Commitment::count(),
             'gallery_images' => GalleryImage::count(),
+            'room_types' => RoomType::count(),
         ];
 
         $recentActivities = AdminActivityLog::with('admin')

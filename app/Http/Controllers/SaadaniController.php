@@ -11,6 +11,7 @@ use App\Models\GalleryImage;
 use App\Models\Location;
 use App\Models\HostingSection;
 use App\Models\AccommodationSection;
+use App\Models\RoomType;
 
 class SaadaniController extends Controller
 {
@@ -47,7 +48,8 @@ class SaadaniController extends Controller
         $locations = Location::active()->ordered()->get();
         $hostingSections = HostingSection::active()->ordered()->get();
         $accommodationSections = AccommodationSection::active()->ordered()->get();
+        $roomTypes = RoomType::active()->ordered()->get();
 
-        return view('saadani', compact('settings', 'activities', 'amenities', 'commitments', 'galleryImages', 'locations', 'hostingSections', 'accommodationSections'));
+        return view('saadani', compact('settings', 'activities', 'amenities', 'commitments', 'galleryImages', 'locations', 'hostingSections', 'accommodationSections', 'roomTypes'));
     }
 }

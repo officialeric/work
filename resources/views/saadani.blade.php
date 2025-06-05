@@ -493,6 +493,140 @@
         </div>
     </section>
 
+    <!-- Room Types Section -->
+    <section id="room-types" class="py-24 lg:py-32 bg-gradient-to-br from-amber-50 via-emerald-50/30 to-amber-100/20">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <div class="inline-block">
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-800 mb-6">
+                        Room Types & Pricing
+                    </h2>
+                    <div class="w-24 h-1 bg-emerald-600 mx-auto mb-6"></div>
+                </div>
+                <h3 class="font-display text-2xl md:text-3xl text-emerald-600 mb-6">
+                    Choose your perfect accommodation
+                </h3>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Discover our range of luxury accommodations, each featuring unique tent configurations and premium amenities for an unforgettable stay.
+                </p>
+            </div>
+
+            <!-- Room Types Grid -->
+            @if($roomTypes->count() > 0)
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach($roomTypes as $roomType)
+                        <div class="group bg-white rounded-3xl shadow-lg border border-emerald-200/50 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                            <!-- Room Image -->
+                            <div class="relative h-64 overflow-hidden">
+                                @if($roomType->main_image_url)
+                                    <img src="{{ $roomType->main_image_url }}"
+                                         alt="{{ $roomType->name }}"
+                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                @else
+                                    <div class="w-full h-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
+                                        <i class="fas fa-door-open text-white text-4xl"></i>
+                                    </div>
+                                @endif
+
+                                <!-- Price Badge -->
+                                <div class="absolute top-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full shadow-lg">
+                                    <span class="text-lg font-bold">${{ number_format($roomType->price, 0) }}</span>
+                                    <span class="text-sm opacity-90">/night</span>
+                                </div>
+
+                                @if($roomType->is_featured)
+                                    <div class="absolute top-4 left-4 bg-amber-500 text-amber-900 px-3 py-1 rounded-full text-sm font-bold">
+                                        Featured
+                                    </div>
+                                @endif
+                            </div>
+
+                            <!-- Room Content -->
+                            <div class="p-6">
+                                <!-- Room Name -->
+                                <h4 class="text-xl font-bold text-emerald-800 mb-3">{{ $roomType->name }}</h4>
+
+                                <!-- Tent Configuration -->
+                                <div class="flex items-center mb-4 p-3 bg-emerald-50 rounded-lg">
+                                    <i class="fas fa-campground text-emerald-600 mr-3"></i>
+                                    <div>
+                                        <div class="text-sm text-emerald-600 font-medium">Tent Configuration</div>
+                                        <div class="text-emerald-800 font-semibold">{{ $roomType->tent_configuration }}</div>
+                                    </div>
+                                </div>
+
+                                <!-- Occupancy -->
+                                @if($roomType->max_occupancy)
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-users text-gray-500 mr-2"></i>
+                                        <span class="text-gray-600 text-sm">Up to {{ $roomType->max_occupancy }} guests</span>
+                                    </div>
+                                @endif
+
+                                <!-- Description -->
+                                @if($roomType->description)
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">{{ $roomType->description }}</p>
+                                @endif
+
+                                <!-- Features -->
+                                @if($roomType->features && count($roomType->features) > 0)
+                                    <div class="mb-6">
+                                        <div class="text-sm font-medium text-gray-700 mb-2">Features:</div>
+                                        <div class="space-y-1">
+                                            @foreach(array_slice($roomType->features, 0, 3) as $feature)
+                                                <div class="flex items-center text-sm text-gray-600">
+                                                    <i class="fas fa-check text-emerald-500 mr-2 text-xs"></i>
+                                                    {{ $feature }}
+                                                </div>
+                                            @endforeach
+                                            @if(count($roomType->features) > 3)
+                                                <div class="text-xs text-emerald-600 font-medium">
+                                                    +{{ count($roomType->features) - 3 }} more features
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endif
+
+                                <!-- Book Now Button -->
+                                <a href="mailto:{{ $settings['contact_email'] }}?subject=Booking Inquiry - {{ $roomType->name }}&body=Hello, I would like to inquire about booking the {{ $roomType->name }} at {{ $settings['site_name'] }}."
+                                   class="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold rounded-xl hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                    <i class="fas fa-calendar-check mr-2"></i>
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-16">
+                    <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-3xl p-8 text-white shadow-2xl">
+                        <h4 class="text-2xl font-bold mb-4">Need Help Choosing?</h4>
+                        <p class="text-emerald-100 mb-6 max-w-2xl mx-auto">
+                            Our team is here to help you select the perfect room type for your stay. Contact us for personalized recommendations.
+                        </p>
+                        <a href="mailto:{{ $settings['contact_email'] }}"
+                           class="inline-flex items-center gap-3 bg-white text-emerald-700 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+                            <i class="fas fa-phone"></i>
+                            Contact Our Team
+                        </a>
+                    </div>
+                </div>
+            @else
+                <!-- Empty State -->
+                <div class="text-center py-20">
+                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-12 shadow-lg border border-emerald-200/50 max-w-md mx-auto">
+                        <i class="fas fa-door-open text-emerald-300 text-6xl mb-6"></i>
+                        <h4 class="text-xl font-bold text-emerald-800 mb-4">Room Types Coming Soon</h4>
+                        <p class="text-gray-600">Our luxury room types and pricing information will be available shortly.</p>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </section>
+
     <!-- Commitments Section -->
     <section id="commitments" class="py-24 lg:py-32 bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-900 text-white relative overflow-hidden">
         <!-- Background Pattern -->

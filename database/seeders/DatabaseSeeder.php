@@ -15,18 +15,21 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
+            UserSeeder::class,
             WebsiteSettingsSeeder::class,
             ContentSeeder::class,
             HostingSectionSeeder::class,
             LocationSeeder::class,
             AccommodationSectionSeeder::class,
+            GalleryImageSeeder::class,
+            RoomTypeSeeder::class,
         ]);
 
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
     }
 }

@@ -16,7 +16,7 @@ class WebsiteSettingsSeeder extends Seeder
             // General Settings
             [
                 'key' => 'site_name',
-                'value' => 'Saadani Kasa Bay',
+                'value' => 'Cterra Saadani Luxury',
                 'type' => 'text',
                 'group' => 'general',
                 'label' => 'Site Name',
@@ -34,7 +34,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'site_description',
-                'value' => 'Discover Saadani Kasa Bay, a luxury eco-lodge facing the Indian Ocean in Tanzania. Experience pristine beaches, wildlife safaris, and sustainable tourism.',
+                'value' => 'Escape the mundane and explore the untamed beauty of Saadani at our latest addition to the Cterra Collection.',
                 'type' => 'textarea',
                 'group' => 'general',
                 'label' => 'Site Description',
@@ -43,7 +43,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'site_logo',
-                'value' => '',
+                'value' => '', // Admin can upload new logo
                 'type' => 'image',
                 'group' => 'general',
                 'label' => 'Site Logo',
@@ -63,7 +63,7 @@ class WebsiteSettingsSeeder extends Seeder
             // Contact Information
             [
                 'key' => 'contact_email',
-                'value' => 'contact@saadani-kasa-bay.com',
+                'value' => 'info@cterra.co.tz',
                 'type' => 'email',
                 'group' => 'contact',
                 'label' => 'Contact Email',
@@ -72,7 +72,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'contact_phone',
-                'value' => '+255 787 620 611',
+                'value' => '+255 783 442 868',
                 'type' => 'text',
                 'group' => 'contact',
                 'label' => 'Contact Phone',
@@ -81,7 +81,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'contact_address',
-                'value' => 'Tanzania East • 5°52\'46″S / 38°49\'03″E',
+                'value' => 'Tanzania',
                 'type' => 'textarea',
                 'group' => 'contact',
                 'label' => 'Contact Address',
@@ -92,7 +92,7 @@ class WebsiteSettingsSeeder extends Seeder
             // Hero Section
             [
                 'key' => 'hero_title',
-                'value' => 'Saadani Kasa Bay',
+                'value' => 'Discover Unparalleled',
                 'type' => 'text',
                 'group' => 'hero',
                 'label' => 'Hero Title',
@@ -101,7 +101,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'hero_subtitle',
-                'value' => 'Facing the Indian Ocean',
+                'value' => 'Hospitality',
                 'type' => 'text',
                 'group' => 'hero',
                 'label' => 'Hero Subtitle',
@@ -110,7 +110,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'hero_description',
-                'value' => 'Where luxury meets untamed nature in Tanzania\'s most exclusive eco-lodge',
+                'value' => 'Unmatched hospitality. Luxurious stays. Personalized service. Unforgettable experiences. Elevate your journey with us.',
                 'type' => 'textarea',
                 'group' => 'hero',
                 'label' => 'Hero Description',
@@ -128,7 +128,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'hero_image',
-                'value' => '',
+                'value' => '', // Admin can upload new hero image
                 'type' => 'image',
                 'group' => 'hero',
                 'label' => 'Hero Background Image',
@@ -159,7 +159,7 @@ class WebsiteSettingsSeeder extends Seeder
             // Social Media
             [
                 'key' => 'facebook_url',
-                'value' => '',
+                'value' => 'https://facebook.com/cterrasaadani',
                 'type' => 'text',
                 'group' => 'social',
                 'label' => 'Facebook URL',
@@ -168,7 +168,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'instagram_url',
-                'value' => '',
+                'value' => 'https://www.instagram.com/cterra.saadani',
                 'type' => 'text',
                 'group' => 'social',
                 'label' => 'Instagram URL',
