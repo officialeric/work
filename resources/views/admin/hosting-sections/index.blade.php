@@ -6,15 +6,15 @@
 @section('content')
 <div class="space-y-6">
     <!-- Header -->
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Hosting Sections Management</h1>
-            <p class="text-gray-600 mt-1">Manage hosting sections for the website</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-900">Hosting Sections Management</h1>
+            <p class="text-gray-600 mt-1 text-sm sm:text-base">Manage hosting sections for the website</p>
         </div>
         <a href="{{ route('admin.hosting-sections.create') }}"
-           class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+           class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>
-            Add New Hosting Section
+            + Add New
         </a>
     </div>
 
@@ -30,7 +30,7 @@
 
     <!-- Hosting Sections Grid -->
     @if($hostingSections->count() > 0)
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             @foreach($hostingSections as $section)
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
                     <!-- Card Header -->
@@ -146,7 +146,7 @@
             <p class="text-gray-600 mb-6">Create your first hosting section to showcase your accommodation and services.</p>
             <a href="{{ route('admin.hosting-sections.create') }}"
                class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
-                <i class="fas fa-plus mr-2"></i>Create Your First Hosting Section
+                <i class="fas fa-plus mr-2"></i>+ Add New
             </a>
         </div>
     @endif

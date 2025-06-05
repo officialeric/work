@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             WebsiteSettingsSeeder::class,
             ContentSeeder::class,
+            HostingSectionSeeder::class,
+            LocationSeeder::class,
+            AccommodationSectionSeeder::class,
         ]);
 
         // User::factory(10)->create();

@@ -43,8 +43,9 @@ class ActivityController extends Controller
             'is_active' => 'boolean',
         ]);
 
-        $data = $request->only(['title', 'description', 'number', 'sort_order', 'is_active']);
-        
+        $data = $request->only(['title', 'description', 'number', 'sort_order']);
+        $data['is_active'] = $request->boolean('is_active');
+
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('activities', 'public');
         }
@@ -86,14 +87,15 @@ class ActivityController extends Controller
         ]);
 
         $oldData = $activity->toArray();
-        $data = $request->only(['title', 'description', 'number', 'sort_order', 'is_active']);
-        
+        $data = $request->only(['title', 'description', 'number', 'sort_order']);
+        $data['is_active'] = $request->boolean('is_active');
+
         if ($request->hasFile('image')) {
             // Delete old image
             if ($activity->image && !str_starts_with($activity->image, 'http')) {
                 Storage::disk('public')->delete($activity->image);
             }
-            
+
             $data['image'] = $request->file('image')->store('activities', 'public');
         }
 

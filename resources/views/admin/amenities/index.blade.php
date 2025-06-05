@@ -12,23 +12,23 @@
 @section('content')
 <div class="space-y-6">
     <!-- Header -->
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Amenities Management</h1>
-            <p class="text-gray-600 mt-1">Manage facility amenities and services</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-900">Amenities Management</h1>
+            <p class="text-gray-600 mt-1 text-sm sm:text-base">Manage facility amenities and services</p>
         </div>
-        <a href="{{ route('admin.amenities.create') }}" 
-           class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+        <a href="{{ route('admin.amenities.create') }}"
+           class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>
-            Add New Amenity
+            + Add New
         </a>
     </div>
 
     <!-- Amenities Grid -->
     @if($amenities->count() > 0)
-        <div id="amenities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="amenities-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             @foreach($amenities as $amenity)
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200" data-id="{{ $amenity->id }}">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow duration-200" data-id="{{ $amenity->id }}">
                     <!-- Drag Handle -->
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center">
@@ -81,10 +81,10 @@
                 <i class="fas fa-concierge-bell text-gray-300 text-5xl mb-4"></i>
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Amenities Found</h3>
                 <p class="text-gray-500 mb-6">Get started by creating your first amenity.</p>
-                <a href="{{ route('admin.amenities.create') }}" 
+                <a href="{{ route('admin.amenities.create') }}"
                    class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
                     <i class="fas fa-plus mr-2"></i>
-                    Add First Amenity
+                    + Add New
                 </a>
             </div>
         </div>

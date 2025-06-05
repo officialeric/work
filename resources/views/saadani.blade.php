@@ -8,21 +8,27 @@
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0">
         <!-- Background Video -->
         <div class="absolute inset-0 z-0">
-            <video
-                id="hero-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                class="w-full h-full object-cover object-center"
-                poster="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center">
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-                <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
-                <!-- Fallback image if video doesn't load -->
-                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center"
-                     alt="Saadani Beach"
+            @if($settings['hero_video'])
+                <video
+                    id="hero-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    class="w-full h-full object-cover object-center"
+                    poster="{{ $settings['hero_image'] ? asset('storage/' . $settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}">
+                    <source src="{{ $settings['hero_video'] }}" type="video/mp4">
+                    <!-- Fallback image if video doesn't load -->
+                    <img src="{{ $settings['hero_image'] ? asset('storage/' . $settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}"
+                         alt="{{ $settings['site_name'] }}"
+                         class="w-full h-full object-cover object-center">
+                </video>
+            @else
+                <!-- Fallback to image if no video is set -->
+                <img src="{{ $settings['hero_image'] ? asset('storage/' . $settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}"
+                     alt="{{ $settings['site_name'] }}"
                      class="w-full h-full object-cover object-center">
-            </video>
+            @endif
             <!-- Enhanced overlay with gradient -->
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60"></div>
         </div>
@@ -96,13 +102,13 @@
                     <!-- Section Header -->
                     <div class="text-center mb-20">
                         <div class="inline-block">
-                            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-800 mb-6">
+                            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
                                 {{ $location->title }}
                             </h2>
-                            <div class="w-24 h-1 bg-emerald-600 mx-auto mb-6"></div>
+                            <div class="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mb-6"></div>
                         </div>
                         @if($location->subtitle)
-                            <h3 class="font-display text-2xl md:text-3xl text-emerald-600 mb-6">
+                            <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent mb-6">
                                 {{ $location->subtitle }}
                             </h3>
                         @endif
@@ -112,8 +118,8 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center mb-20">
                         <!-- Text Content -->
                         <div class="space-y-8">
-                            <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-3xl p-8 border border-emerald-200/50">
-                                <h4 class="text-2xl font-bold text-emerald-800 mb-6">{{ $location->title }}</h4>
+                            <div class="bg-gradient-to-br from-emerald-50 via-amber-50/30 to-emerald-100/50 rounded-3xl p-8 border border-emerald-200/50 shadow-lg">
+                                <h4 class="text-2xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">{{ $location->title }}</h4>
                                 <p class="text-lg text-gray-700 leading-relaxed mb-6">
                                     {!! nl2br(e($location->description)) !!}
                                 </p>
@@ -125,11 +131,11 @@
                             </div>
 
                             <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="{{ $location->button_link }}" class="inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <a href="{{ $location->button_link }}" class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-600 to-amber-600 hover:from-emerald-700 hover:to-amber-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-images"></i>
                                     {{ $location->button_text }}
                                 </a>
-                                <a href="#activities" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
+                                <a href="#activities" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-amber-600 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                                     <i class="fas fa-compass"></i>
                                     Explore Activities
                                 </a>
@@ -195,12 +201,12 @@
                 <!-- Default Content -->
                 <div class="text-center mb-20">
                     <div class="inline-block">
-                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-800 mb-6">
+                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
                             Location
                         </h2>
-                        <div class="w-24 h-1 bg-emerald-600 mx-auto mb-6"></div>
+                        <div class="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mb-6"></div>
                     </div>
-                    <h3 class="font-display text-2xl md:text-3xl text-emerald-600 mb-6">
+                    <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent mb-6">
                         A breathtaking setting
                     </h3>
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -275,13 +281,13 @@
                     <!-- Section Header -->
                     <div class="text-center mb-20">
                         <div class="inline-block">
-                            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-800 mb-6">
+                            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
                                 {{ $hostingSection->title }}
                             </h2>
-                            <div class="w-24 h-1 bg-emerald-600 mx-auto mb-6"></div>
+                            <div class="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mb-6"></div>
                         </div>
                         @if($hostingSection->subtitle)
-                            <h3 class="font-display text-2xl md:text-3xl text-emerald-600 mb-6">
+                            <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent mb-6">
                                 {{ $hostingSection->subtitle }}
                             </h3>
                         @endif
@@ -297,12 +303,12 @@
                                 {!! nl2br(e($hostingSection->description)) !!}
                             </p>
                             @if($hostingSection->video_url)
-                                <a href="{{ $hostingSection->video_url }}" target="_blank" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <a href="{{ $hostingSection->video_url }}" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-amber-600 hover:from-emerald-700 hover:to-amber-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-play"></i>
                                     {{ $hostingSection->video_button_text }}
                                 </a>
                             @else
-                                <button onclick="alert('Video will be available soon!')" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <button onclick="alert('Video will be available soon!')" class="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-amber-600 hover:from-emerald-700 hover:to-amber-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-play"></i>
                                     {{ $hostingSection->video_button_text }}
                                 </button>
@@ -345,7 +351,7 @@
             <!-- Activities Section -->
             <div id="activities">
                 <div class="text-center mb-16">
-                    <h4 class="font-display text-3xl md:text-4xl font-bold text-emerald-800 mb-6">
+                    <h4 class="font-display text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
                         Activities & Experiences
                     </h4>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -355,6 +361,8 @@
                 
                 <!-- Activities Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="activities-grid">
+
+                    
                     @foreach($activities as $activity)
                         <div class="group bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-gray-100">
                             @if($activity->image)
@@ -363,7 +371,7 @@
                                          alt="{{ $activity->title }}"
                                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                     @if($activity->number)
-                                        <div class="absolute top-6 left-6 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                        <div class="absolute top-6 left-6 bg-gradient-to-r from-emerald-600 to-amber-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                                             {{ $activity->number }}
                                         </div>
                                     @endif
@@ -372,7 +380,7 @@
                                 </div>
                             @endif
                             <div class="p-8">
-                                <h5 class="text-xl font-bold text-emerald-800 mb-4 group-hover:text-emerald-600 transition-colors duration-300">
+                                <h5 class="text-xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-4 group-hover:from-emerald-600 group-hover:to-amber-600 transition-all duration-300">
                                     {{ $activity->title }}
                                 </h5>
                                 <p class="text-gray-600 leading-relaxed text-sm">
@@ -397,12 +405,12 @@
             <!-- Section Header -->
             <div class="text-center mb-20">
                 <div class="inline-block">
-                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-800 mb-6">
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
                         Facilities
                     </h2>
-                    <div class="w-24 h-1 bg-emerald-600 mx-auto mb-6"></div>
+                    <div class="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mb-6"></div>
                 </div>
-                <h3 class="font-display text-2xl md:text-3xl text-emerald-600 mb-6">
+                <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent mb-6">
                     A charming retreat in the heart of nature
                 </h3>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -414,21 +422,35 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
                 <!-- Text Content -->
                 <div class="space-y-8">
-                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/50">
-                        <h4 class="text-2xl font-bold text-emerald-800 mb-6">Luxury Accommodations</h4>
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                            Saadani Kasa Bay offers 12 exceptional rooms, divided between 4 family villas and 8 elegantly
-                            appointed double villas. The family villas, each measuring a minimum of 25 m², include a living room,
-                            two separate bedrooms and a small office with comfortable armchairs.
-                        </p>
-                    </div>
+                    @if($accommodationSections->count() > 0)
+                        @foreach($accommodationSections as $accommodationSection)
+                            <div class="bg-gradient-to-br from-emerald-50 via-amber-50/30 to-emerald-100/50 rounded-3xl p-8 shadow-lg border border-emerald-200/50">
+                                <h4 class="text-2xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">{{ $accommodationSection->title }}</h4>
+                                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                                    {!! nl2br(e($accommodationSection->description)) !!}
+                                </p>
+                            </div>
+                        @endforeach
+                    @else
+                        <!-- Default Content -->
+                        <div class="bg-gradient-to-br from-emerald-50 via-amber-50/30 to-emerald-100/50 rounded-3xl p-8 shadow-lg border border-emerald-200/50">
+                            <h4 class="text-2xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">Luxury Accommodations</h4>
+                            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                                Saadani Kasa Bay offers 12 exceptional rooms, divided between 4 family villas and 8 elegantly
+                                appointed double villas. The family villas, each measuring a minimum of 25 m², include a living room,
+                                two separate bedrooms and a small office with comfortable armchairs.
+                            </p>
+                        </div>
+                    @endif
+
+                   
 
                     <!-- Amenities Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="amenities-grid">
                         @foreach($amenities as $amenity)
                             <div class="group bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                 <div class="flex items-center gap-4">
-                                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                                         <i class="{{ $amenity->icon }} text-white text-lg"></i>
                                     </div>
                                     <div>
@@ -445,17 +467,24 @@
 
                 <!-- Facility Images -->
                 <div class="space-y-6">
+                    @php
+                        $firstAccommodation = $accommodationSections->first();
+                        $mainImage = $firstAccommodation?->main_image_url ?? 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center';
+                        $image1 = $firstAccommodation?->image_1_url ?? 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop&crop=center';
+                        $image2 = $firstAccommodation?->image_2_url ?? 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop&crop=center';
+                    @endphp
+
                     <div class="relative group">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center"
+                        <img src="{{ $mainImage }}"
                              alt="Luxury villa interior"
                              class="w-full h-80 object-cover rounded-3xl shadow-2xl group-hover:shadow-3xl transition-shadow duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop&crop=center"
+                        <img src="{{ $image1 }}"
                              alt="Villa exterior"
                              class="w-full h-32 object-cover rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop&crop=center"
+                        <img src="{{ $image2 }}"
                              alt="Villa bathroom"
                              class="w-full h-32 object-cover rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     </div>
@@ -603,7 +632,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-amber-900 text-white relative overflow-hidden">
+    <section id="contact" class="py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-800 text-white relative overflow-hidden">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-5">
             <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><path d="M50 50l25-25v50l-25-25zm0 0l-25 25h50l-25-25z"/></g></svg>');"></div>

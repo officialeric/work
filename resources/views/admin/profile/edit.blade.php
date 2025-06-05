@@ -99,44 +99,44 @@
             <!-- Account Information -->
             <div class="bg-gray-50 rounded-lg p-4">
                 <h4 class="text-sm font-medium text-gray-900 mb-3">Account Information</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                    <div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <div class="break-words">
                         <span class="text-gray-600">Created:</span>
-                        <span class="text-gray-900 ml-2">{{ $admin->created_at->format('M j, Y g:i A') }}</span>
+                        <span class="text-gray-900 ml-2 block sm:inline">{{ $admin->created_at->format('M j, Y g:i A') }}</span>
                     </div>
-                    <div>
+                    <div class="break-words">
                         <span class="text-gray-600">Last Updated:</span>
-                        <span class="text-gray-900 ml-2">{{ $admin->updated_at->format('M j, Y g:i A') }}</span>
+                        <span class="text-gray-900 ml-2 block sm:inline">{{ $admin->updated_at->format('M j, Y g:i A') }}</span>
                     </div>
-                    <div>
+                    <div class="break-words">
                         <span class="text-gray-600">Last Login:</span>
-                        <span class="text-gray-900 ml-2">
+                        <span class="text-gray-900 ml-2 block sm:inline">
                             {{ $admin->last_login_at ? $admin->last_login_at->format('M j, Y g:i A') : 'Never' }}
                         </span>
                     </div>
-                    <div>
+                    <div class="break-words">
                         <span class="text-gray-600">Total Actions:</span>
-                        <span class="text-gray-900 ml-2">{{ $admin->activityLogs()->count() }}</span>
+                        <span class="text-gray-900 ml-2 block sm:inline">{{ $admin->activityLogs()->count() }}</span>
                     </div>
                 </div>
             </div>
 
             <!-- Form Actions -->
-            <div class="flex items-center justify-between pt-6 border-t border-gray-200">
-                <a href="{{ route('admin.profile.show') }}" 
-                   class="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-gray-200">
+                <a href="{{ route('admin.profile.show') }}"
+                   class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200 text-sm sm:text-base">
                     <i class="fas fa-arrow-left mr-2"></i>
-                    Back to Profile
+                    Back
                 </a>
-                
-                <div class="flex space-x-3">
-                    <button type="button" 
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button type="button"
                             onclick="resetForm()"
-                            class="px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            class="px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200 text-sm sm:text-base">
                         Reset
                     </button>
-                    <button type="submit" 
-                            class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                    <button type="submit"
+                            class="inline-flex items-center justify-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
                         <i class="fas fa-save mr-2"></i>
                         Update Profile
                     </button>

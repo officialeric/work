@@ -82,24 +82,32 @@
 </head>
 <body class="bg-gray-50 font-sans antialiased">
     <div class="min-h-screen flex">
+        <!-- Mobile menu overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-600 bg-opacity-50 z-20 lg:hidden hidden"></div>
+
         <!-- Sidebar -->
-        <div class="w-64 bg-white shadow-lg">
+        <div id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0">
             <div class="flex flex-col h-full">
                 <!-- Logo -->
-                <div class="flex items-center justify-center h-16 px-4 bg-emerald-600">
+                <div class="flex items-center justify-between h-16 px-4">
                     @php
                         $siteName = \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay');
                         $siteLogo = \App\Models\WebsiteSetting::get('site_logo');
                     @endphp
 
-                    @if($siteLogo)
-                        <div class="flex items-center">
+                    <div class="flex items-center">
+                        @if($siteLogo)
                             <img src="{{ asset('storage/' . $siteLogo) }}" alt="{{ $siteName }}" class="h-8 w-auto mr-2">
-                            <h1 class="text-white text-lg font-bold">Admin</h1>
-                        </div>
-                    @else
-                        <h1 class="text-white text-xl font-bold">{{ Str::limit($siteName, 15) }} Admin</h1>
-                    @endif
+                            <h1 class="text-gray-900 text-lg font-bold">Admin</h1>
+                        @else
+                            <h1 class="text-gray-900 text-xl font-bold">Admin</h1>
+                        @endif
+                    </div>
+
+                    <!-- Mobile close button -->
+                    <button id="close-sidebar" class="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
                 </div>
 
                 <!-- Navigation -->
@@ -122,13 +130,19 @@
                         Activities
                     </a>
 
-                    <a href="{{ route('admin.amenities.index') }}" 
+                    <a href="{{ route('admin.amenities.index') }}"
                        class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.amenities.*') ? 'active' : '' }}">
                         <i class="fas fa-concierge-bell w-5 h-5 mr-3"></i>
                         Amenities
                     </a>
 
-                    <a href="{{ route('admin.commitments.index') }}" 
+                    <a href="{{ route('admin.accommodation-sections.index') }}"
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.accommodation-sections.*') ? 'active' : '' }}">
+                        <i class="fas fa-bed w-5 h-5 mr-3"></i>
+                        Accommodations
+                    </a>
+
+                    <a href="{{ route('admin.commitments.index') }}"
                        class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.commitments.*') ? 'active' : '' }}">
                         <i class="fas fa-leaf w-5 h-5 mr-3"></i>
                         Commitments
@@ -177,32 +191,40 @@
         </div>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-hidden lg:ml-0">
             <!-- Top Bar -->
             <header class="bg-white shadow-sm border-b border-gray-200">
-                <div class="flex items-center justify-between px-6 py-4">
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-800">@yield('page-title', 'Dashboard')</h2>
-                        @hasSection('breadcrumbs')
-                            <nav class="text-sm text-gray-600 mt-1">
-                                @yield('breadcrumbs')
-                            </nav>
-                        @endif
+                <div class="flex items-center justify-between px-4 sm:px-6 py-4">
+                    <div class="flex items-center">
+                        <!-- Mobile menu button -->
+                        <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 mr-3">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-semibold text-gray-800">@yield('page-title', 'Dashboard')</h2>
+                            @hasSection('breadcrumbs')
+                                <nav class="text-sm text-gray-600 mt-1 hidden sm:block">
+                                    @yield('breadcrumbs')
+                                </nav>
+                            @endif
+                        </div>
                     </div>
-                    
-                    <div class="flex items-center space-x-4">
-                        <a href="{{ route('saadani.index') }}" 
+
+                    <div class="flex items-center space-x-2 sm:space-x-4">
+                        <a href="{{ route('saadani.index') }}"
                            target="_blank"
-                           class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
-                            <i class="fas fa-external-link-alt mr-2"></i>
-                            View Website
+                           class="inline-flex items-center px-3 sm:px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                            <i class="fas fa-external-link-alt mr-1 sm:mr-2"></i>
+                            <span class="hidden sm:inline">View Website</span>
+                            <span class="sm:hidden">View</span>
                         </a>
                     </div>
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main class="flex-1 overflow-y-auto p-6">
+            <main class="flex-1 overflow-y-auto p-4 sm:p-6">
                 @if(session('success'))
                     <div class="notification bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6">
                         <div class="flex items-center">
@@ -254,11 +276,92 @@
             });
         }, 5000);
 
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeSidebarButton = document.getElementById('close-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function openSidebar() {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeSidebar() {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', openSidebar);
+            }
+
+            if (closeSidebarButton) {
+                closeSidebarButton.addEventListener('click', closeSidebar);
+            }
+
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+
+            // Close sidebar on window resize if screen becomes large
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) {
+                    closeSidebar();
+                }
+            });
+        });
+
         // CSRF token for AJAX requests
         window.Laravel = {
             csrfToken: '{{ csrf_token() }}'
         };
+
+        // Global loading functions
+        window.showLoading = function(type = 'global', message = null) {
+            const overlay = document.getElementById(type + '-loading');
+            if (overlay) {
+                if (message) {
+                    const messageEl = overlay.querySelector('p');
+                    if (messageEl) messageEl.textContent = message;
+                }
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.hideLoading = function(type = 'global') {
+            const overlay = document.getElementById(type + '-loading');
+            if (overlay) {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+        };
     </script>
+
+    <!-- Global Loading Overlays -->
+    <div id="global-loading" class="fixed inset-0 z-50 hidden items-center justify-center" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px);">
+        <div class="text-center">
+            <div class="inline-block w-8 h-8 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
+            <p class="mt-3 text-sm font-medium text-gray-700">Loading...</p>
+        </div>
+    </div>
+
+    <div id="form-loading" class="fixed inset-0 z-30 hidden items-center justify-center" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px);">
+        <div class="text-center">
+            <div class="flex space-x-1">
+                <div class="w-3 h-3 bg-emerald-600 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
+                <div class="w-3 h-3 bg-emerald-600 rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
+                <div class="w-3 h-3 bg-emerald-600 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+            </div>
+            <p class="mt-3 text-sm font-medium text-gray-700">Processing...</p>
+        </div>
+    </div>
 
     @stack('scripts')
 </body>

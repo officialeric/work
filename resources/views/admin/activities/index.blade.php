@@ -12,22 +12,23 @@
 @section('content')
 <div class="space-y-6">
     <!-- Header -->
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Activities Management</h1>
-            <p class="text-gray-600 mt-1">Manage the 7 featured activities for Saadani Kasa Bay</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-900">Activities Management</h1>
+            <p class="text-gray-600 mt-1 text-sm sm:text-base">Manage the 7 featured activities for Saadani Kasa Bay</p>
         </div>
-        <a href="{{ route('admin.activities.create') }}" 
-           class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+        <a href="{{ route('admin.activities.create') }}"
+           class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>
-            Add New Activity
+            + Add New
         </a>
     </div>
 
     <!-- Activities List -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-200">
         @if($activities->count() > 0)
-            <div class="overflow-x-auto">
+            <!-- Desktop Table View -->
+            <div class="hidden lg:block overflow-x-auto">
                 <table class="w-full">
                     <thead class="bg-gray-50 border-b border-gray-200">
                         <tr>
@@ -113,15 +114,86 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Mobile Card View -->
+            <div class="lg:hidden" id="activities-mobile">
+                @foreach($activities as $activity)
+                    <div class="border-b border-gray-200 p-4 hover:bg-gray-50 transition-colors duration-200" data-id="{{ $activity->id }}">
+                        <div class="flex items-start space-x-4">
+                            <!-- Drag Handle -->
+                            <div class="flex-shrink-0 pt-1">
+                                <i class="fas fa-grip-vertical text-gray-400 cursor-move"></i>
+                            </div>
+
+                            <!-- Activity Image -->
+                            <div class="flex-shrink-0">
+                                @if($activity->image)
+                                    <img src="{{ $activity->image_url }}"
+                                         alt="{{ $activity->title }}"
+                                         class="w-16 h-16 rounded-lg object-cover">
+                                @else
+                                    <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-image text-gray-400"></i>
+                                    </div>
+                                @endif
+                            </div>
+
+                            <!-- Activity Info -->
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex-1 min-w-0">
+                                        <h3 class="text-sm font-medium text-gray-900 truncate">{{ $activity->title }}</h3>
+                                        <p class="text-xs text-gray-500 mt-1">{{ Str::limit($activity->description, 80) }}</p>
+
+                                        <div class="flex items-center space-x-4 mt-2">
+                                            <span class="text-xs text-gray-500">Order: {{ $activity->sort_order }}</span>
+
+                                            @if($activity->number)
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                                                    {{ $activity->number }}
+                                                </span>
+                                            @endif
+
+                                            @if($activity->is_active)
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                    <i class="fas fa-check-circle mr-1"></i>
+                                                    Active
+                                                </span>
+                                            @else
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                    <i class="fas fa-times-circle mr-1"></i>
+                                                    Inactive
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <!-- Actions -->
+                                    <div class="flex items-center space-x-2 ml-2">
+                                        <a href="{{ route('admin.activities.edit', $activity) }}"
+                                           class="p-2 text-emerald-600 hover:text-emerald-900 hover:bg-emerald-50 rounded-lg transition-colors duration-200">
+                                            <i class="fas fa-edit text-sm"></i>
+                                        </a>
+                                        <button onclick="deleteActivity({{ $activity->id }})"
+                                                class="p-2 text-red-600 hover:text-red-900 hover:bg-red-50 rounded-lg transition-colors duration-200">
+                                            <i class="fas fa-trash text-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         @else
             <div class="text-center py-12">
                 <i class="fas fa-hiking text-gray-300 text-5xl mb-4"></i>
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Activities Found</h3>
                 <p class="text-gray-500 mb-6">Get started by creating your first activity.</p>
-                <a href="{{ route('admin.activities.create') }}" 
+                <a href="{{ route('admin.activities.create') }}"
                    class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
                     <i class="fas fa-plus mr-2"></i>
-                    Add First Activity
+                    + Add New
                 </a>
             </div>
         @endif
@@ -157,7 +229,7 @@
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script>
-    // Make table sortable
+    // Make table sortable (desktop)
     const tbody = document.getElementById('activities-tbody');
     if (tbody) {
         new Sortable(tbody, {
@@ -169,16 +241,30 @@
         });
     }
 
+    // Make mobile list sortable
+    const mobileList = document.getElementById('activities-mobile');
+    if (mobileList) {
+        new Sortable(mobileList, {
+            animation: 150,
+            handle: '.fa-grip-vertical',
+            onEnd: function(evt) {
+                updateOrderMobile();
+            }
+        });
+    }
+
     function updateOrder() {
         const rows = document.querySelectorAll('#activities-tbody tr');
         const activities = [];
-        
+
         rows.forEach((row, index) => {
             activities.push({
                 id: row.dataset.id,
                 sort_order: index + 1
             });
         });
+
+        showLoading('global', 'Updating order...');
 
         fetch('{{ route("admin.activities.update-order") }}', {
             method: 'POST',
@@ -190,6 +276,7 @@
         })
         .then(response => response.json())
         .then(data => {
+            hideLoading('global');
             if (data.success) {
                 // Update sort order display
                 rows.forEach((row, index) => {
@@ -197,7 +284,50 @@
                 });
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            hideLoading('global');
+            console.error('Error:', error);
+        });
+    }
+
+    function updateOrderMobile() {
+        const items = document.querySelectorAll('#activities-mobile > div');
+        const activities = [];
+
+        items.forEach((item, index) => {
+            activities.push({
+                id: item.dataset.id,
+                sort_order: index + 1
+            });
+        });
+
+        showLoading('global', 'Updating order...');
+
+        fetch('{{ route("admin.activities.update-order") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ activities: activities })
+        })
+        .then(response => response.json())
+        .then(data => {
+            hideLoading('global');
+            if (data.success) {
+                // Update sort order display in mobile view
+                items.forEach((item, index) => {
+                    const orderSpan = item.querySelector('.text-xs.text-gray-500');
+                    if (orderSpan) {
+                        orderSpan.textContent = `Order: ${index + 1}`;
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            hideLoading('global');
+            console.error('Error:', error);
+        });
     }
 
     function deleteActivity(id) {
@@ -210,5 +340,15 @@
         document.getElementById('deleteModal').classList.add('hidden');
         document.getElementById('deleteModal').classList.remove('flex');
     }
+
+    // Add loading to delete form
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForm = document.getElementById('deleteForm');
+        if (deleteForm) {
+            deleteForm.addEventListener('submit', function(e) {
+                showLoading('form', 'Deleting activity...');
+            });
+        }
+    });
 </script>
 @endpush

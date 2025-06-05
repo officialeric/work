@@ -12,48 +12,48 @@
 @section('content')
 <div class="space-y-6">
     <!-- Header -->
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Gallery Management</h1>
-            <p class="text-gray-600 mt-1">Upload and organize images for the website gallery</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-900">Gallery Management</h1>
+            <p class="text-gray-600 mt-1 text-sm sm:text-base">Upload and organize images for the website gallery</p>
         </div>
-        <div class="flex space-x-3">
-            <button onclick="toggleSelectMode()" 
+        <div class="flex flex-col sm:flex-row gap-3">
+            <button onclick="toggleSelectMode()"
                     id="select-mode-btn"
-                    class="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                    class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200 text-sm sm:text-base">
                 <i class="fas fa-check-square mr-2"></i>
                 Select Mode
             </button>
-            <button onclick="openUploadModal()" 
-                    class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+            <button onclick="openUploadModal()"
+                    class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
                 <i class="fas fa-upload mr-2"></i>
-                Upload Images
+                + Add New
             </button>
         </div>
     </div>
 
     <!-- Bulk Actions Bar (Hidden by default) -->
     <div id="bulk-actions" class="hidden bg-emerald-50 border border-emerald-200 rounded-lg p-4">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="flex flex-wrap items-center gap-4">
                 <span id="selected-count" class="text-sm font-medium text-emerald-800">0 images selected</span>
-                <button onclick="selectAll()" 
+                <button onclick="selectAll()"
                         class="text-sm text-emerald-600 hover:text-emerald-800 transition-colors duration-200">
                     Select All
                 </button>
-                <button onclick="deselectAll()" 
+                <button onclick="deselectAll()"
                         class="text-sm text-emerald-600 hover:text-emerald-800 transition-colors duration-200">
                     Deselect All
                 </button>
             </div>
-            <div class="flex items-center space-x-3">
-                <button onclick="bulkDelete()" 
-                        class="inline-flex items-center px-3 py-1.5 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors duration-200">
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="bulkDelete()"
+                        class="inline-flex items-center justify-center px-3 py-1.5 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors duration-200">
                     <i class="fas fa-trash mr-2"></i>
                     Delete Selected
                 </button>
-                <button onclick="toggleSelectMode()" 
-                        class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 bg-white text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                <button onclick="toggleSelectMode()"
+                        class="inline-flex items-center justify-center px-3 py-1.5 border border-gray-300 text-gray-700 bg-white text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200">
                     Cancel
                 </button>
             </div>
@@ -62,7 +62,7 @@
 
     <!-- Gallery Grid -->
     @if($images->count() > 0)
-        <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
             @foreach($images as $image)
                 <div class="gallery-item bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-200" 
                      data-id="{{ $image->id }}">
@@ -124,10 +124,10 @@
                 <i class="fas fa-images text-gray-300 text-5xl mb-4"></i>
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Images Found</h3>
                 <p class="text-gray-500 mb-6">Get started by uploading your first images to the gallery.</p>
-                <button onclick="openUploadModal()" 
+                <button onclick="openUploadModal()"
                         class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
                     <i class="fas fa-upload mr-2"></i>
-                    Upload First Images
+                    + Add New
                 </button>
             </div>
         </div>
@@ -135,8 +135,8 @@
 </div>
 
 <!-- Upload Modal -->
-<div id="uploadModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
-    <div class="bg-white rounded-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+<div id="uploadModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-xl p-4 sm:p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div class="flex items-center justify-between mb-6">
             <h3 class="text-lg font-semibold text-gray-900">Upload Images</h3>
             <button onclick="closeUploadModal()" class="text-gray-400 hover:text-gray-600">
@@ -160,28 +160,35 @@
         <!-- Upload Progress -->
         <div id="upload-progress" class="hidden mt-6">
             <div class="flex items-center justify-between mb-2">
-                <span class="text-sm font-medium text-gray-700">Uploading...</span>
+                <span class="text-sm font-medium text-gray-700">
+                    <span id="upload-status">Preparing upload...</span>
+                </span>
                 <span id="progress-text" class="text-sm text-gray-500">0%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-                <div id="progress-bar" class="bg-emerald-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+            <div class="w-full bg-gray-200 rounded-full h-3">
+                <div id="progress-bar" class="bg-emerald-600 h-3 rounded-full transition-all duration-300 relative overflow-hidden" style="width: 0%">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-pulse"></div>
+                </div>
+            </div>
+            <div id="upload-details" class="mt-2 text-xs text-gray-500">
+                <span id="current-file">Ready to upload</span>
             </div>
         </div>
 
         <!-- Preview Area -->
         <div id="preview-area" class="hidden mt-6">
             <h4 class="text-sm font-medium text-gray-900 mb-3">Selected Images</h4>
-            <div id="preview-grid" class="grid grid-cols-3 gap-3 max-h-60 overflow-y-auto"></div>
+            <div id="preview-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-60 overflow-y-auto"></div>
         </div>
 
         <!-- Upload Actions -->
-        <div class="flex items-center justify-end space-x-3 mt-6 pt-6 border-t border-gray-200">
-            <button onclick="closeUploadModal()" 
-                    class="px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3 mt-6 pt-6 border-t border-gray-200">
+            <button onclick="closeUploadModal()"
+                    class="px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200 text-sm sm:text-base">
                 Cancel
             </button>
             <button id="upload-btn" onclick="uploadImages()" disabled
-                    class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200">
+                    class="inline-flex items-center justify-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 text-sm sm:text-base">
                 <i class="fas fa-upload mr-2"></i>
                 Upload Images
             </button>
@@ -190,8 +197,8 @@
 </div>
 
 <!-- Image View Modal -->
-<div id="viewModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
-    <div class="max-w-4xl max-h-[90vh] mx-4">
+<div id="viewModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50 p-4">
+    <div class="max-w-4xl max-h-[90vh] w-full">
         <div class="relative">
             <img id="view-image" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-lg">
             <button onclick="closeViewModal()" 
@@ -206,8 +213,8 @@
 </div>
 
 <!-- Edit Image Modal -->
-<div id="editModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
-    <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+<div id="editModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-xl p-4 sm:p-6 max-w-md w-full">
         <div class="flex items-center justify-between mb-6">
             <h3 class="text-lg font-semibold text-gray-900">Edit Image</h3>
             <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600">
@@ -243,13 +250,13 @@
             </div>
         </form>
 
-        <div class="flex items-center justify-end space-x-3 mt-6 pt-6 border-t border-gray-200">
-            <button onclick="closeEditModal()" 
-                    class="px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3 mt-6 pt-6 border-t border-gray-200">
+            <button onclick="closeEditModal()"
+                    class="px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200 text-sm sm:text-base">
                 Cancel
             </button>
-            <button onclick="updateImage()" 
-                    class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+            <button onclick="updateImage()"
+                    class="inline-flex items-center justify-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
                 <i class="fas fa-save mr-2"></i>
                 Update
             </button>
@@ -258,20 +265,20 @@
 </div>
 
 <!-- Delete Confirmation Modal -->
-<div id="deleteModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
-    <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+<div id="deleteModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-lg p-4 sm:p-6 max-w-md w-full">
         <div class="flex items-center mb-4">
             <i class="fas fa-exclamation-triangle text-red-500 text-xl mr-3"></i>
             <h3 class="text-lg font-medium text-gray-900">Delete Image</h3>
         </div>
         <p class="text-gray-600 mb-6">Are you sure you want to delete this image? This action cannot be undone.</p>
-        <div class="flex justify-end space-x-3">
-            <button onclick="closeDeleteModal()" 
-                    class="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-200">
+        <div class="flex flex-col sm:flex-row sm:justify-end gap-3">
+            <button onclick="closeDeleteModal()"
+                    class="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-200 text-sm sm:text-base">
                 Cancel
             </button>
-            <button id="confirm-delete-btn" onclick="confirmDelete()" 
-                    class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200">
+            <button id="confirm-delete-btn" onclick="confirmDelete()"
+                    class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200 text-sm sm:text-base">
                 Delete
             </button>
         </div>
@@ -400,52 +407,112 @@
         document.getElementById('preview-area').classList.add('hidden');
         document.getElementById('upload-progress').classList.add('hidden');
         document.getElementById('image-input').value = '';
-        document.getElementById('upload-btn').disabled = true;
+
+        // Reset upload button
+        const uploadBtn = document.getElementById('upload-btn');
+        uploadBtn.disabled = true;
+        uploadBtn.innerHTML = '<i class="fas fa-upload mr-2"></i>Upload Images';
+
+        // Reset progress elements
+        document.getElementById('progress-bar').style.width = '0%';
+        document.getElementById('progress-text').textContent = '0%';
+        document.getElementById('upload-status').textContent = 'Preparing upload...';
+        document.getElementById('current-file').textContent = 'Ready to upload';
+
+        // Reset progress bar color
+        const progressBar = document.getElementById('progress-bar');
+        progressBar.classList.remove('bg-red-500');
+        progressBar.classList.add('bg-emerald-600');
     }
 
-    function uploadImages() {
+    async function uploadImages() {
         if (selectedFiles.length === 0) return;
-
-        const formData = new FormData();
-        selectedFiles.forEach(file => {
-            formData.append('images[]', file);
-        });
 
         const progressBar = document.getElementById('progress-bar');
         const progressText = document.getElementById('progress-text');
         const uploadProgress = document.getElementById('upload-progress');
-        
-        uploadProgress.classList.remove('hidden');
-        document.getElementById('upload-btn').disabled = true;
+        const uploadStatus = document.getElementById('upload-status');
+        const currentFile = document.getElementById('current-file');
+        const uploadBtn = document.getElementById('upload-btn');
 
-        fetch('{{ route("admin.gallery.upload") }}', {
+        // Show progress and disable button
+        uploadProgress.classList.remove('hidden');
+        uploadBtn.disabled = true;
+        uploadBtn.innerHTML = '<i class="fas fa-spinner animate-spin mr-2"></i>Uploading...';
+
+        let uploadedCount = 0;
+        const totalFiles = selectedFiles.length;
+        const maxConcurrent = 3; // Limit concurrent uploads
+        const chunkSize = Math.min(maxConcurrent, totalFiles);
+
+        try {
+            // Process files in chunks to avoid overwhelming the server
+            for (let i = 0; i < totalFiles; i += chunkSize) {
+                const chunk = selectedFiles.slice(i, i + chunkSize);
+                const chunkPromises = chunk.map((file, index) => uploadSingleFile(file, i + index + 1, totalFiles));
+
+                await Promise.all(chunkPromises);
+                uploadedCount += chunk.length;
+
+                // Update overall progress
+                const overallProgress = Math.round((uploadedCount / totalFiles) * 100);
+                progressBar.style.width = overallProgress + '%';
+                progressText.textContent = overallProgress + '%';
+                uploadStatus.textContent = `Uploaded ${uploadedCount} of ${totalFiles} images`;
+            }
+
+            // Success
+            uploadStatus.textContent = 'Upload completed successfully!';
+            currentFile.textContent = `${totalFiles} images uploaded`;
+
+            setTimeout(() => {
+                closeUploadModal();
+                location.reload();
+            }, 1500);
+
+        } catch (error) {
+            console.error('Upload error:', error);
+            uploadStatus.textContent = 'Upload failed';
+            currentFile.textContent = error.message || 'Please try again';
+
+            // Show error state
+            progressBar.classList.add('bg-red-500');
+            progressBar.classList.remove('bg-emerald-600');
+
+            setTimeout(() => {
+                uploadBtn.disabled = false;
+                uploadBtn.innerHTML = '<i class="fas fa-upload mr-2"></i>Upload Images';
+            }, 2000);
+        }
+    }
+
+    async function uploadSingleFile(file, fileIndex, totalFiles) {
+        const currentFile = document.getElementById('current-file');
+        currentFile.textContent = `Uploading: ${file.name} (${fileIndex}/${totalFiles})`;
+
+        const formData = new FormData();
+        formData.append('images[]', file);
+
+        const response = await fetch('{{ route("admin.gallery.upload") }}', {
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                progressBar.style.width = '100%';
-                progressText.textContent = '100%';
-                
-                setTimeout(() => {
-                    closeUploadModal();
-                    location.reload();
-                }, 1000);
-            } else {
-                alert('Upload failed: ' + (data.message || 'Unknown error'));
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Upload failed. Please try again.');
-        })
-        .finally(() => {
-            document.getElementById('upload-btn').disabled = false;
         });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Failed to upload ${file.name}: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message || `Failed to upload ${file.name}`);
+        }
+
+        return data;
     }
 
     function viewImage(url, title) {
@@ -484,6 +551,8 @@
             is_active: document.getElementById('edit-active').checked
         };
 
+        showLoading('form', 'Updating image...');
+
         fetch(`/admin/gallery/${currentEditId}`, {
             method: 'PUT',
             headers: {
@@ -494,6 +563,7 @@
         })
         .then(response => response.json())
         .then(data => {
+            hideLoading('form');
             if (data.success) {
                 closeEditModal();
                 location.reload();
@@ -502,6 +572,7 @@
             }
         })
         .catch(error => {
+            hideLoading('form');
             console.error('Error:', error);
             alert('Update failed. Please try again.');
         });
@@ -595,6 +666,8 @@
             return;
         }
 
+        showLoading('form', `Deleting ${selectedImages.size} images...`);
+
         fetch('{{ route("admin.gallery.bulk-delete") }}', {
             method: 'POST',
             headers: {
@@ -607,6 +680,7 @@
         })
         .then(response => response.json())
         .then(data => {
+            hideLoading('form');
             if (data.success) {
                 location.reload();
             } else {
@@ -614,6 +688,7 @@
             }
         })
         .catch(error => {
+            hideLoading('form');
             console.error('Error:', error);
             alert('Bulk delete failed. Please try again.');
         });

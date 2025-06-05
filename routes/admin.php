@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\CommitmentController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\AccommodationSectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,4 +112,16 @@ Route::middleware(['admin.auth'])->group(function () {
         'update' => 'admin.hosting-sections.update',
         'destroy' => 'admin.hosting-sections.destroy',
     ]);
+
+    // Accommodation Sections Management
+    Route::resource('accommodation-sections', AccommodationSectionController::class)->names([
+        'index' => 'admin.accommodation-sections.index',
+        'create' => 'admin.accommodation-sections.create',
+        'store' => 'admin.accommodation-sections.store',
+        'show' => 'admin.accommodation-sections.show',
+        'edit' => 'admin.accommodation-sections.edit',
+        'update' => 'admin.accommodation-sections.update',
+        'destroy' => 'admin.accommodation-sections.destroy',
+    ]);
+    Route::post('accommodation-sections/update-order', [AccommodationSectionController::class, 'updateOrder'])->name('admin.accommodation-sections.update-order');
 });

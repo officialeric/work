@@ -12,15 +12,15 @@
 @section('content')
 <div class="space-y-6">
     <!-- Header -->
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Commitments Management</h1>
-            <p class="text-gray-600 mt-1">Manage eco-tourism practices and sustainability commitments</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-900">Commitments Management</h1>
+            <p class="text-gray-600 mt-1 text-sm sm:text-base">Manage eco-tourism practices and sustainability commitments</p>
         </div>
-        <a href="{{ route('admin.commitments.create') }}" 
-           class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+        <a href="{{ route('admin.commitments.create') }}"
+           class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>
-            Add New Commitment
+            + Add New
         </a>
     </div>
 
@@ -28,47 +28,49 @@
     @if($commitments->count() > 0)
         <div id="commitments-list" class="space-y-4">
             @foreach($commitments as $commitment)
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200" data-id="{{ $commitment->id }}">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow duration-200" data-id="{{ $commitment->id }}">
                     <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
                             <!-- Drag Handle -->
-                            <i class="fas fa-grip-vertical text-gray-400 cursor-move"></i>
-                            
+                            <i class="fas fa-grip-vertical text-gray-400 cursor-move flex-shrink-0"></i>
+
                             <!-- Icon -->
-                            <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                                <i class="{{ $commitment->icon }} text-emerald-600 text-xl"></i>
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="{{ $commitment->icon }} text-emerald-600 text-lg sm:text-xl"></i>
                             </div>
-                            
+
                             <!-- Content -->
-                            <div class="flex-1">
-                                <h3 class="text-lg font-semibold text-gray-900">{{ $commitment->title }}</h3>
-                                <p class="text-sm text-gray-500">Order: {{ $commitment->sort_order }}</p>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-base sm:text-lg font-semibold text-gray-900 truncate" title="{{ $commitment->title }}">{{ $commitment->title }}</h3>
+                                <p class="text-xs sm:text-sm text-gray-500">Order: {{ $commitment->sort_order }}</p>
                             </div>
                         </div>
 
-                        <div class="flex items-center space-x-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 flex-shrink-0">
                             <!-- Status -->
                             @if($commitment->is_active)
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                     <i class="fas fa-check-circle mr-1"></i>
-                                    Active
+                                    <span class="hidden sm:inline">Active</span>
+                                    <span class="sm:hidden">✓</span>
                                 </span>
                             @else
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                     <i class="fas fa-times-circle mr-1"></i>
-                                    Inactive
+                                    <span class="hidden sm:inline">Inactive</span>
+                                    <span class="sm:hidden">✗</span>
                                 </span>
                             @endif
 
                             <!-- Actions -->
                             <div class="flex items-center space-x-3">
-                                <a href="{{ route('admin.commitments.edit', $commitment) }}" 
-                                   class="text-emerald-600 hover:text-emerald-800 transition-colors duration-200">
-                                    <i class="fas fa-edit"></i>
+                                <a href="{{ route('admin.commitments.edit', $commitment) }}"
+                                   class="p-2 text-emerald-600 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors duration-200">
+                                    <i class="fas fa-edit text-sm"></i>
                                 </a>
-                                <button onclick="deleteCommitment({{ $commitment->id }})" 
-                                        class="text-red-600 hover:text-red-800 transition-colors duration-200">
-                                    <i class="fas fa-trash"></i>
+                                <button onclick="deleteCommitment({{ $commitment->id }})"
+                                        class="p-2 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors duration-200">
+                                    <i class="fas fa-trash text-sm"></i>
                                 </button>
                             </div>
                         </div>
@@ -82,10 +84,10 @@
                 <i class="fas fa-leaf text-gray-300 text-5xl mb-4"></i>
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Commitments Found</h3>
                 <p class="text-gray-500 mb-6">Get started by creating your first commitment.</p>
-                <a href="{{ route('admin.commitments.create') }}" 
+                <a href="{{ route('admin.commitments.create') }}"
                    class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
                     <i class="fas fa-plus mr-2"></i>
-                    Add First Commitment
+                    + Add New
                 </a>
             </div>
         </div>

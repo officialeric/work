@@ -45,7 +45,7 @@ class HostingSectionController extends Controller
         ]);
 
         $data = $request->all();
-        $data['is_active'] = $request->has('is_active');
+        $data['is_active'] = $request->boolean('is_active');
 
         // Handle background image upload
         if ($request->hasFile('background_image')) {
@@ -99,8 +99,9 @@ class HostingSectionController extends Controller
             'is_active' => 'boolean',
         ]);
 
+        $oldData = $hostingSection->toArray();
         $data = $request->all();
-        $data['is_active'] = $request->has('is_active');
+        $data['is_active'] = $request->boolean('is_active');
 
         // Handle background image upload
         if ($request->hasFile('background_image')) {

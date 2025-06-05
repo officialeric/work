@@ -172,14 +172,82 @@
         .backdrop-blur-strong {
             backdrop-filter: blur(20px) saturate(180%);
         }
+
+        /* Loading Spinner Animations */
+        @keyframes spin-emerald {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-emerald {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes bounce-emerald {
+            0%, 100% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+            50% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+
+        .spinner-emerald {
+            animation: spin-emerald 1s linear infinite;
+        }
+
+        .pulse-emerald {
+            animation: pulse-emerald 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .bounce-emerald {
+            animation: bounce-emerald 1s infinite;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Progress bar animation */
+        @keyframes progress-indeterminate {
+            0% {
+                left: -35%;
+                right: 100%;
+            }
+            60% {
+                left: 100%;
+                right: -90%;
+            }
+            100% {
+                left: 100%;
+                right: -90%;
+            }
+        }
+
+        .progress-indeterminate {
+            animation: progress-indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+        }
     </style>
 </head>
 <body class="font-sans antialiased bg-white text-gray-900 overflow-x-hidden">
     <!-- Loading Screen -->
     <div id="loading-screen" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center transition-opacity duration-500">
         <div class="text-center">
-            <div class="w-12 h-12 border-3 border-gray-200 border-t-emerald-600 rounded-full animate-spin mx-auto mb-4"></div>
-            <p class="text-gray-600 italic">Loading dream landscapes...</p>
+            <div class="w-16 h-16 border-4 border-amber-200 border-t-amber-300 rounded-full spinner-emerald mx-auto mb-6"></div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">{{ $siteName }}</h3>
+                <p class="text-amber-300 font-medium">Loading your dream escape...</p>
+                <div class="flex justify-center space-x-1 mt-4">
+                    <div class="w-2 h-2 bg-amber-300 rounded-full bounce-emerald" style="animation-delay: 0ms;"></div>
+                    <div class="w-2 h-2 bg-amber-300 rounded-full bounce-emerald" style="animation-delay: 150ms;"></div>
+                    <div class="w-2 h-2 bg-amber-300 rounded-full bounce-emerald" style="animation-delay: 300ms;"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -301,66 +369,79 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-amber-900 text-white">
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-800 text-white">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <!-- Logo and Description -->
                 <div class="space-y-6">
                     <!-- Footer Logo -->
                     <div class="flex items-center">
-                        <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-lg">
-                            <!-- Background Circle -->
-                            <circle cx="30" cy="30" r="26" fill="url(#footerLogoGradient)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                        @php
+                            $siteLogo = \App\Models\WebsiteSetting::get('site_logo');
+                            $siteName = \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay');
+                            $siteTagline = \App\Models\WebsiteSetting::get('site_tagline', 'Luxury Eco-Lodge Tanzania');
+                        @endphp
 
-                            <!-- Palm Tree -->
-                            <g transform="translate(20, 15)">
-                                <!-- Trunk -->
-                                <path d="M10 26 Q10.5 20 9.5 14 Q10 9 10.5 4" stroke="#8B4513" stroke-width="2" fill="none" stroke-linecap="round"/>
-                                <!-- Palm Fronds -->
-                                <path d="M10.5 5 Q6 2 3 3.5 Q5.5 6.5 10.5 5" fill="#10B981" opacity="0.9"/>
-                                <path d="M10.5 5 Q15 2 18 3.5 Q15.5 6.5 10.5 5" fill="#059669" opacity="0.9"/>
-                                <path d="M10.5 5 Q8 0 5.5 -1 Q9 2.5 10.5 5" fill="#10B981" opacity="0.8"/>
-                                <path d="M10.5 5 Q13 0 15.5 -1 Q12 2.5 10.5 5" fill="#059669" opacity="0.8"/>
-                            </g>
+                        @if($siteLogo)
+                            <div class="flex items-center">
+                                <img src="{{ asset('storage/' . $siteLogo) }}" alt="{{ $siteName }}" class="h-16 w-auto drop-shadow-2xl">
+                            </div>
+                        @else
+                            <!-- Custom Default Logo -->
+                            <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-lg">
+                                <!-- Background Circle -->
+                                <circle cx="30" cy="30" r="26" fill="url(#footerLogoGradient)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
 
-                            <!-- Ocean Waves -->
-                            <path d="M4 38 Q10 36 16 38 Q22 40 28 38 Q34 36 40 38 Q46 40 52 38 Q58 36 64 38"
-                                  stroke="rgba(16, 185, 129, 0.6)" stroke-width="1.5" fill="none"/>
-                            <path d="M4 42 Q10 40 16 42 Q22 44 28 42 Q34 40 40 42 Q46 44 52 42 Q58 40 64 42"
-                                  stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" fill="none"/>
+                                <!-- Palm Tree -->
+                                <g transform="translate(20, 15)">
+                                    <!-- Trunk -->
+                                    <path d="M10 26 Q10.5 20 9.5 14 Q10 9 10.5 4" stroke="#8B4513" stroke-width="2" fill="none" stroke-linecap="round"/>
+                                    <!-- Palm Fronds -->
+                                    <path d="M10.5 5 Q6 2 3 3.5 Q5.5 6.5 10.5 5" fill="#10B981" opacity="0.9"/>
+                                    <path d="M10.5 5 Q15 2 18 3.5 Q15.5 6.5 10.5 5" fill="#059669" opacity="0.9"/>
+                                    <path d="M10.5 5 Q8 0 5.5 -1 Q9 2.5 10.5 5" fill="#10B981" opacity="0.8"/>
+                                    <path d="M10.5 5 Q13 0 15.5 -1 Q12 2.5 10.5 5" fill="#059669" opacity="0.8"/>
+                                </g>
 
-                            <!-- Sun -->
-                            <circle cx="45" cy="16" r="5" fill="#FCD34D" opacity="0.9"/>
-                            <g transform="translate(45, 16)">
-                                <path d="M0 -8 L0 -7" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
-                                <path d="M6 -6 L5 -5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
-                                <path d="M8 0 L7 0" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
-                                <path d="M6 6 L5 5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
-                                <path d="M0 8 L0 7" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
-                                <path d="M-6 6 L-5 5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
-                                <path d="M-8 0 L-7 0" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
-                                <path d="M-6 -6 L-5 -5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
-                            </g>
+                                <!-- Ocean Waves -->
+                                <path d="M4 38 Q10 36 16 38 Q22 40 28 38 Q34 36 40 38 Q46 40 52 38 Q58 36 64 38"
+                                      stroke="rgba(16, 185, 129, 0.6)" stroke-width="1.5" fill="none"/>
+                                <path d="M4 42 Q10 40 16 42 Q22 44 28 42 Q34 40 40 42 Q46 44 52 42 Q58 40 64 42"
+                                      stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" fill="none"/>
 
-                            <!-- Text -->
-                            <text x="70" y="25" font-family="serif" font-size="16" font-weight="bold" fill="white">
-                                {{ Str::limit($siteName, 12) }}
-                            </text>
-                            <text x="70" y="40" font-family="serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.9)">
-                                {{ \App\Models\WebsiteSetting::get('site_tagline', 'Eco Lodge') }}
-                            </text>
-                            <text x="70" y="52" font-family="sans-serif" font-size="8" font-weight="400" fill="rgba(16, 185, 129, 0.8)" letter-spacing="1.5px">
-                                ECO LUXURY LODGE
-                            </text>
+                                <!-- Sun -->
+                                <circle cx="45" cy="16" r="5" fill="#FCD34D" opacity="0.9"/>
+                                <g transform="translate(45, 16)">
+                                    <path d="M0 -8 L0 -7" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                    <path d="M6 -6 L5 -5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                    <path d="M8 0 L7 0" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                    <path d="M6 6 L5 5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                    <path d="M0 8 L0 7" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                    <path d="M-6 6 L-5 5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                    <path d="M-8 0 L-7 0" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                    <path d="M-6 -6 L-5 -5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                </g>
 
-                            <!-- Gradient Definitions -->
-                            <defs>
-                                <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:rgba(16, 185, 129, 0.3);stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:rgba(5, 150, 105, 0.5);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                                <!-- Text -->
+                                <text x="70" y="25" font-family="serif" font-size="16" font-weight="bold" fill="white">
+                                    {{ Str::limit($siteName, 12) }}
+                                </text>
+                                <text x="70" y="40" font-family="serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.9)">
+                                    {{ $siteTagline }}
+                                </text>
+                                <text x="70" y="52" font-family="sans-serif" font-size="8" font-weight="400" fill="rgba(16, 185, 129, 0.8)" letter-spacing="1.5px">
+                                    ECO LUXURY LODGE
+                                </text>
+
+                                <!-- Gradient Definitions -->
+                                <defs>
+                                    <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:rgba(16, 185, 129, 0.3);stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:rgba(5, 150, 105, 0.5);stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        @endif
                     </div>
                     <p class="text-gray-300 leading-relaxed">
                         {{ \App\Models\WebsiteSetting::get('site_description', 'Experience luxury eco-tourism at its finest. Where pristine beaches meet untamed wilderness, creating unforgettable memories in the heart of Tanzania.') }}
@@ -585,97 +666,16 @@
 
         // Activities Data and Initialization
         function initActivities() {
-            const activities = [
-                {
-                    number: "1/7",
-                    title: "Madete Beach",
-                    description: "Enjoy **Madete Beach**, an exceptional protected sanctuary. Both a national park and a marine park, accessible only to authorized visitors, this stretch of white sand stretches for 5 km around the lodge, offering bathing at any time, with very little tidal variation.",
-                    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop&crop=center"
-                },
-                {
-                    number: "2/7",
-                    title: "Safari in Saadani National Park",
-                    description: "Go on **safari in Saadani National Park**, where remarkable wildlife awaits you: a dozen species of antelope, monkeys, warthogs, majestic elephants, elegant giraffes, imposing buffalo, and even lions on the loose.",
-                    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&crop=center"
-                },
-                {
-                    number: "3/7",
-                    title: "Wami River Boat Trip",
-                    description: "Take a boat trip **up the Wami River** to observe crocodiles, hippos and a rich diversity of birds. A magical moment on the water, in the heart of the wilderness.",
-                    image: "https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=600&h=400&fit=crop&crop=center"
-                },
-                {
-                    number: "4/7",
-                    title: "Fishing Villages",
-                    description: "Discover local life by visiting **fishing villages**. Live an authentic experience by embarking with them for a traditional fishing session in the waters of the Indian Ocean.",
-                    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop&crop=center"
-                },
-                {
-                    number: "5/7",
-                    title: "Mafui Sandbank",
-                    description: "**Sail to Mafui Sandbank**, a secluded sandbar just 5 km from the beach. This idyllic spot is a small paradise for divers and snorkelers, surrounded by crystal-clear waters.",
-                    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop&crop=center"
-                },
-                {
-                    number: "6/7",
-                    title: "Sunset Cruise",
-                    description: "Enjoy a **sunset cruise**, a sea excursion to admire the golden hues of the sunset.",
-                    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&crop=center"
-                },
-                {
-                    number: "7/7",
-                    title: "Explore the Mangroves",
-                    description: "**Explore the mangroves** on foot along the beach or by gallawas, the traditional boats of the Tanzanian coast.",
-                    image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&h=400&fit=crop&crop=center"
-                }
-            ];
-
-            const activitiesGrid = document.getElementById('activities-grid');
-            if (activitiesGrid) {
-                activitiesGrid.innerHTML = activities.map((activity, index) => `
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift animate-fade-in-up animate-delay-${(index % 3 + 1) * 100}">
-                        <div class="relative h-48">
-                            <img src="${activity.image}" alt="${activity.title}" class="w-full h-full object-cover">
-                            <div class="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                                ${activity.number}
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h5 class="font-display text-xl font-semibold text-emerald-800 mb-3">${activity.title}</h5>
-                            <p class="text-gray-700 leading-relaxed">${activity.description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>
-                        </div>
-                    </div>
-                `).join('');
-            }
+            // Activities are now rendered server-side via Blade template
+            // This function is kept for potential future enhancements
+            console.log('Activities initialized - using server-side rendering');
         }
 
         // Amenities Data and Initialization
         function initAmenities() {
-            const amenities = [
-                { icon: "fas fa-bed", text: "12 luxury rooms", subtitle: "Bathroom, toilet, terrace" },
-                { icon: "fas fa-users", text: "Sleeps up to 4", subtitle: "" },
-                { icon: "fas fa-utensils", text: "Restaurant", subtitle: "" },
-                { icon: "fas fa-cocktail", text: "Bar", subtitle: "" },
-                { icon: "fas fa-swimming-pool", text: "Pool", subtitle: "" },
-                { icon: "fas fa-shield-alt", text: "Security agents", subtitle: "" },
-                { icon: "fas fa-bolt", text: "Electricity 24/24", subtitle: "" },
-                { icon: "fas fa-wifi", text: "Wifi", subtitle: "" }
-            ];
-
-            const amenitiesGrid = document.getElementById('amenities-grid');
-            if (amenitiesGrid) {
-                amenitiesGrid.innerHTML = amenities.map((amenity, index) => `
-                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg animate-fade-in-left animate-delay-${(index % 4 + 1) * 100}">
-                        <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                            <i class="${amenity.icon} text-emerald-600"></i>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-gray-900">${amenity.text}</p>
-                            ${amenity.subtitle ? `<p class="text-sm text-gray-600">${amenity.subtitle}</p>` : ''}
-                        </div>
-                    </div>
-                `).join('');
-            }
+            // Amenities are now rendered server-side via Blade template
+            // This function is kept for potential future enhancements
+            console.log('Amenities initialized - using server-side rendering');
         }
 
         // Gallery functionality is now handled by the backend and displayed in the Blade template
@@ -703,6 +703,55 @@
                 observer.observe(el);
             });
         }
+
+        // Global loading functions
+        window.showLoading = function(type = 'global', message = null) {
+            const overlay = document.getElementById(type + '-loading');
+            if (overlay) {
+                if (message) {
+                    const messageEl = overlay.querySelector('p');
+                    if (messageEl) messageEl.textContent = message;
+                }
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.hideLoading = function(type = 'global') {
+            const overlay = document.getElementById(type + '-loading');
+            if (overlay) {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+        };
     </script>
+
+    <!-- Global Loading Overlays -->
+    <div id="global-loading" class="fixed inset-0 z-50 hidden items-center justify-center loading-overlay">
+        <div class="text-center">
+            <div class="inline-block w-8 h-8 border-4 border-emerald-200 border-t-emerald-600 rounded-full spinner-emerald"></div>
+            <p class="mt-3 text-sm font-medium text-gray-700">Loading...</p>
+        </div>
+    </div>
+
+    <div id="page-loading" class="fixed inset-0 z-40 hidden items-center justify-center loading-overlay">
+        <div class="text-center">
+            <div class="inline-block w-12 h-12 border-4 border-emerald-200 border-t-emerald-600 rounded-full spinner-emerald"></div>
+            <p class="mt-4 text-base font-medium text-gray-700">Please wait...</p>
+        </div>
+    </div>
+
+    <div id="form-loading" class="fixed inset-0 z-30 hidden items-center justify-center loading-overlay">
+        <div class="text-center">
+            <div class="flex space-x-1">
+                <div class="w-3 h-3 bg-emerald-600 rounded-full bounce-emerald" style="animation-delay: 0ms;"></div>
+                <div class="w-3 h-3 bg-emerald-600 rounded-full bounce-emerald" style="animation-delay: 150ms;"></div>
+                <div class="w-3 h-3 bg-emerald-600 rounded-full bounce-emerald" style="animation-delay: 300ms;"></div>
+            </div>
+            <p class="mt-3 text-sm font-medium text-gray-700">Processing...</p>
+        </div>
+    </div>
 </body>
 </html>

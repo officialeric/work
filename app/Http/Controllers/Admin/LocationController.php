@@ -107,6 +107,7 @@ class LocationController extends Controller
             'is_active' => 'boolean',
         ]);
 
+        $oldData = $location->toArray();
         $data = $request->all();
         $data['is_active'] = $request->has('is_active');
 
@@ -142,6 +143,7 @@ class LocationController extends Controller
     public function destroy(Location $location)
     {
         $title = $location->title;
+        $oldData = $location->toArray();
 
         // Delete associated images
         foreach (['image_1', 'image_2', 'image_3'] as $imageField) {
