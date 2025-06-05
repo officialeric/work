@@ -168,36 +168,8 @@ function initAmenities() {
     }
 }
 
-// Gallery Data and Initialization
-function initGallery() {
-    const galleryImages = [
-        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=800&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1520637836862-4d197d17c93a?w=600&h=400&fit=crop&crop=center",
-        "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?w=600&h=400&fit=crop&crop=center"
-    ];
-
-    const galleryGrid = document.getElementById('gallery-grid');
-    if (galleryGrid) {
-        galleryGrid.innerHTML = galleryImages.map((image, index) => `
-            <div class="gallery-item animate-fade-in-up animate-delay-${(index % 4 + 1) * 100}">
-                <img src="${image}" alt="Saadani Kasa Bay Gallery Image ${index + 1}" class="w-full h-64 object-cover">
-            </div>
-        `).join('');
-    }
-}
+// Gallery functionality is now handled by the backend and displayed in the Blade template
+// The gallery images are loaded from the database via the SaadaniController
 
 // Scroll Animations
 function initScrollAnimations() {

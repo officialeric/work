@@ -89,4 +89,26 @@ Route::middleware(['admin.auth'])->group(function () {
         Route::post('/update-order', [GalleryController::class, 'updateOrder'])->name('update-order');
         Route::post('/bulk-delete', [GalleryController::class, 'bulkDelete'])->name('bulk-delete');
     });
+
+    // Locations Management
+    Route::resource('locations', App\Http\Controllers\Admin\LocationController::class)->names([
+        'index' => 'admin.locations.index',
+        'create' => 'admin.locations.create',
+        'store' => 'admin.locations.store',
+        'show' => 'admin.locations.show',
+        'edit' => 'admin.locations.edit',
+        'update' => 'admin.locations.update',
+        'destroy' => 'admin.locations.destroy',
+    ]);
+
+    // Hosting Sections Management
+    Route::resource('hosting-sections', App\Http\Controllers\Admin\HostingSectionController::class)->names([
+        'index' => 'admin.hosting-sections.index',
+        'create' => 'admin.hosting-sections.create',
+        'store' => 'admin.hosting-sections.store',
+        'show' => 'admin.hosting-sections.show',
+        'edit' => 'admin.hosting-sections.edit',
+        'update' => 'admin.hosting-sections.update',
+        'destroy' => 'admin.hosting-sections.destroy',
+    ]);
 });

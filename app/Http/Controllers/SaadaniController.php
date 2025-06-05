@@ -8,6 +8,8 @@ use App\Models\Activity;
 use App\Models\Amenity;
 use App\Models\Commitment;
 use App\Models\GalleryImage;
+use App\Models\Location;
+use App\Models\HostingSection;
 
 class SaadaniController extends Controller
 {
@@ -21,6 +23,8 @@ class SaadaniController extends Controller
             'site_name' => WebsiteSetting::get('site_name', 'Saadani Kasa Bay'),
             'site_tagline' => WebsiteSetting::get('site_tagline', 'Luxury Eco-Lodge Tanzania'),
             'site_description' => WebsiteSetting::get('site_description', 'Discover Saadani Kasa Bay, a luxury eco-lodge facing the Indian Ocean in Tanzania. Experience pristine beaches, wildlife safaris, and sustainable tourism.'),
+            'site_logo' => WebsiteSetting::get('site_logo', ''),
+            'site_favicon' => WebsiteSetting::get('site_favicon', ''),
             'hero_title' => WebsiteSetting::get('hero_title', 'Saadani Kasa Bay'),
             'hero_subtitle' => WebsiteSetting::get('hero_subtitle', 'Facing the Indian Ocean'),
             'hero_description' => WebsiteSetting::get('hero_description', 'Where luxury meets untamed nature in Tanzania\'s most exclusive eco-lodge'),
@@ -39,7 +43,9 @@ class SaadaniController extends Controller
         $amenities = Amenity::active()->ordered()->get();
         $commitments = Commitment::active()->ordered()->get();
         $galleryImages = GalleryImage::active()->ordered()->take(12)->get();
+        $locations = Location::active()->ordered()->get();
+        $hostingSections = HostingSection::active()->ordered()->get();
 
-        return view('saadani', compact('settings', 'activities', 'amenities', 'commitments', 'galleryImages'));
+        return view('saadani', compact('settings', 'activities', 'amenities', 'commitments', 'galleryImages', 'locations', 'hostingSections'));
     }
 }

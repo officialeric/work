@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Admin Login - Saadani Kasa Bay</title>
+    <title>Admin Login - {{ \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,10 +56,19 @@
     <div class="w-full max-w-md">
         <!-- Logo/Brand -->
         <div class="text-center mb-8">
+            @php
+                $siteName = \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay');
+                $siteLogo = \App\Models\WebsiteSetting::get('site_logo');
+            @endphp
+
             <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
-                <i class="fas fa-leaf text-emerald-600 text-2xl"></i>
+                @if($siteLogo)
+                    <img src="{{ asset('storage/' . $siteLogo) }}" alt="{{ $siteName }}" class="w-12 h-12 object-contain">
+                @else
+                    <i class="fas fa-leaf text-emerald-600 text-2xl"></i>
+                @endif
             </div>
-            <h1 class="text-3xl font-bold text-white mb-2">Saadani Kasa Bay</h1>
+            <h1 class="text-3xl font-bold text-white mb-2">{{ $siteName }}</h1>
             <p class="text-emerald-100">Admin Panel</p>
         </div>
 
@@ -155,7 +164,7 @@
         <!-- Footer -->
         <div class="text-center mt-8">
             <p class="text-emerald-100 text-sm">
-                &copy; {{ date('Y') }} Saadani Kasa Bay. All rights reserved.
+                &copy; {{ date('Y') }} {{ \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay') }}. All rights reserved.
             </p>
         </div>
     </div>

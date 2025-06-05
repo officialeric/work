@@ -5,8 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Saadani Kasa Bay - Luxury Eco-Lodge Tanzania')</title>
-    <meta name="description" content="@yield('description', 'Discover Saadani Kasa Bay, a luxury eco-lodge facing the Indian Ocean in Tanzania. Experience pristine beaches, wildlife safaris, and sustainable tourism.')">
+    @php
+        $siteName = \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay');
+        $siteTagline = \App\Models\WebsiteSetting::get('site_tagline', 'Luxury Eco-Lodge Tanzania');
+        $siteDescription = \App\Models\WebsiteSetting::get('site_description', 'Discover Saadani Kasa Bay, a luxury eco-lodge facing the Indian Ocean in Tanzania. Experience pristine beaches, wildlife safaris, and sustainable tourism.');
+        $siteFavicon = \App\Models\WebsiteSetting::get('site_favicon');
+    @endphp
+
+    <title>@yield('title', $siteName . ' - ' . $siteTagline)</title>
+    <meta name="description" content="@yield('description', $siteDescription)">
+
+    <!-- Favicon -->
+    @if($siteFavicon)
+        <link rel="icon" type="image/x-icon" href="{{ asset('storage/' . $siteFavicon) }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/' . $siteFavicon) }}">
+    @endif
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +46,18 @@
                             600: '#059669',
                             700: '#047857',
                             800: '#065f46'
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f'
                         }
                     }
                 }
@@ -165,28 +190,88 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="#hero" class="block">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=80&fit=crop&crop=center" 
-                             alt="Saadani Kasa Bay Logo" 
-                             class="h-12 w-auto rounded-lg">
+                        @php
+                            $siteLogo = \App\Models\WebsiteSetting::get('site_logo');
+                            $siteName = \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay');
+                        @endphp
+
+                        @if($siteLogo)
+                            <img src="{{ asset('storage/' . $siteLogo) }}" alt="{{ $siteName }}" class="h-12 w-auto">
+                        @else
+                            <!-- Custom Default Logo -->
+                            <svg width="180" height="50" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-lg">
+                            <!-- Background Circle -->
+                            <circle cx="25" cy="25" r="22" fill="url(#navLogoGradient)" stroke="rgba(5, 150, 105, 0.3)" stroke-width="1"/>
+
+                            <!-- Palm Tree -->
+                            <g transform="translate(17, 12)">
+                                <!-- Trunk -->
+                                <path d="M8 22 Q8.5 17 7.5 12 Q8 8 8.5 3" stroke="#8B4513" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                                <!-- Palm Fronds -->
+                                <path d="M8.5 4 Q5 1 2.5 2.5 Q4.5 5 8.5 4" fill="#10B981" opacity="0.9"/>
+                                <path d="M8.5 4 Q12 1 14.5 2.5 Q12.5 5 8.5 4" fill="#059669" opacity="0.9"/>
+                                <path d="M8.5 4 Q6.5 0 4.5 -1 Q7.5 2 8.5 4" fill="#10B981" opacity="0.8"/>
+                                <path d="M8.5 4 Q10.5 0 12.5 -1 Q9.5 2 8.5 4" fill="#059669" opacity="0.8"/>
+                            </g>
+
+                            <!-- Ocean Waves -->
+                            <path d="M3 32 Q8 30 13 32 Q18 34 23 32 Q28 30 33 32 Q38 34 43 32 Q48 30 53 32"
+                                  stroke="rgba(16, 185, 129, 0.6)" stroke-width="1" fill="none"/>
+                            <path d="M3 35 Q8 33 13 35 Q18 37 23 35 Q28 33 33 35 Q38 37 43 35 Q48 33 53 35"
+                                  stroke="rgba(16, 185, 129, 0.4)" stroke-width="1" fill="none"/>
+
+                            <!-- Sun -->
+                            <circle cx="37" cy="13" r="4" fill="#FCD34D" opacity="0.9"/>
+                            <g transform="translate(37, 13)">
+                                <path d="M0 -7 L0 -6" stroke="#FCD34D" stroke-width="0.8" opacity="0.7"/>
+                                <path d="M5 -5 L4 -4" stroke="#FCD34D" stroke-width="0.8" opacity="0.7"/>
+                                <path d="M7 0 L6 0" stroke="#FCD34D" stroke-width="0.8" opacity="0.7"/>
+                                <path d="M5 5 L4 4" stroke="#FCD34D" stroke-width="0.8" opacity="0.7"/>
+                                <path d="M0 7 L0 6" stroke="#FCD34D" stroke-width="0.8" opacity="0.7"/>
+                                <path d="M-5 5 L-4 4" stroke="#FCD34D" stroke-width="0.8" opacity="0.7"/>
+                                <path d="M-7 0 L-6 0" stroke="#FCD34D" stroke-width="0.8" opacity="0.7"/>
+                                <path d="M-5 -5 L-4 -4" stroke="#FCD34D" stroke-width="0.8" opacity="0.7"/>
+                            </g>
+
+                            <!-- Text -->
+                            <text x="55" y="20" font-family="serif" font-size="14" font-weight="bold" fill="#065f46">
+                                {{ Str::limit($siteName, 12) }}
+                            </text>
+                            <text x="55" y="32" font-family="serif" font-size="10" font-weight="300" fill="#059669">
+                                {{ \App\Models\WebsiteSetting::get('site_tagline', 'Eco Lodge') }}
+                            </text>
+                            <text x="55" y="42" font-family="sans-serif" font-size="6" font-weight="400" fill="#10B981" letter-spacing="1px">
+                                ECO LUXURY LODGE
+                            </text>
+
+                            <!-- Gradient Definitions -->
+                            <defs>
+                                <linearGradient id="navLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgba(16, 185, 129, 0.2);stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgba(5, 150, 105, 0.3);stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        @endif
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#hero" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Home</a>
-                        <a href="#location" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Location</a>
-                        <a href="#hosting" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Hosting</a>
-                        <a href="#facilities" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Facilities</a>
-                        <a href="#commitments" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Commitments</a>
-                        <a href="#gallery" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Gallery</a>
-                        <a href="#contact" class="bg-emerald-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-emerald-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Contact</a>
+                        <a href="#hero" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Home</a>
+                        <a href="#location" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Location</a>
+                        <a href="#hosting" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Hosting</a>
+                        <a href="#facilities" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Facilities</a>
+                        <a href="#commitments" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Commitments</a>
+                        <a href="#gallery" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Gallery</a>
+                        <a href="#contact" class="bg-amber-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-amber-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Contact</a>
                     </div>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-lg text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-lg text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">
                         <span class="sr-only">Open main menu</span>
                         <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -199,13 +284,13 @@
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Home</a>
-                <a href="#location" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Location</a>
-                <a href="#hosting" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Hosting</a>
-                <a href="#facilities" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Facilities</a>
-                <a href="#commitments" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Commitments</a>
-                <a href="#gallery" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Gallery</a>
-                <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200">Contact</a>
+                <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Home</a>
+                <a href="#location" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Location</a>
+                <a href="#hosting" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Hosting</a>
+                <a href="#facilities" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Facilities</a>
+                <a href="#commitments" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Commitments</a>
+                <a href="#gallery" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Gallery</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Contact</a>
             </div>
         </div>
     </nav>
@@ -216,19 +301,125 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h4 class="text-xl font-semibold mb-4">Saadani Kasa Bay</h4>
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-amber-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Logo and Description -->
+                <div class="space-y-6">
+                    <!-- Footer Logo -->
+                    <div class="flex items-center">
+                        <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-lg">
+                            <!-- Background Circle -->
+                            <circle cx="30" cy="30" r="26" fill="url(#footerLogoGradient)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+                            <!-- Palm Tree -->
+                            <g transform="translate(20, 15)">
+                                <!-- Trunk -->
+                                <path d="M10 26 Q10.5 20 9.5 14 Q10 9 10.5 4" stroke="#8B4513" stroke-width="2" fill="none" stroke-linecap="round"/>
+                                <!-- Palm Fronds -->
+                                <path d="M10.5 5 Q6 2 3 3.5 Q5.5 6.5 10.5 5" fill="#10B981" opacity="0.9"/>
+                                <path d="M10.5 5 Q15 2 18 3.5 Q15.5 6.5 10.5 5" fill="#059669" opacity="0.9"/>
+                                <path d="M10.5 5 Q8 0 5.5 -1 Q9 2.5 10.5 5" fill="#10B981" opacity="0.8"/>
+                                <path d="M10.5 5 Q13 0 15.5 -1 Q12 2.5 10.5 5" fill="#059669" opacity="0.8"/>
+                            </g>
+
+                            <!-- Ocean Waves -->
+                            <path d="M4 38 Q10 36 16 38 Q22 40 28 38 Q34 36 40 38 Q46 40 52 38 Q58 36 64 38"
+                                  stroke="rgba(16, 185, 129, 0.6)" stroke-width="1.5" fill="none"/>
+                            <path d="M4 42 Q10 40 16 42 Q22 44 28 42 Q34 40 40 42 Q46 44 52 42 Q58 40 64 42"
+                                  stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" fill="none"/>
+
+                            <!-- Sun -->
+                            <circle cx="45" cy="16" r="5" fill="#FCD34D" opacity="0.9"/>
+                            <g transform="translate(45, 16)">
+                                <path d="M0 -8 L0 -7" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                <path d="M6 -6 L5 -5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                <path d="M8 0 L7 0" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                <path d="M6 6 L5 5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                <path d="M0 8 L0 7" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                <path d="M-6 6 L-5 5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                <path d="M-8 0 L-7 0" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                                <path d="M-6 -6 L-5 -5" stroke="#FCD34D" stroke-width="1" opacity="0.7"/>
+                            </g>
+
+                            <!-- Text -->
+                            <text x="70" y="25" font-family="serif" font-size="16" font-weight="bold" fill="white">
+                                {{ Str::limit($siteName, 12) }}
+                            </text>
+                            <text x="70" y="40" font-family="serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.9)">
+                                {{ \App\Models\WebsiteSetting::get('site_tagline', 'Eco Lodge') }}
+                            </text>
+                            <text x="70" y="52" font-family="sans-serif" font-size="8" font-weight="400" fill="rgba(16, 185, 129, 0.8)" letter-spacing="1.5px">
+                                ECO LUXURY LODGE
+                            </text>
+
+                            <!-- Gradient Definitions -->
+                            <defs>
+                                <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgba(16, 185, 129, 0.3);stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgba(5, 150, 105, 0.5);stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        {{ \App\Models\WebsiteSetting::get('site_description', 'Experience luxury eco-tourism at its finest. Where pristine beaches meet untamed wilderness, creating unforgettable memories in the heart of Tanzania.') }}
+                    </p>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Terms of use</a>
-                    <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Privacy policy</a>
+
+                <!-- Quick Links -->
+                <div class="space-y-6">
+                    <h4 class="text-xl font-bold text-white">Quick Links</h4>
+                    <div class="flex flex-col space-y-3">
+                        <a href="#location" class="text-gray-300 hover:text-amber-400 transition-colors duration-200 flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-amber-500"></i>
+                            Location
+                        </a>
+                        <a href="#hosting" class="text-gray-300 hover:text-amber-400 transition-colors duration-200 flex items-center gap-2">
+                            <i class="fas fa-home text-amber-500"></i>
+                            Hosting
+                        </a>
+                        <a href="#facilities" class="text-gray-300 hover:text-amber-400 transition-colors duration-200 flex items-center gap-2">
+                            <i class="fas fa-swimming-pool text-amber-500"></i>
+                            Facilities
+                        </a>
+                        <a href="#commitments" class="text-gray-300 hover:text-amber-400 transition-colors duration-200 flex items-center gap-2">
+                            <i class="fas fa-leaf text-amber-500"></i>
+                            Eco Commitments
+                        </a>
+                        <a href="#gallery" class="text-gray-300 hover:text-amber-400 transition-colors duration-200 flex items-center gap-2">
+                            <i class="fas fa-images text-amber-500"></i>
+                            Gallery
+                        </a>
+                    </div>
                 </div>
-                <div class="text-sm text-gray-400">
-                    <p>&copy; COPYRIGHT SAADANI KASA BAY</p>
-                    <p>Realization <a href="https://www.nancomcy.fr/" target="_blank" rel="noopener" class="text-emerald-400 hover:text-emerald-300 transition-colors duration-200">Agence NANCOMCY</a></p>
+
+                <!-- Legal and Credits -->
+                <div class="space-y-6">
+                    <h4 class="text-xl font-bold text-white">Legal & Credits</h4>
+                    <div class="space-y-4">
+                        <div class="flex flex-col space-y-2">
+                            <a href="#" class="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Terms of Use</a>
+                            <a href="#" class="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Privacy Policy</a>
+                        </div>
+                        <div class="text-sm text-gray-400 space-y-2">
+                            <p>&copy; {{ date('Y') }} {{ $siteName }}</p>
+                            <p>All rights reserved</p>
+                            <!-- <p class="pt-2">
+                                Website by
+                                <a href="https://www.nancomcy.fr/" target="_blank" rel="noopener" class="text-emerald-400 hover:text-emerald-300 transition-colors duration-200 font-semibold">
+                                    Agence NANCOMCY
+                                </a>
+                            </p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Border -->
+            <div class="mt-12 pt-8 border-t border-gray-700">
+                <div class="text-center text-gray-400 text-sm">
+                    <p>🌿 Committed to sustainable tourism and environmental protection 🌿</p>
                 </div>
             </div>
         </div>
@@ -487,36 +678,8 @@
             }
         }
 
-        // Gallery Data and Initialization
-        function initGallery() {
-            const galleryImages = [
-                "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=800&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1520637836862-4d197d17c93a?w=600&h=400&fit=crop&crop=center",
-                "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?w=600&h=400&fit=crop&crop=center"
-            ];
-
-            const galleryGrid = document.getElementById('gallery-grid');
-            if (galleryGrid) {
-                galleryGrid.innerHTML = galleryImages.map((image, index) => `
-                    <div class="gallery-item animate-fade-in-up animate-delay-${(index % 4 + 1) * 100}">
-                        <img src="${image}" alt="Saadani Kasa Bay Gallery Image ${index + 1}" class="w-full h-64 object-cover">
-                    </div>
-                `).join('');
-            }
-        }
+        // Gallery functionality is now handled by the backend and displayed in the Blade template
+        // The gallery images are loaded from the database via the SaadaniController
 
         // Scroll Animations
         function initScrollAnimations() {

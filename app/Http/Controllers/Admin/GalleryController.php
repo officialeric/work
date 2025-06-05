@@ -8,7 +8,8 @@ use App\Models\AdminActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class GalleryController extends Controller
 {
@@ -41,13 +42,16 @@ class GalleryController extends Controller
             // Create thumbnail (optional - requires Intervention Image package)
             $thumbnailPath = null;
             try {
+                $manager = new ImageManager(new Driver());
                 $thumbnailPath = 'gallery/thumbnails/' . basename($imagePath);
-                $thumbnail = Image::make(Storage::disk('public')->path($imagePath))
-                    ->resize(300, 300, function ($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
-                    });
-                Storage::disk('public')->put($thumbnailPath, $thumbnail->encode());
+
+                // Ensure thumbnails directory exists
+                Storage::disk('public')->makeDirectory('gallery/thumbnails');
+
+                $image = $manager->read(Storage::disk('public')->path($imagePath));
+                $image->resize(300, 300);
+
+                Storage::disk('public')->put($thumbnailPath, $image->encode());
             } catch (\Exception $e) {
                 // If thumbnail creation fails, use original image
                 $thumbnailPath = $imagePath;

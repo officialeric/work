@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Admin Panel') - Saadani Kasa Bay</title>
+    <title>@yield('title', 'Admin Panel') - {{ \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,7 +87,19 @@
             <div class="flex flex-col h-full">
                 <!-- Logo -->
                 <div class="flex items-center justify-center h-16 px-4 bg-emerald-600">
-                    <h1 class="text-white text-xl font-bold">Saadani Admin</h1>
+                    @php
+                        $siteName = \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay');
+                        $siteLogo = \App\Models\WebsiteSetting::get('site_logo');
+                    @endphp
+
+                    @if($siteLogo)
+                        <div class="flex items-center">
+                            <img src="{{ asset('storage/' . $siteLogo) }}" alt="{{ $siteName }}" class="h-8 w-auto mr-2">
+                            <h1 class="text-white text-lg font-bold">Admin</h1>
+                        </div>
+                    @else
+                        <h1 class="text-white text-xl font-bold">{{ Str::limit($siteName, 15) }} Admin</h1>
+                    @endif
                 </div>
 
                 <!-- Navigation -->
@@ -122,10 +134,22 @@
                         Commitments
                     </a>
 
-                    <a href="{{ route('admin.gallery.index') }}" 
+                    <a href="{{ route('admin.gallery.index') }}"
                        class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}">
                         <i class="fas fa-images w-5 h-5 mr-3"></i>
                         Gallery
+                    </a>
+
+                    <a href="{{ route('admin.locations.index') }}"
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.locations.*') ? 'active' : '' }}">
+                        <i class="fas fa-map-marker-alt w-5 h-5 mr-3"></i>
+                        Locations
+                    </a>
+
+                    <a href="{{ route('admin.hosting-sections.index') }}"
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.hosting-sections.*') ? 'active' : '' }}">
+                        <i class="fas fa-home w-5 h-5 mr-3"></i>
+                        Hosting Sections
                     </a>
                 </nav>
 
