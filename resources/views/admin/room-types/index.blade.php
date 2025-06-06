@@ -4,7 +4,7 @@
 @section('page-title', 'Room Types')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Room Types</span>
 @endsection
@@ -18,7 +18,7 @@
             <p class="text-gray-600 mt-1">Manage your hotel room types, pricing, and tent configurations</p>
         </div>
         <a href="{{ route('admin.room-types.create') }}"
-           class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+           class="inline-flex items-center px-4 py-2 bg-golden-600 text-white text-sm font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
             <i class="fas fa-plus mr-2"></i>
             + Add New Room Type
         </a>
@@ -30,7 +30,7 @@
             @foreach($roomTypes as $roomType)
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
                     <!-- Card Header -->
-                    <div class="bg-emerald-600 text-white px-6 py-4">
+                    <div class="bg-golden-600 text-white px-6 py-4">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <i class="fas fa-door-open mr-3"></i>
@@ -56,9 +56,9 @@
                     <div class="p-6">
                         <!-- Price and Tent Info -->
                         <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div class="bg-emerald-50 rounded-lg p-3">
-                                <div class="text-emerald-600 text-sm font-medium">Price</div>
-                                <div class="text-emerald-800 text-xl font-bold">${{ number_format($roomType->price, 0) }}</div>
+                            <div class="bg-golden-50 rounded-lg p-3">
+                                <div class="text-golden-600 text-sm font-medium">Price</div>
+                                <div class="text-golden-800 text-xl font-bold">${{ number_format($roomType->price, 0) }}</div>
                             </div>
                             <div class="bg-blue-50 rounded-lg p-3">
                                 <div class="text-blue-600 text-sm font-medium">Tent Configuration</div>
@@ -143,7 +143,7 @@
                 <h3 class="text-xl font-bold text-gray-900 mb-4">No Room Types Yet</h3>
                 <p class="text-gray-600 mb-6">Start by creating your first room type with pricing and tent configuration.</p>
                 <a href="{{ route('admin.room-types.create') }}"
-                   class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                   class="inline-flex items-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                     <i class="fas fa-plus mr-2"></i>
                     + Add New Room Type
                 </a>

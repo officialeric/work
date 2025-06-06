@@ -102,13 +102,13 @@
                     <!-- Section Header -->
                     <div class="text-center mb-20">
                         <div class="inline-block">
-                            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
+                            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-6">
                                 {{ $location->title }}
                             </h2>
-                            <div class="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mb-6"></div>
+                            <div class="w-24 h-1 bg-gradient-to-r from-golden-600 to-amber-500 mx-auto mb-6"></div>
                         </div>
                         @if($location->subtitle)
-                            <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent mb-6">
+                            <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-golden-600 to-amber-600 bg-clip-text text-transparent mb-6">
                                 {{ $location->subtitle }}
                             </h3>
                         @endif
@@ -118,8 +118,8 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center mb-20">
                         <!-- Text Content -->
                         <div class="space-y-8">
-                            <div class="bg-gradient-to-br from-emerald-50 via-amber-50/30 to-emerald-100/50 rounded-3xl p-8 border border-emerald-200/50 shadow-lg">
-                                <h4 class="text-2xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">{{ $location->title }}</h4>
+                            <div class="bg-gradient-to-br from-golden-50 via-amber-50/30 to-golden-100/50 rounded-3xl p-8 border border-golden-200/50 shadow-lg">
+                                <h4 class="text-2xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-6">{{ $location->title }}</h4>
                                 <p class="text-lg text-gray-700 leading-relaxed mb-6">
                                     {!! nl2br(e($location->description)) !!}
                                 </p>
@@ -131,11 +131,11 @@
                             </div>
 
                             <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="{{ $location->button_link }}" class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-600 to-amber-600 hover:from-emerald-700 hover:to-amber-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <a href="{{ $location->button_link }}" class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-golden-600 to-amber-600 hover:from-golden-700 hover:to-amber-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-images"></i>
                                     {{ $location->button_text }}
                                 </a>
-                                <a href="#activities" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-amber-600 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                <a href="#activities" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-golden-600 text-golden-600 hover:bg-gradient-to-r hover:from-golden-600 hover:to-amber-600 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                                     <i class="fas fa-compass"></i>
                                     Explore Activities
                                 </a>
@@ -201,12 +201,12 @@
                 <!-- Default Content -->
                 <div class="text-center mb-20">
                     <div class="inline-block">
-                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
+                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-6">
                             Location
                         </h2>
-                        <div class="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mb-6"></div>
+                        <div class="w-24 h-1 bg-gradient-to-r from-golden-600 to-amber-500 mx-auto mb-6"></div>
                     </div>
-                    <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent mb-6">
+                    <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-golden-600 to-amber-600 bg-clip-text text-transparent mb-6">
                         A breathtaking setting
                     </h3>
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -217,8 +217,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
                     <!-- Text Content -->
                     <div class="space-y-8">
-                        <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-3xl p-8 border border-emerald-200/50">
-                            <h4 class="text-2xl font-bold text-emerald-800 mb-6">Prime Location</h4>
+                        <div class="bg-gradient-to-br from-golden-50 to-golden-100/50 rounded-3xl p-8 border border-golden-200/50">
+                            <h4 class="text-2xl font-bold text-golden-800 mb-6">Prime Location</h4>
                             <p class="text-lg text-gray-700 leading-relaxed mb-6">
                                 100 km north of Dar es Salaam, facing the island of Zanzibar, discover Saadani Kasa Bay.
                                 Nestled between a pristine white sand beach and the infinite blue of the Indian Ocean,
@@ -232,11 +232,11 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="#gallery" class="inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <a href="#gallery" class="inline-flex items-center justify-center gap-3 bg-golden-600 hover:bg-golden-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                 <i class="fas fa-images"></i>
                                 View Gallery
                             </a>
-                            <a href="#activities" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
+                            <a href="#activities" class="inline-flex items-center justify-center gap-3 bg-white border-2 border-golden-600 text-golden-600 hover:bg-golden-600 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
                                 <i class="fas fa-compass"></i>
                                 Explore Activities
                             </a>
@@ -274,20 +274,20 @@
     </section>
 
     <!-- Hosting Section -->
-    <section id="hosting" class="py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-emerald-50/20">
+    <section id="hosting" class="py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-golden-50/20">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             @if($hostingSections->count() > 0)
                 @foreach($hostingSections as $hostingSection)
                     <!-- Section Header -->
                     <div class="text-center mb-20">
                         <div class="inline-block">
-                            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
+                            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-6">
                                 {{ $hostingSection->title }}
                             </h2>
-                            <div class="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mb-6"></div>
+                            <div class="w-24 h-1 bg-gradient-to-r from-golden-600 to-amber-500 mx-auto mb-6"></div>
                         </div>
                         @if($hostingSection->subtitle)
-                            <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent mb-6">
+                            <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-golden-600 to-amber-600 bg-clip-text text-transparent mb-6">
                                 {{ $hostingSection->subtitle }}
                             </h3>
                         @endif
@@ -303,12 +303,12 @@
                                 {!! nl2br(e($hostingSection->description)) !!}
                             </p>
                             @if($hostingSection->video_url)
-                                <a href="{{ $hostingSection->video_url }}" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-amber-600 hover:from-emerald-700 hover:to-amber-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <a href="{{ $hostingSection->video_url }}" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-r from-golden-600 to-amber-600 hover:from-golden-700 hover:to-amber-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-play"></i>
                                     {{ $hostingSection->video_button_text }}
                                 </a>
                             @else
-                                <button onclick="alert('Video will be available soon!')" class="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-amber-600 hover:from-emerald-700 hover:to-amber-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <button onclick="alert('Video will be available soon!')" class="inline-flex items-center gap-3 bg-gradient-to-r from-golden-600 to-amber-600 hover:from-golden-700 hover:to-amber-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-play"></i>
                                     {{ $hostingSection->video_button_text }}
                                 </button>
@@ -320,12 +320,12 @@
                 <!-- Default Content -->
                 <div class="text-center mb-20">
                     <div class="inline-block">
-                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-800 mb-6">
-                            #Hosting 
+                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-golden-800 mb-6">
+                            #Hosting
                         </h2>
-                        <div class="w-24 h-1 bg-emerald-600 mx-auto mb-6"></div>
+                        <div class="w-24 h-1 bg-golden-600 mx-auto mb-6"></div>
                     </div>
-                    <h3 class="font-display text-2xl md:text-3xl text-emerald-600 mb-6">
+                    <h3 class="font-display text-2xl md:text-3xl text-golden-600 mb-6">
                         Escape & Serenity
                     </h3>
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -340,7 +340,7 @@
                             combining discovery, tranquillity and wonder. A timeless escape to the essential, a view of the ocean
                             from your room as a call to serenity, and a breathtakingly beautiful natural setting to enhance your stay.
                         </p>
-                        <button onclick="alert('Video will be available soon!')" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <button onclick="alert('Video will be available soon!')" class="inline-flex items-center gap-3 bg-golden-600 hover:bg-golden-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                             <i class="fas fa-play"></i>
                             Watch Experience Video
                         </button>
@@ -351,7 +351,7 @@
             <!-- Activities Section -->
             <div id="activities">
                 <div class="text-center mb-16">
-                    <h4 class="font-display text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
+                    <h4 class="font-display text-3xl md:text-4xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-6">
                         Activities & Experiences
                     </h4>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -371,7 +371,7 @@
                                          alt="{{ $activity->title }}"
                                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                     @if($activity->number)
-                                        <div class="absolute top-6 left-6 bg-gradient-to-r from-emerald-600 to-amber-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                        <div class="absolute top-6 left-6 bg-gradient-to-r from-golden-600 to-amber-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                                             {{ $activity->number }}
                                         </div>
                                     @endif
@@ -380,14 +380,14 @@
                                 </div>
                             @endif
                             <div class="p-8">
-                                <h5 class="text-xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-4 group-hover:from-emerald-600 group-hover:to-amber-600 transition-all duration-300">
+                                <h5 class="text-xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-4 group-hover:from-golden-600 group-hover:to-amber-600 transition-all duration-300">
                                     {{ $activity->title }}
                                 </h5>
                                 <p class="text-gray-600 leading-relaxed text-sm">
                                     {!! nl2br(e($activity->description)) !!}
                                 </p>
                                 <!-- Read more indicator -->
-                                <div class="mt-6 flex items-center text-emerald-600 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="mt-6 flex items-center text-golden-600 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <span>Learn more</span>
                                     <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
                                 </div>
@@ -400,17 +400,17 @@
     </section>
 
     <!-- Facilities Section -->
-    <section id="facilities" class="py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-emerald-50/30">
+    <section id="facilities" class="py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-golden-50/30">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <!-- Section Header -->
             <div class="text-center mb-20">
                 <div class="inline-block">
-                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-6">
                         Facilities
                     </h2>
-                    <div class="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mb-6"></div>
+                    <div class="w-24 h-1 bg-gradient-to-r from-golden-600 to-amber-500 mx-auto mb-6"></div>
                 </div>
-                <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent mb-6">
+                <h3 class="font-display text-2xl md:text-3xl bg-gradient-to-r from-golden-600 to-amber-600 bg-clip-text text-transparent mb-6">
                     A charming retreat in the heart of nature
                 </h3>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -424,8 +424,8 @@
                 <div class="space-y-8">
                     @if($accommodationSections->count() > 0)
                         @foreach($accommodationSections as $accommodationSection)
-                            <div class="bg-gradient-to-br from-emerald-50 via-amber-50/30 to-emerald-100/50 rounded-3xl p-8 shadow-lg border border-emerald-200/50">
-                                <h4 class="text-2xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">{{ $accommodationSection->title }}</h4>
+                            <div class="bg-gradient-to-br from-golden-50 via-amber-50/30 to-golden-100/50 rounded-3xl p-8 shadow-lg border border-golden-200/50">
+                                <h4 class="text-2xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-6">{{ $accommodationSection->title }}</h4>
                                 <p class="text-lg text-gray-700 leading-relaxed mb-6">
                                     {!! nl2br(e($accommodationSection->description)) !!}
                                 </p>
@@ -433,8 +433,8 @@
                         @endforeach
                     @else
                         <!-- Default Content -->
-                        <div class="bg-gradient-to-br from-emerald-50 via-amber-50/30 to-emerald-100/50 rounded-3xl p-8 shadow-lg border border-emerald-200/50">
-                            <h4 class="text-2xl font-bold bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent mb-6">Luxury Accommodations</h4>
+                        <div class="bg-gradient-to-br from-golden-50 via-amber-50/30 to-golden-100/50 rounded-3xl p-8 shadow-lg border border-golden-200/50">
+                            <h4 class="text-2xl font-bold bg-gradient-to-r from-golden-800 to-amber-700 bg-clip-text text-transparent mb-6">Luxury Accommodations</h4>
                             <p class="text-lg text-gray-700 leading-relaxed mb-6">
                                 Saadani Kasa Bay offers 12 exceptional rooms, divided between 4 family villas and 8 elegantly
                                 appointed double villas. The family villas, each measuring a minimum of 25 m², include a living room,
@@ -450,7 +450,7 @@
                         @foreach($amenities as $amenity)
                             <div class="group bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                 <div class="flex items-center gap-4">
-                                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-golden-500 to-golden-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                                         <i class="{{ $amenity->icon }} text-white text-lg"></i>
                                     </div>
                                     <div>
@@ -494,17 +494,17 @@
     </section>
 
     <!-- Room Types Section -->
-    <section id="room-types" class="py-24 lg:py-32 bg-gradient-to-br from-amber-50 via-emerald-50/30 to-amber-100/20">
+    <section id="room-types" class="py-24 lg:py-32 bg-gradient-to-br from-amber-50 via-golden-50/30 to-amber-100/20">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <!-- Section Header -->
             <div class="text-center mb-20">
                 <div class="inline-block">
-                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-800 mb-6">
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-golden-800 mb-6">
                         Room Types & Pricing
                     </h2>
-                    <div class="w-24 h-1 bg-emerald-600 mx-auto mb-6"></div>
+                    <div class="w-24 h-1 bg-golden-600 mx-auto mb-6"></div>
                 </div>
-                <h3 class="font-display text-2xl md:text-3xl text-emerald-600 mb-6">
+                <h3 class="font-display text-2xl md:text-3xl text-golden-600 mb-6">
                     Choose your perfect accommodation
                 </h3>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -516,7 +516,7 @@
             @if($roomTypes->count() > 0)
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($roomTypes as $roomType)
-                        <div class="group bg-white rounded-3xl shadow-lg border border-emerald-200/50 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                        <div class="group bg-white rounded-3xl shadow-lg border border-golden-200/50 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
                             <!-- Room Image -->
                             <div class="relative h-64 overflow-hidden">
                                 @if($roomType->main_image_url)
@@ -524,13 +524,13 @@
                                          alt="{{ $roomType->name }}"
                                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 @else
-                                    <div class="w-full h-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
+                                    <div class="w-full h-full bg-gradient-to-br from-golden-400 to-golden-600 flex items-center justify-center">
                                         <i class="fas fa-door-open text-white text-4xl"></i>
                                     </div>
                                 @endif
 
                                 <!-- Price Badge -->
-                                <div class="absolute top-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full shadow-lg">
+                                <div class="absolute top-4 right-4 bg-golden-600 text-white px-4 py-2 rounded-full shadow-lg">
                                     <span class="text-lg font-bold">${{ number_format($roomType->price, 0) }}</span>
                                     <span class="text-sm opacity-90">/night</span>
                                 </div>
@@ -545,14 +545,14 @@
                             <!-- Room Content -->
                             <div class="p-6">
                                 <!-- Room Name -->
-                                <h4 class="text-xl font-bold text-emerald-800 mb-3">{{ $roomType->name }}</h4>
+                                <h4 class="text-xl font-bold text-golden-800 mb-3">{{ $roomType->name }}</h4>
 
                                 <!-- Tent Configuration -->
-                                <div class="flex items-center mb-4 p-3 bg-emerald-50 rounded-lg">
-                                    <i class="fas fa-campground text-emerald-600 mr-3"></i>
+                                <div class="flex items-center mb-4 p-3 bg-golden-50 rounded-lg">
+                                    <i class="fas fa-campground text-golden-600 mr-3"></i>
                                     <div>
-                                        <div class="text-sm text-emerald-600 font-medium">Tent Configuration</div>
-                                        <div class="text-emerald-800 font-semibold">{{ $roomType->tent_configuration }}</div>
+                                        <div class="text-sm text-golden-600 font-medium">Tent Configuration</div>
+                                        <div class="text-golden-800 font-semibold">{{ $roomType->tent_configuration }}</div>
                                     </div>
                                 </div>
 
@@ -576,12 +576,12 @@
                                         <div class="space-y-1">
                                             @foreach(array_slice($roomType->features, 0, 3) as $feature)
                                                 <div class="flex items-center text-sm text-gray-600">
-                                                    <i class="fas fa-check text-emerald-500 mr-2 text-xs"></i>
+                                                    <i class="fas fa-check text-golden-500 mr-2 text-xs"></i>
                                                     {{ $feature }}
                                                 </div>
                                             @endforeach
                                             @if(count($roomType->features) > 3)
-                                                <div class="text-xs text-emerald-600 font-medium">
+                                                <div class="text-xs text-golden-600 font-medium">
                                                     +{{ count($roomType->features) - 3 }} more features
                                                 </div>
                                             @endif
@@ -590,8 +590,8 @@
                                 @endif
 
                                 <!-- Book Now Button -->
-                                <a href="mailto:{{ $settings['contact_email'] }}?subject=Booking Inquiry - {{ $roomType->name }}&body=Hello, I would like to inquire about booking the {{ $roomType->name }} at {{ $settings['site_name'] }}."
-                                   class="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold rounded-xl hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                <a href="{{ route('booking.create', ['room_type' => $roomType->id]) }}"
+                                   class="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-golden-600 to-golden-700 text-white font-semibold rounded-xl hover:from-golden-700 hover:to-golden-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
                                     <i class="fas fa-calendar-check mr-2"></i>
                                     Book Now
                                 </a>
@@ -602,13 +602,13 @@
 
                 <!-- Call to Action -->
                 <div class="text-center mt-16">
-                    <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-3xl p-8 text-white shadow-2xl">
+                    <div class="bg-gradient-to-r from-golden-600 to-golden-700 rounded-3xl p-8 text-white shadow-2xl">
                         <h4 class="text-2xl font-bold mb-4">Need Help Choosing?</h4>
-                        <p class="text-emerald-100 mb-6 max-w-2xl mx-auto">
+                        <p class="text-golden-100 mb-6 max-w-2xl mx-auto">
                             Our team is here to help you select the perfect room type for your stay. Contact us for personalized recommendations.
                         </p>
                         <a href="mailto:{{ $settings['contact_email'] }}"
-                           class="inline-flex items-center gap-3 bg-white text-emerald-700 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+                           class="inline-flex items-center gap-3 bg-white text-golden-700 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
                             <i class="fas fa-phone"></i>
                             Contact Our Team
                         </a>
@@ -617,9 +617,9 @@
             @else
                 <!-- Empty State -->
                 <div class="text-center py-20">
-                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-12 shadow-lg border border-emerald-200/50 max-w-md mx-auto">
-                        <i class="fas fa-door-open text-emerald-300 text-6xl mb-6"></i>
-                        <h4 class="text-xl font-bold text-emerald-800 mb-4">Room Types Coming Soon</h4>
+                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-12 shadow-lg border border-golden-200/50 max-w-md mx-auto">
+                        <i class="fas fa-door-open text-golden-300 text-6xl mb-6"></i>
+                        <h4 class="text-xl font-bold text-golden-800 mb-4">Room Types Coming Soon</h4>
                         <p class="text-gray-600">Our luxury room types and pricing information will be available shortly.</p>
                     </div>
                 </div>
@@ -628,7 +628,7 @@
     </section>
 
     <!-- Commitments Section -->
-    <section id="commitments" class="py-24 lg:py-32 bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-900 text-white relative overflow-hidden">
+    <section id="commitments" class="py-24 lg:py-32 bg-gradient-to-br from-golden-900 via-golden-800 to-golden-900 text-white relative overflow-hidden">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="30" cy="30" r="2"/></g></svg>');"></div>
@@ -641,12 +641,12 @@
                     <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                         Our Commitments
                     </h2>
-                    <div class="w-24 h-1 bg-emerald-400 mx-auto mb-6"></div>
+                    <div class="w-24 h-1 bg-golden-400 mx-auto mb-6"></div>
                 </div>
-                <h3 class="font-display text-2xl md:text-3xl text-emerald-200 mb-6">
+                <h3 class="font-display text-2xl md:text-3xl text-golden-200 mb-6">
                     For sustainable and respectful tourism
                 </h3>
-                <p class="text-lg text-emerald-100 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-lg text-golden-100 max-w-3xl mx-auto leading-relaxed">
                     Pioneering eco-tourism practices that protect our environment while creating unforgettable experiences
                 </p>
             </div>
@@ -657,7 +657,7 @@
                 <div class="space-y-8">
                     <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
                         <h4 class="text-2xl font-bold text-white mb-6">Eco-Tourism Innovation</h4>
-                        <p class="text-lg text-emerald-100 leading-relaxed">
+                        <p class="text-lg text-golden-100 leading-relaxed">
                             From the outset, Saadani Kasa Bay was designed to incorporate the most innovative eco-tourism practices,
                             ensuring our paradise remains pristine for future generations.
                         </p>
@@ -668,8 +668,8 @@
                         @foreach($commitments as $commitment)
                             <div class="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300">
                                 <div class="flex items-start gap-4">
-                                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                        <i class="{{ $commitment->icon }} text-emerald-900 text-lg font-bold"></i>
+                                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-golden-400 to-golden-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                        <i class="{{ $commitment->icon }} text-golden-900 text-lg font-bold"></i>
                                     </div>
                                     <div class="flex-1">
                                         <span class="text-white font-semibold text-lg leading-relaxed">{{ $commitment->title }}</span>
@@ -686,20 +686,20 @@
                         <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=800&fit=crop&crop=center"
                              alt="Sustainable tourism"
                              class="w-full h-96 object-cover rounded-3xl shadow-2xl group-hover:shadow-3xl transition-shadow duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/30 to-transparent rounded-3xl"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-golden-900/30 to-transparent rounded-3xl"></div>
                     </div>
 
                     <!-- Certification Badge -->
-                    <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-2xl border-4 border-emerald-400">
+                    <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-2xl border-4 border-golden-400">
                         <div class="text-center">
-                            <i class="fas fa-leaf text-emerald-600 text-2xl mb-2"></i>
-                            <div class="text-emerald-800 font-bold text-sm">ECO</div>
-                            <div class="text-emerald-600 font-semibold text-xs">CERTIFIED</div>
+                            <i class="fas fa-leaf text-golden-600 text-2xl mb-2"></i>
+                            <div class="text-golden-800 font-bold text-sm">ECO</div>
+                            <div class="text-golden-600 font-semibold text-xs">CERTIFIED</div>
                         </div>
                     </div>
 
                     <!-- Floating Stats -->
-                    <div class="absolute top-6 -left-6 bg-emerald-400 text-emerald-900 rounded-2xl p-4 shadow-xl">
+                    <div class="absolute top-6 -left-6 bg-golden-400 text-golden-900 rounded-2xl p-4 shadow-xl">
                         <div class="text-center">
                             <div class="text-2xl font-bold">100%</div>
                             <div class="text-xs font-semibold">Solar Power</div>

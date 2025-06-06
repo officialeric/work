@@ -21,7 +21,7 @@
     <div class="bg-white rounded-xl shadow-sm border border-gray-200">
         <div class="px-6 py-4 border-b border-gray-200">
             <h3 class="text-lg font-semibold text-gray-900">
-                <i class="fas fa-plus mr-2 text-emerald-600"></i>Location Details
+                <i class="fas fa-plus mr-2 text-golden-600"></i>Location Details
             </h3>
         </div>
         <div class="p-6">

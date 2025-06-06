@@ -4,9 +4,9 @@
 @section('page-title', 'View Room Type')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
-    <a href="{{ route('admin.room-types.index') }}" class="text-emerald-600 hover:text-emerald-800">Room Types</a>
+    <a href="{{ route('admin.room-types.index') }}" class="text-golden-600 hover:text-golden-800">Room Types</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">{{ $roomType->name }}</span>
 @endsection
@@ -15,7 +15,7 @@
 <div class="max-w-4xl mx-auto">
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <!-- Header -->
-        <div class="bg-emerald-600 text-white px-6 py-4">
+        <div class="bg-golden-600 text-white px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <i class="fas fa-door-open mr-3"></i>
@@ -39,10 +39,10 @@
             <!-- Basic Information -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Price -->
-                <div class="bg-emerald-50 rounded-lg p-4">
-                    <div class="text-emerald-600 text-sm font-medium mb-1">Price</div>
-                    <div class="text-emerald-800 text-2xl font-bold">${{ number_format($roomType->price, 0) }}</div>
-                    <div class="text-emerald-600 text-sm">{{ $roomType->currency }}</div>
+                <div class="bg-golden-50 rounded-lg p-4">
+                    <div class="text-golden-600 text-sm font-medium mb-1">Price</div>
+                    <div class="text-golden-800 text-2xl font-bold">${{ number_format($roomType->price, 0) }}</div>
+                    <div class="text-golden-600 text-sm">{{ $roomType->currency }}</div>
                 </div>
 
                 <!-- Tent Configuration -->
@@ -83,7 +83,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                             @foreach($roomType->features as $feature)
                                 <div class="flex items-center">
-                                    <i class="fas fa-check text-emerald-600 mr-2"></i>
+                                    <i class="fas fa-check text-golden-600 mr-2"></i>
                                     <span class="text-gray-700">{{ $feature }}</span>
                                 </div>
                             @endforeach
@@ -100,7 +100,7 @@
                         @if($roomType->main_image_url)
                             <div class="relative">
                                 <img src="{{ $roomType->main_image_url }}" alt="Main Image" class="w-full h-48 object-cover rounded-lg shadow-sm">
-                                <span class="absolute top-2 left-2 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Main</span>
+                                <span class="absolute top-2 left-2 bg-golden-600 text-white text-xs px-2 py-1 rounded">Main</span>
                             </div>
                         @endif
                         @foreach(['image_1_url', 'image_2_url', 'image_3_url'] as $index => $imageAttr)

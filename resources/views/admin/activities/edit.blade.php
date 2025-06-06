@@ -4,9 +4,9 @@
 @section('page-title', 'Edit Activity')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
-    <a href="{{ route('admin.activities.index') }}" class="text-emerald-600 hover:text-emerald-800">Activities</a>
+    <a href="{{ route('admin.activities.index') }}" class="text-golden-600 hover:text-golden-800">Activities</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Edit</span>
 @endsection
@@ -33,7 +33,7 @@
                        name="title" 
                        value="{{ old('title', $activity->title) }}"
                        required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                        placeholder="Enter activity title">
                 @error('title')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -49,7 +49,7 @@
                        id="number" 
                        name="number" 
                        value="{{ old('number', $activity->number) }}"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                        placeholder="e.g., 1/7">
                 @error('number')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -66,7 +66,7 @@
                           name="description" 
                           rows="6"
                           required
-                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                           placeholder="Enter detailed description of the activity">{{ old('description', $activity->description) }}</textarea>
                 @error('description')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -89,14 +89,14 @@
                     </div>
                 @endif
 
-                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-emerald-400 transition-colors duration-200">
+                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-golden-400 transition-colors duration-200">
                     <div class="space-y-1 text-center">
                         <div id="image-preview" class="hidden mb-4">
                             <img id="preview-img" src="" alt="Preview" class="mx-auto h-32 w-auto rounded-lg">
                         </div>
                         <i class="fas fa-cloud-upload-alt text-gray-400 text-3xl mb-3"></i>
                         <div class="flex text-sm text-gray-600">
-                            <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-emerald-600 hover:text-emerald-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-emerald-500">
+                            <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-golden-600 hover:text-golden-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-golden-500">
                                 <span>{{ $activity->image ? 'Replace image' : 'Upload a file' }}</span>
                                 <input id="image" name="image" type="file" accept="image/*" class="sr-only" onchange="previewImage(this)">
                             </label>
@@ -120,7 +120,7 @@
                        name="sort_order" 
                        value="{{ old('sort_order', $activity->sort_order) }}"
                        min="0"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                        placeholder="0">
                 @error('sort_order')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -135,7 +135,7 @@
                            name="is_active" 
                            value="1"
                            {{ old('is_active', $activity->is_active) ? 'checked' : '' }}
-                           class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
+                           class="w-4 h-4 text-golden-600 bg-gray-100 border-gray-300 rounded focus:ring-golden-500 focus:ring-2">
                     <span class="ml-2 text-sm font-medium text-gray-700">Active</span>
                 </label>
                 <p class="mt-1 text-sm text-gray-500">Inactive activities won't be displayed on the website</p>
@@ -156,7 +156,7 @@
                         Reset
                     </button>
                     <button type="submit" 
-                            class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                            class="inline-flex items-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                         <i class="fas fa-save mr-2"></i>
                         Update Activity
                     </button>
@@ -215,11 +215,11 @@
     });
 
     function highlight(e) {
-        dropZone.classList.add('border-emerald-400', 'bg-emerald-50');
+        dropZone.classList.add('border-golden-400', 'bg-golden-50');
     }
 
     function unhighlight(e) {
-        dropZone.classList.remove('border-emerald-400', 'bg-emerald-50');
+        dropZone.classList.remove('border-golden-400', 'bg-golden-50');
     }
 
     dropZone.addEventListener('drop', handleDrop, false);

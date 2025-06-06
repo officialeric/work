@@ -21,7 +21,7 @@
     <div class="bg-white rounded-xl shadow-sm border border-gray-200">
         <div class="px-6 py-4 border-b border-gray-200">
             <h3 class="text-lg font-semibold text-gray-900">
-                <i class="fas fa-plus mr-2 text-emerald-600"></i>Hosting Section Details
+                <i class="fas fa-plus mr-2 text-golden-600"></i>Hosting Section Details
             </h3>
         </div>
         <div class="p-6">
@@ -30,7 +30,7 @@
 
                 <!-- Basic Information Section -->
                 <div>
-                    <h4 class="text-lg font-medium text-emerald-600 mb-4">
+                    <h4 class="text-lg font-medium text-golden-600 mb-4">
                         <i class="fas fa-info-circle mr-2"></i>Basic Information
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -45,7 +45,7 @@
                                    value="{{ old('title') }}"
                                    required
                                    placeholder="e.g., Hosting"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('title') border-red-500 @enderror">
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('title') border-red-500 @enderror">
                             @error('title')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -59,7 +59,7 @@
                                    name="subtitle"
                                    value="{{ old('subtitle') }}"
                                    placeholder="e.g., Escape & Serenity"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('subtitle') border-red-500 @enderror">
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('subtitle') border-red-500 @enderror">
                             @error('subtitle')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -69,7 +69,7 @@
 
                 <!-- Content Section -->
                 <div>
-                    <h4 class="text-lg font-medium text-emerald-600 mb-4">
+                    <h4 class="text-lg font-medium text-golden-600 mb-4">
                         <i class="fas fa-file-alt mr-2"></i>Content
                     </h4>
                     <div>
@@ -81,7 +81,7 @@
                                   rows="5"
                                   required
                                   placeholder="Enter the hosting section description..."
-                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
                         @error('description')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -91,7 +91,7 @@
 
                 <!-- Video Settings -->
                 <div>
-                    <h4 class="text-lg font-medium text-emerald-600 mb-4">
+                    <h4 class="text-lg font-medium text-golden-600 mb-4">
                         <i class="fas fa-play-circle mr-2"></i>Video Settings
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -104,7 +104,7 @@
                                    name="video_button_text"
                                    value="{{ old('video_button_text', 'Watch Experience Video') }}"
                                    required
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('video_button_text') border-red-500 @enderror">
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('video_button_text') border-red-500 @enderror">
                             @error('video_button_text')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -117,7 +117,7 @@
                                    name="video_url"
                                    value="{{ old('video_url') }}"
                                    placeholder="https://www.youtube.com/watch?v=..."
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('video_url') border-red-500 @enderror">
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('video_url') border-red-500 @enderror">
                             @error('video_url')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -128,7 +128,7 @@
 
                 <!-- Background Image -->
                 <div>
-                    <h4 class="text-lg font-medium text-emerald-600 mb-4">
+                    <h4 class="text-lg font-medium text-golden-600 mb-4">
                         <i class="fas fa-image mr-2"></i>Background Image
                     </h4>
                     <div>
@@ -137,7 +137,7 @@
                                id="background_image"
                                name="background_image"
                                accept="image/*"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('background_image') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('background_image') border-red-500 @enderror">
                         @error('background_image')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -147,7 +147,7 @@
 
                 <!-- Settings -->
                 <div>
-                    <h4 class="text-lg font-medium text-emerald-600 mb-4">
+                    <h4 class="text-lg font-medium text-golden-600 mb-4">
                         <i class="fas fa-cog mr-2"></i>Settings
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -161,7 +161,7 @@
                                    value="{{ old('sort_order', 1) }}"
                                    min="0"
                                    required
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('sort_order') border-red-500 @enderror">
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('sort_order') border-red-500 @enderror">
                             @error('sort_order')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -175,7 +175,7 @@
                                        name="is_active"
                                        value="1"
                                        {{ old('is_active', true) ? 'checked' : '' }}
-                                       class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
+                                       class="w-4 h-4 text-golden-600 bg-gray-100 border-gray-300 rounded focus:ring-golden-500 focus:ring-2">
                                 <span class="ml-2 text-sm text-gray-700">Active (visible on website)</span>
                             </label>
                         </div>
@@ -185,7 +185,7 @@
                 <!-- Submit Buttons -->
                 <div class="flex space-x-3 pt-6">
                     <button type="submit"
-                            class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                            class="inline-flex items-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                         <i class="fas fa-save mr-2"></i>Create Hosting Section
                     </button>
                     <a href="{{ route('admin.hosting-sections.index') }}"

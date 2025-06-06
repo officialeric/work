@@ -4,7 +4,7 @@
 @section('page-title', 'Activities Management')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Activities</span>
 @endsection
@@ -18,7 +18,7 @@
             <p class="text-gray-600 mt-1 text-sm sm:text-base">Manage the 7 featured activities for Saadani Kasa Bay</p>
         </div>
         <a href="{{ route('admin.activities.create') }}"
-           class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+           class="inline-flex items-center justify-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>
             + Add New
         </a>
@@ -77,7 +77,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @if($activity->number)
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-golden-100 text-golden-800">
                                             {{ $activity->number }}
                                         </span>
                                     @else
@@ -100,7 +100,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <div class="flex items-center space-x-3">
                                         <a href="{{ route('admin.activities.edit', $activity) }}" 
-                                           class="text-emerald-600 hover:text-emerald-900 transition-colors duration-200">
+                                           class="text-golden-600 hover:text-golden-900 transition-colors duration-200">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <button onclick="deleteActivity({{ $activity->id }})" 
@@ -149,7 +149,7 @@
                                             <span class="text-xs text-gray-500">Order: {{ $activity->sort_order }}</span>
 
                                             @if($activity->number)
-                                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-golden-100 text-golden-800">
                                                     {{ $activity->number }}
                                                 </span>
                                             @endif
@@ -171,7 +171,7 @@
                                     <!-- Actions -->
                                     <div class="flex items-center space-x-2 ml-2">
                                         <a href="{{ route('admin.activities.edit', $activity) }}"
-                                           class="p-2 text-emerald-600 hover:text-emerald-900 hover:bg-emerald-50 rounded-lg transition-colors duration-200">
+                                           class="p-2 text-golden-600 hover:text-golden-900 hover:bg-golden-50 rounded-lg transition-colors duration-200">
                                             <i class="fas fa-edit text-sm"></i>
                                         </a>
                                         <button onclick="deleteActivity({{ $activity->id }})"
@@ -191,7 +191,7 @@
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Activities Found</h3>
                 <p class="text-gray-500 mb-6">Get started by creating your first activity.</p>
                 <a href="{{ route('admin.activities.create') }}"
-                   class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                   class="inline-flex items-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                     <i class="fas fa-plus mr-2"></i>
                     + Add New
                 </a>

@@ -4,9 +4,9 @@
 @section('page-title', 'Create New Amenity')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
-    <a href="{{ route('admin.amenities.index') }}" class="text-emerald-600 hover:text-emerald-800">Amenities</a>
+    <a href="{{ route('admin.amenities.index') }}" class="text-golden-600 hover:text-golden-800">Amenities</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Create</span>
 @endsection
@@ -32,7 +32,7 @@
                        name="title" 
                        value="{{ old('title') }}"
                        required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                        placeholder="Enter amenity title">
                 @error('title')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -48,7 +48,7 @@
                        id="subtitle" 
                        name="subtitle" 
                        value="{{ old('subtitle') }}"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                        placeholder="Enter optional subtitle">
                 @error('subtitle')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -67,11 +67,11 @@
                            name="icon" 
                            value="{{ old('icon') }}"
                            required
-                           class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                           class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                            placeholder="fas fa-bed"
                            oninput="updateIconPreview()">
-                    <div id="icon-preview" class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-question text-emerald-600 text-xl"></i>
+                    <div id="icon-preview" class="w-12 h-12 bg-golden-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-question text-golden-600 text-xl"></i>
                     </div>
                 </div>
                 @error('icon')
@@ -83,35 +83,35 @@
                 <div class="mt-3">
                     <p class="text-sm font-medium text-gray-700 mb-2">Common Icons:</p>
                     <div class="grid grid-cols-4 gap-2">
-                        <button type="button" onclick="selectIcon('fas fa-bed')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-emerald-50 hover:border-emerald-300 transition-colors duration-200">
+                        <button type="button" onclick="selectIcon('fas fa-bed')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-golden-50 hover:border-golden-300 transition-colors duration-200">
                             <i class="fas fa-bed text-gray-600"></i>
                             <span class="block text-xs mt-1">Bed</span>
                         </button>
-                        <button type="button" onclick="selectIcon('fas fa-users')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-emerald-50 hover:border-emerald-300 transition-colors duration-200">
+                        <button type="button" onclick="selectIcon('fas fa-users')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-golden-50 hover:border-golden-300 transition-colors duration-200">
                             <i class="fas fa-users text-gray-600"></i>
                             <span class="block text-xs mt-1">Users</span>
                         </button>
-                        <button type="button" onclick="selectIcon('fas fa-utensils')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-emerald-50 hover:border-emerald-300 transition-colors duration-200">
+                        <button type="button" onclick="selectIcon('fas fa-utensils')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-golden-50 hover:border-golden-300 transition-colors duration-200">
                             <i class="fas fa-utensils text-gray-600"></i>
                             <span class="block text-xs mt-1">Restaurant</span>
                         </button>
-                        <button type="button" onclick="selectIcon('fas fa-cocktail')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-emerald-50 hover:border-emerald-300 transition-colors duration-200">
+                        <button type="button" onclick="selectIcon('fas fa-cocktail')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-golden-50 hover:border-golden-300 transition-colors duration-200">
                             <i class="fas fa-cocktail text-gray-600"></i>
                             <span class="block text-xs mt-1">Bar</span>
                         </button>
-                        <button type="button" onclick="selectIcon('fas fa-swimming-pool')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-emerald-50 hover:border-emerald-300 transition-colors duration-200">
+                        <button type="button" onclick="selectIcon('fas fa-swimming-pool')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-golden-50 hover:border-golden-300 transition-colors duration-200">
                             <i class="fas fa-swimming-pool text-gray-600"></i>
                             <span class="block text-xs mt-1">Pool</span>
                         </button>
-                        <button type="button" onclick="selectIcon('fas fa-wifi')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-emerald-50 hover:border-emerald-300 transition-colors duration-200">
+                        <button type="button" onclick="selectIcon('fas fa-wifi')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-golden-50 hover:border-golden-300 transition-colors duration-200">
                             <i class="fas fa-wifi text-gray-600"></i>
                             <span class="block text-xs mt-1">WiFi</span>
                         </button>
-                        <button type="button" onclick="selectIcon('fas fa-shield-alt')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-emerald-50 hover:border-emerald-300 transition-colors duration-200">
+                        <button type="button" onclick="selectIcon('fas fa-shield-alt')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-golden-50 hover:border-golden-300 transition-colors duration-200">
                             <i class="fas fa-shield-alt text-gray-600"></i>
                             <span class="block text-xs mt-1">Security</span>
                         </button>
-                        <button type="button" onclick="selectIcon('fas fa-bolt')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-emerald-50 hover:border-emerald-300 transition-colors duration-200">
+                        <button type="button" onclick="selectIcon('fas fa-bolt')" class="icon-btn p-2 border border-gray-300 rounded-lg hover:bg-golden-50 hover:border-golden-300 transition-colors duration-200">
                             <i class="fas fa-bolt text-gray-600"></i>
                             <span class="block text-xs mt-1">Power</span>
                         </button>
@@ -129,7 +129,7 @@
                        name="sort_order" 
                        value="{{ old('sort_order', 0) }}"
                        min="0"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                        placeholder="0">
                 @error('sort_order')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -144,7 +144,7 @@
                            name="is_active" 
                            value="1"
                            {{ old('is_active', true) ? 'checked' : '' }}
-                           class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
+                           class="w-4 h-4 text-golden-600 bg-gray-100 border-gray-300 rounded focus:ring-golden-500 focus:ring-2">
                     <span class="ml-2 text-sm font-medium text-gray-700">Active</span>
                 </label>
                 <p class="mt-1 text-sm text-gray-500">Inactive amenities won't be displayed on the website</p>
@@ -165,7 +165,7 @@
                         Reset
                     </button>
                     <button type="submit" 
-                            class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                            class="inline-flex items-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                         <i class="fas fa-save mr-2"></i>
                         Create Amenity
                     </button>
@@ -184,9 +184,9 @@
         const iconClass = iconInput.value.trim();
         
         if (iconClass) {
-            iconPreview.innerHTML = `<i class="${iconClass} text-emerald-600 text-xl"></i>`;
+            iconPreview.innerHTML = `<i class="${iconClass} text-golden-600 text-xl"></i>`;
         } else {
-            iconPreview.innerHTML = '<i class="fas fa-question text-emerald-600 text-xl"></i>';
+            iconPreview.innerHTML = '<i class="fas fa-question text-golden-600 text-xl"></i>';
         }
     }
 
@@ -196,11 +196,11 @@
         
         // Remove active state from all buttons
         document.querySelectorAll('.icon-btn').forEach(btn => {
-            btn.classList.remove('bg-emerald-100', 'border-emerald-500');
+            btn.classList.remove('bg-golden-100', 'border-golden-500');
         });
         
         // Add active state to clicked button
-        event.target.closest('.icon-btn').classList.add('bg-emerald-100', 'border-emerald-500');
+        event.target.closest('.icon-btn').classList.add('bg-golden-100', 'border-golden-500');
     }
 
     function resetForm() {
@@ -210,7 +210,7 @@
             
             // Remove active state from all icon buttons
             document.querySelectorAll('.icon-btn').forEach(btn => {
-                btn.classList.remove('bg-emerald-100', 'border-emerald-500');
+                btn.classList.remove('bg-golden-100', 'border-golden-500');
             });
         }
     }

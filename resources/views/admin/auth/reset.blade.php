@@ -57,10 +57,10 @@
         <!-- Logo/Brand -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
-                <i class="fas fa-leaf text-emerald-600 text-2xl"></i>
+                <i class="fas fa-leaf text-golden-600 text-2xl"></i>
             </div>
             <h1 class="text-3xl font-bold text-white mb-2">Saadani Kasa Bay</h1>
-            <p class="text-emerald-100">Reset Password</p>
+            <p class="text-golden-100">Reset Password</p>
         </div>
 
         <!-- Reset Form -->
@@ -68,7 +68,7 @@
             <div class="text-center mb-6">
                 <i class="fas fa-key text-white text-3xl mb-3"></i>
                 <h2 class="text-xl font-semibold text-white mb-2">Forgot Your Password?</h2>
-                <p class="text-emerald-100 text-sm">Enter your email address and we'll send you a link to reset your password.</p>
+                <p class="text-golden-100 text-sm">Enter your email address and we'll send you a link to reset your password.</p>
             </div>
 
             <form method="POST" action="{{ route('admin.password.email') }}" class="space-y-6">
@@ -94,7 +94,7 @@
 
                 <!-- Submit Button -->
                 <button type="submit" 
-                        class="w-full bg-white text-emerald-600 py-3 px-4 rounded-lg font-semibold hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-emerald-600 transition-all duration-200 transform hover:scale-105">
+                        class="w-full bg-white text-golden-600 py-3 px-4 rounded-lg font-semibold hover:bg-golden-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-golden-600 transition-all duration-200 transform hover:scale-105">
                     <i class="fas fa-paper-plane mr-2"></i>
                     Send Reset Link
                 </button>
@@ -102,7 +102,7 @@
                 <!-- Back to Login -->
                 <div class="text-center">
                     <a href="{{ route('admin.login') }}" 
-                       class="text-sm text-white hover:text-emerald-200 transition-colors duration-200">
+                       class="text-sm text-white hover:text-golden-200 transition-colors duration-200">
                         <i class="fas fa-arrow-left mr-1"></i>
                         Back to Login
                     </a>
@@ -131,7 +131,7 @@
 
         <!-- Footer -->
         <div class="text-center mt-8">
-            <p class="text-emerald-100 text-sm">
+            <p class="text-golden-100 text-sm">
                 &copy; {{ date('Y') }} Saadani Kasa Bay. All rights reserved.
             </p>
         </div>

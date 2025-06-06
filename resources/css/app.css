@@ -11,11 +11,11 @@
     --font-display: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
     /* Custom Colors */
-    --color-emerald-50: #ecfdf5;
-    --color-emerald-100: #d1fae5;
-    --color-emerald-600: #059669;
-    --color-emerald-700: #047857;
-    --color-emerald-800: #065f46;
+    --color-golden-50: #fefbf3;
+    --color-golden-100: #fdf4e1;
+    --color-golden-600: #B78B3E;
+    --color-golden-700: #9A7235;
+    --color-golden-800: #7D5F2C;
 }
 
 /* Custom Utilities */

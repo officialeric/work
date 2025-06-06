@@ -4,7 +4,7 @@
 @section('page-title', 'Commitments Management')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Commitments</span>
 @endsection
@@ -18,7 +18,7 @@
             <p class="text-gray-600 mt-1 text-sm sm:text-base">Manage eco-tourism practices and sustainability commitments</p>
         </div>
         <a href="{{ route('admin.commitments.create') }}"
-           class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+           class="inline-flex items-center justify-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>
             + Add New
         </a>
@@ -35,8 +35,8 @@
                             <i class="fas fa-grip-vertical text-gray-400 cursor-move flex-shrink-0"></i>
 
                             <!-- Icon -->
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="{{ $commitment->icon }} text-emerald-600 text-lg sm:text-xl"></i>
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-golden-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="{{ $commitment->icon }} text-golden-600 text-lg sm:text-xl"></i>
                             </div>
 
                             <!-- Content -->
@@ -65,7 +65,7 @@
                             <!-- Actions -->
                             <div class="flex items-center space-x-3">
                                 <a href="{{ route('admin.commitments.edit', $commitment) }}"
-                                   class="p-2 text-emerald-600 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors duration-200">
+                                   class="p-2 text-golden-600 hover:text-golden-800 hover:bg-golden-50 rounded-lg transition-colors duration-200">
                                     <i class="fas fa-edit text-sm"></i>
                                 </a>
                                 <button onclick="deleteCommitment({{ $commitment->id }})"
@@ -85,7 +85,7 @@
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Commitments Found</h3>
                 <p class="text-gray-500 mb-6">Get started by creating your first commitment.</p>
                 <a href="{{ route('admin.commitments.create') }}"
-                   class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                   class="inline-flex items-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                     <i class="fas fa-plus mr-2"></i>
                     + Add New
                 </a>

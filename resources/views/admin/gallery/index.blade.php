@@ -4,7 +4,7 @@
 @section('page-title', 'Gallery Management')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Gallery</span>
 @endsection
@@ -25,7 +25,7 @@
                 Select Mode
             </button>
             <button onclick="openUploadModal()"
-                    class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+                    class="inline-flex items-center justify-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
                 <i class="fas fa-upload mr-2"></i>
                 + Add New
             </button>
@@ -33,16 +33,16 @@
     </div>
 
     <!-- Bulk Actions Bar (Hidden by default) -->
-    <div id="bulk-actions" class="hidden bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+    <div id="bulk-actions" class="hidden bg-golden-50 border border-golden-200 rounded-lg p-4">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="flex flex-wrap items-center gap-4">
-                <span id="selected-count" class="text-sm font-medium text-emerald-800">0 images selected</span>
+                <span id="selected-count" class="text-sm font-medium text-golden-800">0 images selected</span>
                 <button onclick="selectAll()"
-                        class="text-sm text-emerald-600 hover:text-emerald-800 transition-colors duration-200">
+                        class="text-sm text-golden-600 hover:text-golden-800 transition-colors duration-200">
                     Select All
                 </button>
                 <button onclick="deselectAll()"
-                        class="text-sm text-emerald-600 hover:text-emerald-800 transition-colors duration-200">
+                        class="text-sm text-golden-600 hover:text-golden-800 transition-colors duration-200">
                     Deselect All
                 </button>
             </div>
@@ -70,7 +70,7 @@
                     <div class="selection-checkbox hidden absolute top-2 left-2 z-10">
                         <input type="checkbox" 
                                value="{{ $image->id }}"
-                               class="w-5 h-5 text-emerald-600 bg-white border-2 border-white rounded focus:ring-emerald-500 focus:ring-2 shadow-lg">
+                               class="w-5 h-5 text-golden-600 bg-white border-2 border-white rounded focus:ring-golden-500 focus:ring-2 shadow-lg">
                     </div>
 
                     <!-- Drag Handle -->
@@ -125,7 +125,7 @@
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Images Found</h3>
                 <p class="text-gray-500 mb-6">Get started by uploading your first images to the gallery.</p>
                 <button onclick="openUploadModal()"
-                        class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                        class="inline-flex items-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                     <i class="fas fa-upload mr-2"></i>
                     + Add New
                 </button>
@@ -145,13 +145,13 @@
         </div>
 
         <!-- Upload Area -->
-        <div id="upload-area" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-emerald-400 transition-colors duration-200">
+        <div id="upload-area" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-golden-400 transition-colors duration-200">
             <i class="fas fa-cloud-upload-alt text-gray-400 text-4xl mb-4"></i>
             <h4 class="text-lg font-medium text-gray-900 mb-2">Drop images here or click to browse</h4>
             <p class="text-gray-500 mb-4">Support for multiple images (PNG, JPG, GIF up to 5MB each)</p>
             <input type="file" id="image-input" multiple accept="image/*" class="hidden">
             <button onclick="document.getElementById('image-input').click()" 
-                    class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                    class="inline-flex items-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                 <i class="fas fa-folder-open mr-2"></i>
                 Browse Files
             </button>
@@ -166,7 +166,7 @@
                 <span id="progress-text" class="text-sm text-gray-500">0%</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-3">
-                <div id="progress-bar" class="bg-emerald-600 h-3 rounded-full transition-all duration-300 relative overflow-hidden" style="width: 0%">
+                <div id="progress-bar" class="bg-golden-600 h-3 rounded-full transition-all duration-300 relative overflow-hidden" style="width: 0%">
                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-pulse"></div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                 Cancel
             </button>
             <button id="upload-btn" onclick="uploadImages()" disabled
-                    class="inline-flex items-center justify-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 text-sm sm:text-base">
+                    class="inline-flex items-center justify-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 text-sm sm:text-base">
                 <i class="fas fa-upload mr-2"></i>
                 Upload Images
             </button>
@@ -226,25 +226,25 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Title</label>
                 <input type="text" id="edit-title" 
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500">
             </div>
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Alt Text</label>
                 <input type="text" id="edit-alt" 
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500">
             </div>
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Sort Order</label>
                 <input type="number" id="edit-order" min="0"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500">
             </div>
             
             <div>
                 <label class="flex items-center">
                     <input type="checkbox" id="edit-active" 
-                           class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
+                           class="w-4 h-4 text-golden-600 bg-gray-100 border-gray-300 rounded focus:ring-golden-500 focus:ring-2">
                     <span class="ml-2 text-sm font-medium text-gray-700">Active</span>
                 </label>
             </div>
@@ -256,7 +256,7 @@
                 Cancel
             </button>
             <button onclick="updateImage()"
-                    class="inline-flex items-center justify-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+                    class="inline-flex items-center justify-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
                 <i class="fas fa-save mr-2"></i>
                 Update
             </button>
@@ -333,11 +333,11 @@
     });
 
     function highlight(e) {
-        uploadArea.classList.add('border-emerald-400', 'bg-emerald-50');
+        uploadArea.classList.add('border-golden-400', 'bg-golden-50');
     }
 
     function unhighlight(e) {
-        uploadArea.classList.remove('border-emerald-400', 'bg-emerald-50');
+        uploadArea.classList.remove('border-golden-400', 'bg-golden-50');
     }
 
     uploadArea.addEventListener('drop', handleDrop, false);
@@ -422,7 +422,7 @@
         // Reset progress bar color
         const progressBar = document.getElementById('progress-bar');
         progressBar.classList.remove('bg-red-500');
-        progressBar.classList.add('bg-emerald-600');
+        progressBar.classList.add('bg-golden-600');
     }
 
     async function uploadImages() {
@@ -477,7 +477,7 @@
 
             // Show error state
             progressBar.classList.add('bg-red-500');
-            progressBar.classList.remove('bg-emerald-600');
+            progressBar.classList.remove('bg-golden-600');
 
             setTimeout(() => {
                 uploadBtn.disabled = false;

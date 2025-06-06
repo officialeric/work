@@ -25,14 +25,14 @@
                         'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
                     },
                     colors: {
-                        emerald: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46',
-                            900: '#064e3b'
+                        golden: {
+                            50: '#fefbf3',
+                            100: '#fdf4e1',
+                            500: '#C8973F',
+                            600: '#B78B3E',
+                            700: '#9A7235',
+                            800: '#7D5F2C',
+                            900: '#6B5426'
                         }
                     }
                 }
@@ -177,7 +177,7 @@
                 <div class="px-4 py-4 border-t border-gray-200">
                     <div class="flex items-center justify-between">
                         <a href="{{ route('admin.profile.show') }}" class="flex items-center hover:bg-gray-50 rounded-lg p-2 transition-colors duration-200 flex-1">
-                            <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
+                            <div class="w-8 h-8 bg-golden-600 rounded-full flex items-center justify-center">
                                 <i class="fas fa-user text-white text-sm"></i>
                             </div>
                             <div class="ml-3">
@@ -220,7 +220,7 @@
                     <div class="flex items-center space-x-2 sm:space-x-4">
                         <a href="{{ route('saadani.index') }}"
                            target="_blank"
-                           class="inline-flex items-center px-3 sm:px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                           class="inline-flex items-center px-3 sm:px-4 py-2 bg-golden-600 text-white text-sm font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                             <i class="fas fa-external-link-alt mr-1 sm:mr-2"></i>
                             <span class="hidden sm:inline">View Website</span>
                             <span class="sm:hidden">View</span>
@@ -353,7 +353,7 @@
     <!-- Global Loading Overlays -->
     <div id="global-loading" class="fixed inset-0 z-50 hidden items-center justify-center" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px);">
         <div class="text-center">
-            <div class="inline-block w-8 h-8 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
+            <div class="inline-block w-8 h-8 border-4 border-golden-200 border-t-golden-600 rounded-full animate-spin"></div>
             <p class="mt-3 text-sm font-medium text-gray-700">Loading...</p>
         </div>
     </div>
@@ -361,9 +361,9 @@
     <div id="form-loading" class="fixed inset-0 z-30 hidden items-center justify-center" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px);">
         <div class="text-center">
             <div class="flex space-x-1">
-                <div class="w-3 h-3 bg-emerald-600 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
-                <div class="w-3 h-3 bg-emerald-600 rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
-                <div class="w-3 h-3 bg-emerald-600 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+                <div class="w-3 h-3 bg-golden-600 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
+                <div class="w-3 h-3 bg-golden-600 rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
+                <div class="w-3 h-3 bg-golden-600 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
             </div>
             <p class="mt-3 text-sm font-medium text-gray-700">Processing...</p>
         </div>

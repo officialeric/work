@@ -4,7 +4,7 @@
 @section('page-title', 'Website Settings')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Settings</span>
 @endsection
@@ -25,7 +25,7 @@
             </button>
             <a href="{{ route('saadani.index') }}"
                target="_blank"
-               class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+               class="inline-flex items-center justify-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
                 <i class="fas fa-external-link-alt mr-2"></i>
                 Preview Website
             </a>
@@ -41,7 +41,7 @@
             <!-- Tab Navigation -->
             <div class="border-b border-gray-200">
                 <nav class="flex space-x-4 sm:space-x-8 px-4 sm:px-6 overflow-auto" aria-label="Tabs">
-                    <button type="button" onclick="showTab('general')" class="tab-button active py-4 px-1 border-b-2 border-emerald-500 font-medium text-sm text-emerald-600">
+                    <button type="button" onclick="showTab('general')" class="tab-button active py-4 px-1 border-b-2 border-golden-500 font-medium text-sm text-golden-600">
                         <i class="fas fa-cog mr-2"></i>General
                     </button>
                     <button type="button" onclick="showTab('hero')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
@@ -84,7 +84,7 @@
                                     @if($setting->type === 'textarea')
                                         <textarea name="{{ $setting->key }}" 
                                                   rows="4"
-                                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                                                   placeholder="{{ $setting->label }}">{{ old($setting->key, $setting->value) }}</textarea>
                                     @elseif($setting->type === 'image')
                                         <div class="space-y-3">
@@ -102,13 +102,13 @@
                                             <input type="file" 
                                                    name="{{ $setting->key }}" 
                                                    accept="image/*"
-                                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200">
+                                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200">
                                         </div>
                                     @else
                                         <input type="{{ $setting->type === 'email' ? 'email' : 'text' }}" 
                                                name="{{ $setting->key }}" 
                                                value="{{ old($setting->key, $setting->value) }}"
-                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                                                placeholder="{{ $setting->label }}">
                                     @endif
                                     @error($setting->key)
@@ -143,7 +143,7 @@
                                     @if($setting->type === 'textarea')
                                         <textarea name="{{ $setting->key }}" 
                                                   rows="3"
-                                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                                                   placeholder="{{ $setting->label }}">{{ old($setting->key, $setting->value) }}</textarea>
                                     @elseif($setting->type === 'image')
                                         <div class="space-y-3">
@@ -161,13 +161,13 @@
                                             <input type="file" 
                                                    name="{{ $setting->key }}" 
                                                    accept="image/*"
-                                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200">
+                                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200">
                                         </div>
                                     @else
                                         <input type="text" 
                                                name="{{ $setting->key }}" 
                                                value="{{ old($setting->key, $setting->value) }}"
-                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                                                placeholder="{{ $setting->label }}">
                                     @endif
                                     @error($setting->key)
@@ -202,13 +202,13 @@
                                     @if($setting->type === 'textarea')
                                         <textarea name="{{ $setting->key }}" 
                                                   rows="3"
-                                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                                                   placeholder="{{ $setting->label }}">{{ old($setting->key, $setting->value) }}</textarea>
                                     @else
                                         <input type="{{ $setting->type === 'email' ? 'email' : 'text' }}" 
                                                name="{{ $setting->key }}" 
                                                value="{{ old($setting->key, $setting->value) }}"
-                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                                                placeholder="{{ $setting->label }}">
                                     @endif
                                     @error($setting->key)
@@ -237,7 +237,7 @@
                                 <div class="lg:col-span-2">
                                     <textarea name="{{ $setting->key }}" 
                                               rows="{{ $setting->key === 'google_analytics' ? '6' : '4' }}"
-                                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                                               placeholder="{{ $setting->label }}">{{ old($setting->key, $setting->value) }}</textarea>
                                     @error($setting->key)
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -266,7 +266,7 @@
                                     <input type="url" 
                                            name="{{ $setting->key }}" 
                                            value="{{ old($setting->key, $setting->value) }}"
-                                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                                            placeholder="{{ $setting->label }}">
                                     @error($setting->key)
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -294,7 +294,7 @@
                 </button>
                 <button type="submit"
                         id="save-settings-btn"
-                        class="inline-flex items-center justify-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+                        class="inline-flex items-center justify-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
                     <i class="fas fa-save mr-2"></i>
                     Save Settings
                 </button>
@@ -314,7 +314,7 @@
         
         // Remove active class from all tab buttons
         document.querySelectorAll('.tab-button').forEach(button => {
-            button.classList.remove('active', 'border-emerald-500', 'text-emerald-600');
+            button.classList.remove('active', 'border-golden-500', 'text-golden-600');
             button.classList.add('border-transparent', 'text-gray-500');
         });
         
@@ -322,7 +322,7 @@
         document.getElementById(tabName + '-tab').classList.remove('hidden');
         
         // Add active class to clicked tab button
-        event.target.classList.add('active', 'border-emerald-500', 'text-emerald-600');
+        event.target.classList.add('active', 'border-golden-500', 'text-golden-600');
         event.target.classList.remove('border-transparent', 'text-gray-500');
     }
 
