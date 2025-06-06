@@ -16,16 +16,16 @@
                     loop
                     playsinline
                     class="w-full h-full object-cover object-center"
-                    poster="{{ $settings['hero_image'] ? asset('storage/' . $settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}">
+                    poster="{{ $settings['hero_image'] ? storage_asset($settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}">
                     <source src="{{ $settings['hero_video'] }}" type="video/mp4">
                     <!-- Fallback image if video doesn't load -->
-                    <img src="{{ $settings['hero_image'] ? asset('storage/' . $settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}"
+                    <img src="{{ $settings['hero_image'] ? storage_asset($settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}"
                          alt="{{ $settings['site_name'] }}"
                          class="w-full h-full object-cover object-center">
                 </video>
             @else
                 <!-- Fallback to image if no video is set -->
-                <img src="{{ $settings['hero_image'] ? asset('storage/' . $settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}"
+                <img src="{{ $settings['hero_image'] ? storage_asset($settings['hero_image']) : 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&h=1080&fit=crop&crop=center' }}"
                      alt="{{ $settings['site_name'] }}"
                      class="w-full h-full object-cover object-center">
             @endif
@@ -355,7 +355,7 @@
                         Activities & Experiences
                     </h4>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Discover unforgettable adventures that await you at Saadani Kasa Bay
+                        Discover unforgettable adventures that await you at {{ $settings['site_name'] ?? 'Cterra Saadani Luxury' }}
                     </p>
                 </div>
                 

@@ -56,7 +56,7 @@ class HostingSection extends Model
             return $this->background_image;
         }
 
-        return Storage::url($this->background_image);
+        return storage_asset($this->background_image);
     }
 
     /**

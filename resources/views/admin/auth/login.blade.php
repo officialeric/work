@@ -25,14 +25,17 @@
                         'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
                     },
                     colors: {
-                        emerald: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46',
-                            900: '#064e3b'
+                        golden: {
+                            50: '#fefbf3',
+                            100: '#fdf4e1',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#B78B3E',
+                            700: '#9A7235',
+                            800: '#7D5F2C',
+                            900: '#6B5426'
                         }
                     }
                 }
@@ -42,7 +45,7 @@
 
     <style>
         .login-bg {
-            background: linear-gradient(135deg, #065f46 0%, #059669 50%, #10b981 100%);
+            background: linear-gradient(135deg, #6B5426 0%, #7D5F2C 25%, #9A7235 50%, #B78B3E 75%, #f59e0b 100%);
         }
         
         .glass-effect {
@@ -88,7 +91,7 @@
                            value="{{ old('email') }}"
                            required 
                            autofocus
-                           class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                           class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-golden-400 focus:border-golden-400 transition-all duration-200"
                            placeholder="Enter your email">
                     @error('email')
                         <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
@@ -105,7 +108,7 @@
                                id="password" 
                                name="password" 
                                required
-                               class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                               class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-golden-400 focus:border-golden-400 transition-all duration-200"
                                placeholder="Enter your password">
                         <button type="button" 
                                 onclick="togglePassword()"
@@ -123,19 +126,19 @@
                     <label class="flex items-center">
                         <input type="checkbox" 
                                name="remember" 
-                               class="w-4 h-4 text-golden-600 bg-white/20 border-white/30 rounded focus:ring-white/50 focus:ring-2">
+                               class="w-4 h-4 text-golden-600 bg-white/20 border-white/30 rounded focus:ring-golden-400 focus:ring-2">
                         <span class="ml-2 text-sm text-white">Remember me</span>
                     </label>
                     
-                    <a href="{{ route('admin.password.request') }}" 
-                       class="text-sm text-white hover:text-golden-200 transition-colors duration-200">
+                    <a href="{{ route('admin.password.request') }}"
+                       class="text-sm text-golden-100 hover:text-golden-200 transition-colors duration-200">
                         Forgot password?
                     </a>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" 
-                        class="w-full bg-white text-golden-600 py-3 px-4 rounded-lg font-semibold hover:bg-golden-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-golden-600 transition-all duration-200 transform hover:scale-105">
+                <button type="submit"
+                        class="w-full bg-white text-golden-600 py-3 px-4 rounded-lg font-semibold hover:bg-golden-50 focus:outline-none focus:ring-2 focus:ring-golden-500 focus:ring-offset-2 focus:ring-offset-golden-600 transition-all duration-200 transform hover:scale-105">
                     <i class="fas fa-sign-in-alt mr-2"></i>
                     Sign In
                 </button>

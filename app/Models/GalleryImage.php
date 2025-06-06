@@ -54,7 +54,7 @@ class GalleryImage extends Model
             return $this->image_path;
         }
 
-        return Storage::url($this->image_path);
+        return storage_asset($this->image_path);
     }
 
     /**
@@ -70,7 +70,7 @@ class GalleryImage extends Model
             return $this->thumbnail_path;
         }
 
-        return Storage::url($this->thumbnail_path);
+        return storage_asset($this->thumbnail_path);
     }
 
     /**

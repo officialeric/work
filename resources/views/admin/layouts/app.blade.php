@@ -43,16 +43,17 @@
     <!-- Custom Admin Styles -->
     <style>
         .sidebar-link.active {
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: linear-gradient(135deg, #B78B3E, #9A7235);
             color: white;
         }
-        
+
         .sidebar-link:hover {
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(183, 139, 62, 0.1);
+            color: #B78B3E;
         }
-        
+
         .sidebar-link.active:hover {
-            background: linear-gradient(135deg, #059669, #047857);
+            background: linear-gradient(135deg, #9A7235, #7D5F2C);
         }
 
         .notification {
@@ -118,10 +119,22 @@
                         Dashboard
                     </a>
 
-                    <a href="{{ route('admin.settings.index') }}" 
+                    <a href="{{ route('admin.settings.index') }}"
                        class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                         <i class="fas fa-cog w-5 h-5 mr-3"></i>
                         Website Settings
+                    </a>
+
+                    <a href="{{ route('admin.bookings.index') }}"
+                       class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200 {{ request()->routeIs('admin.bookings.*') ? 'active' : '' }}">
+                        <i class="fas fa-calendar-check w-5 h-5 mr-3"></i>
+                        Bookings
+                        @php
+                            $pendingCount = \App\Models\Booking::where('status', 'pending')->count();
+                        @endphp
+                        @if($pendingCount > 0)
+                            <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">{{ $pendingCount }}</span>
+                        @endif
                     </a>
 
                     <a href="{{ route('admin.activities.index') }}" 

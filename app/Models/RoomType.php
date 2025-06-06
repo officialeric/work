@@ -96,7 +96,7 @@ class RoomType extends Model
             return $this->main_image;
         }
 
-        return Storage::url($this->main_image);
+        return storage_asset($this->main_image);
     }
 
     /**
@@ -112,7 +112,7 @@ class RoomType extends Model
             return $this->image_1;
         }
 
-        return Storage::url($this->image_1);
+        return storage_asset($this->image_1);
     }
 
     /**
@@ -128,7 +128,7 @@ class RoomType extends Model
             return $this->image_2;
         }
 
-        return Storage::url($this->image_2);
+        return storage_asset($this->image_2);
     }
 
     /**
@@ -144,7 +144,7 @@ class RoomType extends Model
             return $this->image_3;
         }
 
-        return Storage::url($this->image_3);
+        return storage_asset($this->image_3);
     }
 
     /**

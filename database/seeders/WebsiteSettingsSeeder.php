@@ -80,13 +80,22 @@ class WebsiteSettingsSeeder extends Seeder
                 'sort_order' => 2,
             ],
             [
+                'key' => 'whatsapp_number',
+                'value' => '+255 783 442 868',
+                'type' => 'text',
+                'group' => 'contact',
+                'label' => 'WhatsApp Number',
+                'description' => 'WhatsApp contact number for instant support',
+                'sort_order' => 3,
+            ],
+            [
                 'key' => 'contact_address',
                 'value' => 'Tanzania',
                 'type' => 'textarea',
                 'group' => 'contact',
                 'label' => 'Contact Address',
                 'description' => 'Physical address or location',
-                'sort_order' => 3,
+                'sort_order' => 4,
             ],
 
             // Hero Section

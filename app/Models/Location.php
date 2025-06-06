@@ -59,7 +59,7 @@ class Location extends Model
             return $this->image_1;
         }
 
-        return Storage::url($this->image_1);
+        return storage_asset($this->image_1);
     }
 
     /**
@@ -75,7 +75,7 @@ class Location extends Model
             return $this->image_2;
         }
 
-        return Storage::url($this->image_2);
+        return storage_asset($this->image_2);
     }
 
     /**
@@ -91,7 +91,7 @@ class Location extends Model
             return $this->image_3;
         }
 
-        return Storage::url($this->image_3);
+        return storage_asset($this->image_3);
     }
 
     /**

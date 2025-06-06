@@ -54,7 +54,7 @@ class Activity extends Model
             return $this->image;
         }
 
-        return Storage::url($this->image);
+        return storage_asset($this->image);
     }
 
     /**

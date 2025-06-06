@@ -4,7 +4,7 @@
 @section('description', 'Book your luxury accommodation at Saadani Kasa Bay. Choose from our range of premium room types and enjoy an unforgettable experience.')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-gray-50 to-golden-50/30 py-12">
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-golden-50/30 pt-24 pb-12">
     <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
         <!-- Header -->
         <div class="text-center mb-12">

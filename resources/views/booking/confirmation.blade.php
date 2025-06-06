@@ -4,7 +4,7 @@
 @section('description', 'Your booking request has been submitted successfully. We will contact you shortly to confirm your reservation.')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-gray-50 to-golden-50/30 py-12">
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-golden-50/30 pt-24 pb-12">
     <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
         <!-- Success Header -->
         <div class="text-center mb-12">
@@ -172,15 +172,51 @@
                 <div>
                     <h4 class="font-bold text-gray-800 mb-2">Contact Our Reservations Team</h4>
                     <p class="text-gray-600 mb-4">If you have any questions about your booking or need to make changes, please don't hesitate to contact us.</p>
-                    <div class="space-y-2">
+                    <div class="space-y-3">
+                        @php
+                            $contactEmail = \App\Models\WebsiteSetting::get('contact_email', 'info@cterra.co.tz');
+                            $contactPhone = \App\Models\WebsiteSetting::get('contact_phone', '+255 783 442 868');
+                            $whatsappNumber = \App\Models\WebsiteSetting::get('whatsapp_number', '+255 783 442 868');
+                            $contactAddress = \App\Models\WebsiteSetting::get('contact_address', 'Tanzania');
+                        @endphp
+
                         <div class="flex items-center gap-3">
-                            <i class="fas fa-envelope text-golden-600"></i>
-                            <span class="text-gray-700">reservations@saadanikasabay.com</span>
+                            <i class="fas fa-envelope text-golden-600 w-5"></i>
+                            <div>
+                                <span class="text-gray-700">{{ $contactEmail }}</span>
+                                <p class="text-xs text-gray-500">Email us for booking inquiries</p>
+                            </div>
                         </div>
+
                         <div class="flex items-center gap-3">
-                            <i class="fas fa-phone text-golden-600"></i>
-                            <span class="text-gray-700">+255 123 456 789</span>
+                            <i class="fas fa-phone text-golden-600 w-5"></i>
+                            <div>
+                                <span class="text-gray-700">{{ $contactPhone }}</span>
+                                <p class="text-xs text-gray-500">Call us directly</p>
+                            </div>
                         </div>
+
+                        @if($whatsappNumber && $whatsappNumber !== $contactPhone)
+                        <div class="flex items-center gap-3">
+                            <i class="fab fa-whatsapp text-green-600 w-5"></i>
+                            <div>
+                                <a href="https://wa.me/{{ str_replace(['+', ' ', '-'], '', $whatsappNumber) }}?text=Hello, I have a question about my booking {{ $booking->booking_reference }}"
+                                   target="_blank"
+                                   class="text-green-600 hover:text-green-700 transition-colors">{{ $whatsappNumber }}</a>
+                                <p class="text-xs text-gray-500">WhatsApp for instant support</p>
+                            </div>
+                        </div>
+                        @endif
+
+                        @if($contactAddress)
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-golden-600 w-5 mt-1"></i>
+                            <div>
+                                <span class="text-gray-700">{{ $contactAddress }}</span>
+                                <p class="text-xs text-gray-500">Our location</p>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div>

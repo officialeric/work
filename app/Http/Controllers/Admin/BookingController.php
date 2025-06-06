@@ -18,12 +18,23 @@ class BookingController extends Controller
     {
         $query = Booking::with('roomType');
 
-        // Filter by status
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('guest_name', 'like', "%{$search}%")
+                  ->orWhere('guest_email', 'like', "%{$search}%")
+                  ->orWhere('guest_phone', 'like', "%{$search}%")
+                  ->orWhere('booking_reference', 'like', "%{$search}%");
+            });
+        }
+
+        // Status filter
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
 
-        // Filter by date range
+        // Date range filter
         if ($request->filled('date_from')) {
             $query->where('check_in_date', '>=', $request->date_from);
         }
@@ -32,28 +43,30 @@ class BookingController extends Controller
             $query->where('check_in_date', '<=', $request->date_to);
         }
 
-        // Search by guest name, email, or booking reference
-        if ($request->filled('search')) {
-            $search = $request->search;
-            $query->where(function($q) use ($search) {
-                $q->where('guest_name', 'like', "%{$search}%")
-                  ->orWhere('guest_email', 'like', "%{$search}%")
-                  ->orWhere('booking_reference', 'like', "%{$search}%");
-            });
+        // Room type filter
+        if ($request->filled('room_type')) {
+            $query->where('room_type_id', $request->room_type);
         }
 
-        $bookings = $query->orderBy('created_at', 'desc')->paginate(20);
+        // Sort by check-in date (newest first by default)
+        $query->orderBy('check_in_date', 'desc');
+
+        $bookings = $query->paginate(20)->withQueryString();
+
+        // Get filter options
+        $roomTypes = RoomType::active()->orderBy('name')->get();
+        $statuses = ['pending', 'confirmed', 'cancelled', 'completed', 'no_show'];
 
         // Get statistics
         $stats = [
             'total' => Booking::count(),
             'pending' => Booking::where('status', 'pending')->count(),
             'confirmed' => Booking::where('status', 'confirmed')->count(),
-            'current' => Booking::current()->count(),
             'upcoming' => Booking::upcoming()->where('status', 'confirmed')->count(),
+            'current' => Booking::current()->count(),
         ];
 
-        return view('admin.bookings.index', compact('bookings', 'stats'));
+        return view('admin.bookings.index', compact('bookings', 'roomTypes', 'statuses', 'stats'));
     }
 
     /**
@@ -120,8 +133,7 @@ class BookingController extends Controller
         AdminActivityLog::logAction(
             Auth::guard('admin')->user(),
             'updated',
-            Booking::class,
-            $booking->id,
+            $booking,
             $oldValues,
             $booking->fresh()->toArray()
         );
@@ -140,9 +152,9 @@ class BookingController extends Controller
         AdminActivityLog::logAction(
             Auth::guard('admin')->user(),
             'deleted',
-            Booking::class,
-            $booking->id,
-            $oldValues
+            $booking,
+            $oldValues,
+            null
         );
 
         $booking->delete();
@@ -166,8 +178,7 @@ class BookingController extends Controller
         AdminActivityLog::logAction(
             Auth::guard('admin')->user(),
             'confirmed',
-            Booking::class,
-            $booking->id,
+            $booking,
             ['status' => $oldStatus],
             ['status' => 'confirmed', 'confirmed_at' => $booking->confirmed_at]
         );
@@ -190,8 +201,7 @@ class BookingController extends Controller
         AdminActivityLog::logAction(
             Auth::guard('admin')->user(),
             'cancelled',
-            Booking::class,
-            $booking->id,
+            $booking,
             ['status' => $oldStatus],
             ['status' => 'cancelled', 'cancelled_at' => $booking->cancelled_at]
         );
