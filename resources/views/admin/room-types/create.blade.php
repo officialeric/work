@@ -4,9 +4,9 @@
 @section('page-title', 'Create Room Type')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
-    <a href="{{ route('admin.room-types.index') }}" class="text-emerald-600 hover:text-emerald-800">Room Types</a>
+    <a href="{{ route('admin.room-types.index') }}" class="text-golden-600 hover:text-golden-800">Room Types</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Create</span>
 @endsection
@@ -15,7 +15,7 @@
 <div class="max-w-4xl mx-auto">
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <!-- Header -->
-        <div class="bg-emerald-600 text-white px-6 py-4">
+        <div class="bg-golden-600 text-white px-6 py-4">
             <div class="flex items-center">
                 <i class="fas fa-door-open mr-3"></i>
                 <h2 class="text-xl font-semibold">Create New Room Type</h2>
@@ -35,7 +35,7 @@
                            id="name" 
                            name="name" 
                            value="{{ old('name') }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                            placeholder="e.g., DELUXE ROOM"
                            required>
                     @error('name')
@@ -50,7 +50,7 @@
                            id="sort_order" 
                            name="sort_order" 
                            value="{{ old('sort_order', 0) }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                            min="0"
                            required>
                     @error('sort_order')
@@ -68,7 +68,7 @@
                            id="price" 
                            name="price" 
                            value="{{ old('price') }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                            step="0.01"
                            min="0"
                            placeholder="800.00"
@@ -83,7 +83,7 @@
                     <label for="currency" class="block text-sm font-medium text-gray-700 mb-2">Currency *</label>
                     <select id="currency" 
                             name="currency" 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                             required>
                         <option value="USD" {{ old('currency', 'USD') === 'USD' ? 'selected' : '' }}>USD ($)</option>
                         <option value="EUR" {{ old('currency') === 'EUR' ? 'selected' : '' }}>EUR (€)</option>
@@ -103,7 +103,7 @@
                     <label for="tent_type" class="block text-sm font-medium text-gray-700 mb-2">Tent Type *</label>
                     <select id="tent_type" 
                             name="tent_type" 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                             required>
                         <option value="">Select tent type</option>
                         <option value="Big Tent" {{ old('tent_type') === 'Big Tent' ? 'selected' : '' }}>Big Tent</option>
@@ -121,7 +121,7 @@
                            id="tent_quantity" 
                            name="tent_quantity" 
                            value="{{ old('tent_quantity', 1) }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                            min="1"
                            required>
                     @error('tent_quantity')
@@ -136,7 +136,7 @@
                 <textarea id="description" 
                           name="description" 
                           rows="4"
-                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                           placeholder="Describe the room type, amenities, and features...">{{ old('description') }}</textarea>
                 @error('description')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -152,7 +152,7 @@
                            id="max_occupancy" 
                            name="max_occupancy" 
                            value="{{ old('max_occupancy') }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                            min="1"
                            placeholder="4">
                     @error('max_occupancy')
@@ -166,7 +166,7 @@
                     <textarea id="features" 
                               name="features" 
                               rows="3"
-                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
+                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500"
                               placeholder="Enter each feature on a new line&#10;Private bathroom&#10;Air conditioning&#10;Ocean view">{{ old('features') }}</textarea>
                     <p class="mt-1 text-xs text-gray-500">Enter each feature on a new line</p>
                     @error('features')
@@ -186,7 +186,7 @@
                                id="main_image" 
                                name="main_image" 
                                accept="image/*"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500">
                         <p class="mt-1 text-xs text-gray-500">JPEG, PNG, JPG, GIF up to 2MB</p>
                         @error('main_image')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -201,7 +201,7 @@
                                    id="image_{{ $i }}" 
                                    name="image_{{ $i }}" 
                                    accept="image/*"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-golden-500 focus:border-golden-500">
                             @error("image_$i")
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -219,7 +219,7 @@
                            name="is_active" 
                            value="1"
                            {{ old('is_active', true) ? 'checked' : '' }}
-                           class="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 rounded">
+                           class="h-4 w-4 text-golden-600 focus:ring-golden-500 border-gray-300 rounded">
                     <label for="is_active" class="ml-2 block text-sm text-gray-700">
                         Active (visible on website)
                     </label>
@@ -232,7 +232,7 @@
                            name="is_featured" 
                            value="1"
                            {{ old('is_featured') ? 'checked' : '' }}
-                           class="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 rounded">
+                           class="h-4 w-4 text-golden-600 focus:ring-golden-500 border-gray-300 rounded">
                     <label for="is_featured" class="ml-2 block text-sm text-gray-700">
                         Featured room type
                     </label>
@@ -247,7 +247,7 @@
                     Cancel
                 </a>
                 <button type="submit" 
-                        class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                        class="inline-flex items-center px-6 py-2 bg-golden-600 text-white text-sm font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                     <i class="fas fa-save mr-2"></i>
                     Create Room Type
                 </button>

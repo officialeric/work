@@ -12,7 +12,7 @@
             <p class="text-gray-600 mt-1 text-sm sm:text-base">Manage location sections for the website</p>
         </div>
         <a href="{{ route('admin.locations.create') }}"
-           class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+           class="inline-flex items-center justify-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>
             + Add New
         </a>
@@ -34,7 +34,7 @@
             @foreach($locations as $location)
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
                     <!-- Card Header -->
-                    <div class="bg-emerald-600 text-white px-6 py-4">
+                    <div class="bg-golden-600 text-white px-6 py-4">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <i class="fas fa-map-marker-alt mr-3"></i>
@@ -91,7 +91,7 @@
                     <!-- Content Section -->
                     <div class="p-6">
                         @if($location->subtitle)
-                            <h4 class="text-emerald-600 font-medium mb-3">{{ $location->subtitle }}</h4>
+                            <h4 class="text-golden-600 font-medium mb-3">{{ $location->subtitle }}</h4>
                         @endif
 
                         <p class="text-gray-600 mb-4 text-sm leading-relaxed">
@@ -107,7 +107,7 @@
                         <!-- Button Info -->
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex items-center">
-                                <i class="fas fa-link text-emerald-600 mr-2"></i>
+                                <i class="fas fa-link text-golden-600 mr-2"></i>
                                 <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{{ $location->button_text }}</span>
                             </div>
                             <span class="text-gray-400 text-xs truncate max-w-32">{{ $location->button_link }}</span>
@@ -123,7 +123,7 @@
                             </span>
                             <div class="flex space-x-2">
                                 <a href="{{ route('admin.locations.edit', $location) }}"
-                                   class="inline-flex items-center px-3 py-1 bg-emerald-600 text-white text-sm rounded hover:bg-emerald-700 transition-colors duration-200"
+                                   class="inline-flex items-center px-3 py-1 bg-golden-600 text-white text-sm rounded hover:bg-golden-700 transition-colors duration-200"
                                    title="Edit Location">
                                     <i class="fas fa-edit mr-1"></i>Edit
                                 </a>
@@ -147,7 +147,7 @@
             <h3 class="text-xl font-semibold text-gray-900 mb-3">No locations found</h3>
             <p class="text-gray-600 mb-6">Create your first location section to showcase your beautiful destinations.</p>
             <a href="{{ route('admin.locations.create') }}"
-               class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+               class="inline-flex items-center px-6 py-3 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                 <i class="fas fa-plus mr-2"></i>+ Add New
             </a>
         </div>

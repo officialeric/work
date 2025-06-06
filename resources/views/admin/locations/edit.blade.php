@@ -21,7 +21,7 @@
     <div class="bg-white rounded-xl shadow-sm border border-gray-200">
         <div class="px-6 py-4 border-b border-gray-200">
             <h3 class="text-lg font-semibold text-gray-900">
-                <i class="fas fa-edit mr-2 text-emerald-600"></i>Location Details
+                <i class="fas fa-edit mr-2 text-golden-600"></i>Location Details
             </h3>
         </div>
         <div class="p-6">
@@ -40,7 +40,7 @@
                                name="title"
                                value="{{ old('title', $location->title) }}"
                                required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('title') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('title') border-red-500 @enderror">
                         @error('title')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -53,7 +53,7 @@
                                id="subtitle"
                                name="subtitle"
                                value="{{ old('subtitle', $location->subtitle) }}"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('subtitle') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('subtitle') border-red-500 @enderror">
                         @error('subtitle')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -69,7 +69,7 @@
                               name="description"
                               rows="4"
                               required
-                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('description') border-red-500 @enderror">{{ old('description', $location->description) }}</textarea>
+                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('description') border-red-500 @enderror">{{ old('description', $location->description) }}</textarea>
                     @error('description')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -81,7 +81,7 @@
                     <textarea id="additional_description"
                               name="additional_description"
                               rows="3"
-                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('additional_description') border-red-500 @enderror">{{ old('additional_description', $location->additional_description) }}</textarea>
+                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('additional_description') border-red-500 @enderror">{{ old('additional_description', $location->additional_description) }}</textarea>
                     @error('additional_description')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -126,7 +126,7 @@
                                id="image_1"
                                name="image_1"
                                accept="image/*"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('image_1') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('image_1') border-red-500 @enderror">
                         @error('image_1')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -139,7 +139,7 @@
                                id="image_2"
                                name="image_2"
                                accept="image/*"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('image_2') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('image_2') border-red-500 @enderror">
                         @error('image_2')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -152,7 +152,7 @@
                                id="image_3"
                                name="image_3"
                                accept="image/*"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('image_3') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('image_3') border-red-500 @enderror">
                         @error('image_3')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -171,7 +171,7 @@
                                name="button_text"
                                value="{{ old('button_text', $location->button_text) }}"
                                required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('button_text') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('button_text') border-red-500 @enderror">
                         @error('button_text')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -186,7 +186,7 @@
                                name="button_link"
                                value="{{ old('button_link', $location->button_link) }}"
                                required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('button_link') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('button_link') border-red-500 @enderror">
                         @error('button_link')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -206,7 +206,7 @@
                                value="{{ old('sort_order', $location->sort_order) }}"
                                min="0"
                                required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 @error('sort_order') border-red-500 @enderror">
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200 @error('sort_order') border-red-500 @enderror">
                         @error('sort_order')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -220,7 +220,7 @@
                                    name="is_active"
                                    value="1"
                                    {{ old('is_active', $location->is_active) ? 'checked' : '' }}
-                                   class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
+                                   class="w-4 h-4 text-golden-600 bg-gray-100 border-gray-300 rounded focus:ring-golden-500 focus:ring-2">
                             <span class="ml-2 text-sm text-gray-700">Active (visible on website)</span>
                         </label>
                     </div>
@@ -229,7 +229,7 @@
                 <!-- Submit Buttons -->
                 <div class="flex space-x-3 pt-6">
                     <button type="submit"
-                            class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                            class="inline-flex items-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                         <i class="fas fa-save mr-2"></i>Update Location
                     </button>
                     <a href="{{ route('admin.locations.index') }}"

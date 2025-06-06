@@ -4,7 +4,7 @@
 @section('page-title', 'My Profile')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Profile</span>
 @endsection
@@ -12,18 +12,18 @@
 @section('content')
 <div class="space-y-6">
     <!-- Profile Header -->
-    <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl p-6 text-white">
+    <div class="bg-gradient-to-r from-golden-500 to-golden-600 rounded-xl p-6 text-white">
         <div class="flex items-center space-x-6">
             <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                 <i class="fas fa-user text-3xl text-white"></i>
             </div>
             <div>
                 <h1 class="text-2xl font-bold">{{ $admin->name }}</h1>
-                <p class="text-emerald-100">{{ ucfirst(str_replace('_', ' ', $admin->role)) }}</p>
-                <p class="text-emerald-100 text-sm mt-1">
+                <p class="text-golden-100">{{ ucfirst(str_replace('_', ' ', $admin->role)) }}</p>
+                <p class="text-golden-100 text-sm mt-1">
                     <i class="fas fa-envelope mr-2"></i>{{ $admin->email }}
                 </p>
-                <p class="text-emerald-100 text-sm">
+                <p class="text-golden-100 text-sm">
                     <i class="fas fa-clock mr-2"></i>
                     Last login: {{ $admin->last_login_at ? $admin->last_login_at->format('M j, Y g:i A') : 'Never' }}
                 </p>
@@ -39,7 +39,7 @@
                 <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">Basic Information</h3>
                     <a href="{{ route('admin.profile.edit') }}" 
-                       class="inline-flex items-center px-3 py-1.5 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                       class="inline-flex items-center px-3 py-1.5 bg-golden-600 text-white text-sm font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                         <i class="fas fa-edit mr-2"></i>
                         Edit Profile
                     </a>
@@ -56,7 +56,7 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-golden-100 text-golden-800">
                                 {{ ucfirst(str_replace('_', ' ', $admin->role)) }}
                             </span>
                         </div>
@@ -132,8 +132,8 @@
                         <div class="space-y-3">
                             @foreach($recentActivities->take(5) as $activity)
                                 <div class="flex items-start space-x-3">
-                                    <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <i class="fas fa-{{ $activity->action === 'login' ? 'sign-in-alt' : ($activity->action === 'logout' ? 'sign-out-alt' : 'edit') }} text-emerald-600 text-xs"></i>
+                                    <div class="w-8 h-8 bg-golden-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-{{ $activity->action === 'login' ? 'sign-in-alt' : ($activity->action === 'logout' ? 'sign-out-alt' : 'edit') }} text-golden-600 text-xs"></i>
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <p class="text-sm text-gray-900">
@@ -180,19 +180,19 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
                 <input type="password" name="current_password" required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500">
             </div>
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
                 <input type="password" name="password" required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500">
             </div>
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
                 <input type="password" name="password_confirmation" required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500">
             </div>
 
             <div class="flex items-center justify-end space-x-3 pt-4">
@@ -201,7 +201,7 @@
                     Cancel
                 </button>
                 <button type="submit" 
-                        class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                        class="inline-flex items-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                     <i class="fas fa-save mr-2"></i>
                     Update Password
                 </button>

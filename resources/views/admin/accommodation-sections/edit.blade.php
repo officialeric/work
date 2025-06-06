@@ -19,7 +19,7 @@
     <div class="bg-white rounded-lg shadow-sm border border-gray-200">
         <div class="px-6 py-4 border-b border-gray-200">
             <h3 class="text-lg font-semibold text-gray-800 flex items-center">
-                <i class="fas fa-edit mr-2 text-emerald-600"></i>Accommodation Section Details
+                <i class="fas fa-edit mr-2 text-golden-600"></i>Accommodation Section Details
             </h3>
         </div>
         <div class="p-6">
@@ -31,7 +31,7 @@
                     <!-- Title -->
                     <div class="md:col-span-2">
                         <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title <span class="text-red-500">*</span></label>
-                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('title') border-red-500 @enderror" 
+                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 @error('title') border-red-500 @enderror" 
                                id="title" name="title" value="{{ old('title', $accommodationSection->title) }}" required>
                         @error('title')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -41,7 +41,7 @@
                     <!-- Sort Order -->
                     <div>
                         <label for="sort_order" class="block text-sm font-medium text-gray-700 mb-2">Sort Order <span class="text-red-500">*</span></label>
-                        <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('sort_order') border-red-500 @enderror" 
+                        <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 @error('sort_order') border-red-500 @enderror" 
                                id="sort_order" name="sort_order" value="{{ old('sort_order', $accommodationSection->sort_order) }}" min="0" required>
                         @error('sort_order')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -57,7 +57,7 @@
                                    name="is_active"
                                    value="1"
                                    {{ old('is_active', $accommodationSection->is_active) ? 'checked' : '' }}
-                                   class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
+                                   class="w-4 h-4 text-golden-600 bg-gray-100 border-gray-300 rounded focus:ring-golden-500 focus:ring-2">
                             <span class="ml-2 text-sm text-gray-700">Active (visible on website)</span>
                         </label>
                     </div>
@@ -66,7 +66,7 @@
                 <!-- Description -->
                 <div>
                     <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description <span class="text-red-500">*</span></label>
-                    <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('description') border-red-500 @enderror" 
+                    <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 @error('description') border-red-500 @enderror" 
                               id="description" name="description" rows="5" required>{{ old('description', $accommodationSection->description) }}</textarea>
                     @error('description')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -113,7 +113,7 @@
                         <label for="main_image" class="block text-sm font-medium text-gray-700 mb-2">
                             {{ $accommodationSection->main_image ? 'Replace Main Image' : 'Main Image' }}
                         </label>
-                        <input type="file" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('main_image') border-red-500 @enderror" 
+                        <input type="file" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 @error('main_image') border-red-500 @enderror" 
                                id="main_image" name="main_image" accept="image/*">
                         @error('main_image')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -126,7 +126,7 @@
                         <label for="image_1" class="block text-sm font-medium text-gray-700 mb-2">
                             {{ $accommodationSection->image_1 ? 'Replace Image 1' : 'Image 1' }}
                         </label>
-                        <input type="file" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('image_1') border-red-500 @enderror" 
+                        <input type="file" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 @error('image_1') border-red-500 @enderror" 
                                id="image_1" name="image_1" accept="image/*">
                         @error('image_1')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -139,7 +139,7 @@
                         <label for="image_2" class="block text-sm font-medium text-gray-700 mb-2">
                             {{ $accommodationSection->image_2 ? 'Replace Image 2' : 'Image 2' }}
                         </label>
-                        <input type="file" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('image_2') border-red-500 @enderror" 
+                        <input type="file" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 @error('image_2') border-red-500 @enderror" 
                                id="image_2" name="image_2" accept="image/*">
                         @error('image_2')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -150,7 +150,7 @@
 
                 <!-- Submit Buttons -->
                 <div class="flex gap-3 pt-6">
-                    <button type="submit" class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                    <button type="submit" class="inline-flex items-center px-6 py-2 bg-golden-600 text-white rounded-lg hover:bg-golden-700 transition-colors duration-200">
                         <i class="fas fa-save mr-2"></i>Update Section
                     </button>
                     <a href="{{ route('admin.accommodation-sections.index') }}" class="inline-flex items-center px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200">

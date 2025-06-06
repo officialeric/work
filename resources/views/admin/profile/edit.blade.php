@@ -4,9 +4,9 @@
 @section('page-title', 'Edit Profile')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
-    <a href="{{ route('admin.profile.show') }}" class="text-emerald-600 hover:text-emerald-800">Profile</a>
+    <a href="{{ route('admin.profile.show') }}" class="text-golden-600 hover:text-golden-800">Profile</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Edit</span>
 @endsection
@@ -25,8 +25,8 @@
 
             <!-- Profile Avatar -->
             <div class="flex items-center space-x-6">
-                <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-user text-emerald-600 text-2xl"></i>
+                <div class="w-20 h-20 bg-golden-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-golden-600 text-2xl"></i>
                 </div>
                 <div>
                     <h3 class="text-lg font-medium text-gray-900">{{ $admin->name }}</h3>
@@ -45,7 +45,7 @@
                        name="name" 
                        value="{{ old('name', $admin->name) }}"
                        required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                        placeholder="Enter your full name">
                 @error('name')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -62,7 +62,7 @@
                        name="email" 
                        value="{{ old('email', $admin->email) }}"
                        required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden-500 focus:border-golden-500 transition-colors duration-200"
                        placeholder="Enter your email address">
                 @error('email')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -136,7 +136,7 @@
                         Reset
                     </button>
                     <button type="submit"
-                            class="inline-flex items-center justify-center px-6 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+                            class="inline-flex items-center justify-center px-6 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
                         <i class="fas fa-save mr-2"></i>
                         Update Profile
                     </button>

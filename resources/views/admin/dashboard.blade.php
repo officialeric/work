@@ -6,14 +6,14 @@
 @section('content')
 <div class="space-y-6">
     <!-- Welcome Message -->
-    <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl p-4 sm:p-6 text-white">
+    <div class="bg-gradient-to-r from-golden-500 to-golden-600 rounded-xl p-4 sm:p-6 text-white">
         <div class="flex items-center justify-between">
             <div>
                 <h1 class="text-xl sm:text-2xl font-bold mb-2">Welcome back, {{ Auth::guard('admin')->user()->name }}!</h1>
-                <p class="text-emerald-100 text-sm sm:text-base">Manage your Saadani Kasa Bay website content from here.</p>
+                <p class="text-golden-100 text-sm sm:text-base">Manage your Saadani Kasa Bay website content from here.</p>
             </div>
             <div class="hidden sm:block">
-                <i class="fas fa-tachometer-alt text-3xl sm:text-4xl text-emerald-200"></i>
+                <i class="fas fa-tachometer-alt text-3xl sm:text-4xl text-golden-200"></i>
             </div>
         </div>
     </div>
@@ -65,13 +65,13 @@
                     <p class="text-sm font-medium text-gray-600">Commitments</p>
                     <p class="text-2xl sm:text-3xl font-bold text-gray-900">{{ $stats['commitments'] }}</p>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-leaf text-emerald-600 text-lg sm:text-xl"></i>
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-golden-100 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-leaf text-golden-600 text-lg sm:text-xl"></i>
                 </div>
             </div>
             <div class="mt-3 sm:mt-4">
                 <a href="{{ route('admin.commitments.index') }}"
-                   class="text-sm text-emerald-600 hover:text-emerald-800 font-medium">
+                   class="text-sm text-golden-600 hover:text-golden-800 font-medium">
                     Manage Commitments →
                 </a>
             </div>
@@ -156,8 +156,8 @@
 
                 <a href="{{ route('saadani.index') }}"
                    target="_blank"
-                   class="flex items-center p-3 bg-emerald-50 hover:bg-emerald-100 rounded-lg transition-colors duration-200">
-                    <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                   class="flex items-center p-3 bg-golden-50 hover:bg-golden-100 rounded-lg transition-colors duration-200">
+                    <div class="w-8 h-8 bg-golden-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
                         <i class="fas fa-external-link-alt text-white text-sm"></i>
                     </div>
                     <span class="text-gray-700 font-medium text-sm sm:text-base">View Website</span>
@@ -202,7 +202,7 @@
         <h3 class="text-lg font-semibold text-gray-900 mb-4">System Information</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             <div class="text-center p-3 sm:p-0">
-                <div class="text-xl sm:text-2xl font-bold text-emerald-600 break-words">{{ Auth::guard('admin')->user()->last_login_at ? Auth::guard('admin')->user()->last_login_at->format('M j, Y') : 'Never' }}</div>
+                <div class="text-xl sm:text-2xl font-bold text-golden-600 break-words">{{ Auth::guard('admin')->user()->last_login_at ? Auth::guard('admin')->user()->last_login_at->format('M j, Y') : 'Never' }}</div>
                 <div class="text-sm text-gray-600">Last Login</div>
             </div>
             <div class="text-center p-3 sm:p-0">

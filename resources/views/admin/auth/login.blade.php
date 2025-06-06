@@ -65,11 +65,11 @@
                 @if($siteLogo)
                     <img src="{{ asset('storage/' . $siteLogo) }}" alt="{{ $siteName }}" class="w-12 h-12 object-contain">
                 @else
-                    <i class="fas fa-leaf text-emerald-600 text-2xl"></i>
+                    <i class="fas fa-leaf text-golden-600 text-2xl"></i>
                 @endif
             </div>
             <h1 class="text-3xl font-bold text-white mb-2">{{ $siteName }}</h1>
-            <p class="text-emerald-100">Admin Panel</p>
+            <p class="text-golden-100">Admin Panel</p>
         </div>
 
         <!-- Login Form -->
@@ -123,19 +123,19 @@
                     <label class="flex items-center">
                         <input type="checkbox" 
                                name="remember" 
-                               class="w-4 h-4 text-emerald-600 bg-white/20 border-white/30 rounded focus:ring-white/50 focus:ring-2">
+                               class="w-4 h-4 text-golden-600 bg-white/20 border-white/30 rounded focus:ring-white/50 focus:ring-2">
                         <span class="ml-2 text-sm text-white">Remember me</span>
                     </label>
                     
                     <a href="{{ route('admin.password.request') }}" 
-                       class="text-sm text-white hover:text-emerald-200 transition-colors duration-200">
+                       class="text-sm text-white hover:text-golden-200 transition-colors duration-200">
                         Forgot password?
                     </a>
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit" 
-                        class="w-full bg-white text-emerald-600 py-3 px-4 rounded-lg font-semibold hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-emerald-600 transition-all duration-200 transform hover:scale-105">
+                        class="w-full bg-white text-golden-600 py-3 px-4 rounded-lg font-semibold hover:bg-golden-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-golden-600 transition-all duration-200 transform hover:scale-105">
                     <i class="fas fa-sign-in-alt mr-2"></i>
                     Sign In
                 </button>
@@ -163,7 +163,7 @@
 
         <!-- Footer -->
         <div class="text-center mt-8">
-            <p class="text-emerald-100 text-sm">
+            <p class="text-golden-100 text-sm">
                 &copy; {{ date('Y') }} {{ \App\Models\WebsiteSetting::get('site_name', 'Saadani Kasa Bay') }}. All rights reserved.
             </p>
         </div>

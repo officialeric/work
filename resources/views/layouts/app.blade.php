@@ -40,12 +40,12 @@
                         'display': ['Playfair Display', 'ui-serif', 'Georgia']
                     },
                     colors: {
-                        emerald: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46'
+                        golden: {
+                            50: '#fefbf3',
+                            100: '#fdf4e1',
+                            600: '#B78B3E',
+                            700: '#9A7235',
+                            800: '#7D5F2C'
                         },
                         amber: {
                             50: '#fffbeb',
@@ -333,6 +333,7 @@
                         <a href="#facilities" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Facilities</a>
                         <a href="#commitments" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Commitments</a>
                         <a href="#gallery" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Gallery</a>
+                        <a href="{{ route('booking.create') }}" class="bg-gradient-to-r from-golden-600 to-amber-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:from-golden-700 hover:to-amber-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Book Now</a>
                         <a href="#contact" class="bg-amber-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-amber-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Contact</a>
                     </div>
                 </div>
@@ -358,6 +359,7 @@
                 <a href="#facilities" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Facilities</a>
                 <a href="#commitments" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Commitments</a>
                 <a href="#gallery" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Gallery</a>
+                <a href="{{ route('booking.create') }}" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium bg-gradient-to-r from-golden-600 to-amber-600 text-white hover:from-golden-700 hover:to-amber-700 transition-all duration-200">Book Now</a>
                 <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-900 hover:text-amber-600 hover:bg-amber-50 transition-all duration-200">Contact</a>
             </div>
         </div>

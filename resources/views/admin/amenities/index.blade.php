@@ -4,7 +4,7 @@
 @section('page-title', 'Amenities Management')
 
 @section('breadcrumbs')
-    <a href="{{ route('admin.dashboard') }}" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="text-golden-600 hover:text-golden-800">Dashboard</a>
     <span class="mx-2">/</span>
     <span class="text-gray-600">Amenities</span>
 @endsection
@@ -18,7 +18,7 @@
             <p class="text-gray-600 mt-1 text-sm sm:text-base">Manage facility amenities and services</p>
         </div>
         <a href="{{ route('admin.amenities.create') }}"
-           class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm sm:text-base">
+           class="inline-flex items-center justify-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>
             + Add New
         </a>
@@ -50,8 +50,8 @@
 
                     <!-- Icon and Content -->
                     <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                            <i class="{{ $amenity->icon }} text-emerald-600 text-xl"></i>
+                        <div class="flex-shrink-0 w-12 h-12 bg-golden-100 rounded-lg flex items-center justify-center">
+                            <i class="{{ $amenity->icon }} text-golden-600 text-xl"></i>
                         </div>
                         <div class="flex-1 min-w-0">
                             <h3 class="text-lg font-semibold text-gray-900 mb-1">{{ $amenity->title }}</h3>
@@ -64,7 +64,7 @@
                     <!-- Actions -->
                     <div class="flex items-center justify-end space-x-3 mt-4 pt-4 border-t border-gray-200">
                         <a href="{{ route('admin.amenities.edit', $amenity) }}" 
-                           class="text-emerald-600 hover:text-emerald-800 transition-colors duration-200">
+                           class="text-golden-600 hover:text-golden-800 transition-colors duration-200">
                             <i class="fas fa-edit"></i>
                         </a>
                         <button onclick="deleteAmenity({{ $amenity->id }})" 
@@ -82,7 +82,7 @@
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Amenities Found</h3>
                 <p class="text-gray-500 mb-6">Get started by creating your first amenity.</p>
                 <a href="{{ route('admin.amenities.create') }}"
-                   class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-200">
+                   class="inline-flex items-center px-4 py-2 bg-golden-600 text-white font-medium rounded-lg hover:bg-golden-700 transition-colors duration-200">
                     <i class="fas fa-plus mr-2"></i>
                     + Add New
                 </a>

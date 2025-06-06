@@ -137,4 +137,16 @@ Route::middleware(['admin.auth'])->group(function () {
         'destroy' => 'admin.room-types.destroy',
     ]);
     Route::post('room-types/update-order', [RoomTypeController::class, 'updateOrder'])->name('admin.room-types.update-order');
+
+    // Bookings Management
+    Route::resource('bookings', App\Http\Controllers\Admin\BookingController::class)->names([
+        'index' => 'admin.bookings.index',
+        'show' => 'admin.bookings.show',
+        'edit' => 'admin.bookings.edit',
+        'update' => 'admin.bookings.update',
+        'destroy' => 'admin.bookings.destroy',
+    ]);
+    Route::post('bookings/{booking}/confirm', [App\Http\Controllers\Admin\BookingController::class, 'confirm'])->name('admin.bookings.confirm');
+    Route::post('bookings/{booking}/cancel', [App\Http\Controllers\Admin\BookingController::class, 'cancel'])->name('admin.bookings.cancel');
+    Route::get('bookings-export', [App\Http\Controllers\Admin\BookingController::class, 'export'])->name('admin.bookings.export');
 });
